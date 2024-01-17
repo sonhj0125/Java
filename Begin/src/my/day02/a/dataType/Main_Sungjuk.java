@@ -66,10 +66,7 @@ public class Main_Sungjuk {
 
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		Sungjuk.char_print();
-		
-		
-		
-		
+								
 	}
 
 }

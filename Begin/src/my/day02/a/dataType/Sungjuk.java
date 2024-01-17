@@ -248,20 +248,5 @@ public class Sungjuk {
 		System.out.println("" +ch4+ch5+ch6); // 손혜정 -> "" 문자열
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }
