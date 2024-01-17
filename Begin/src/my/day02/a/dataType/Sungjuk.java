@@ -93,6 +93,8 @@ public class Sungjuk {
 	
 	char hakjum;   // ' ' 학점 'A', 'B', 'C', 'D', 'F'
 	
+	// **기본생성자인 Sungjuk() {} 가 생략되어 있는 것**
+	
 	
 	// === 기능, 행위, behavior, method === //
 	void sungjuk_print() {

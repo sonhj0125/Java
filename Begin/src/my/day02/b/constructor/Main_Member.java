@@ -4,6 +4,8 @@ public class Main_Member {
 
 	public static void main(String[] args) {
 		
+		
+		// 기본생성자(생략됨)만 존재할 경우, 사용 가능
 		Member hongkd_mbr = new Member();
 		hongkd_mbr.userid = "hongkd";
 		hongkd_mbr.passwd = "qwer1234";
@@ -16,6 +18,9 @@ public class Main_Member {
 		
 /////////////////////////////////////////// 위의 내용을 줄이기
 		
+		
+		// 파라미터가 있는 생성자를 만드는 순간, 기본생성자는 소멸함.
+		// 따라서, 위에 있는 코드는 사용할 수 없음. -> 파라미터와 함께 사용할 경우, 기본생성자 선언 필요
 		Member eomjh_mbr = new Member("eomjh", "abcd", "엄정화", 27, 200);
 		eomjh_mbr.info_print();
 		
