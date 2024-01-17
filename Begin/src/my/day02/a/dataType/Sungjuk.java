@@ -203,15 +203,47 @@ public class Sungjuk {
 		// 2진수(0,1), 8진수(0-7), 10진수(0-9), 16진수(00-FF)
 		// digital 신호 --> 2진수(0,1) == Binary Digit == Bit
 		// A B ... Z a b c ... z 0 1 2 ... 9 ! @ # ....
-		// A는 10진수로 65로 보자. a는 10진수로 97로 보자.
-		// B는 10진수로 66로 보자. b는 10진수로 98로 보자.
-		// C는 10진수로 67로 보자. c는 10진수로 99로 보자.
+		// A 는 10진수로 65 로 보자. a 는 10진수로 97 로 보자.
+		// B 는 10진수로 66 로 보자. b 는 10진수로 98 로 보자.
+		// C 는 10진수로 67 로 보자. c 는 10진수로 99 로 보자.
+		// ...
+		// Z는 10진수로 90로 보자. z 는 10진수로 122로 보자.
+		// 대문자와 소문자의 간격 차이는 32
+		// 0 은 10진수로 48 로 보자.
+		// 1 은 10진수로 49 로 보자.
+		// 2 는 10진수로 50 로 보자.
+		//...
+		// 9 는 10진수로 57 로 보자.
+		// ! 은 10진수로 33 로 보자.
+		// @ 은 10진수로 64 로 보자.
 		
+		// 아스키 코드 확장 -> 유니 코드
 		
+		System.out.println(">>> unicode 에 대해서 알아보기 <<< \n");
 		
+		char ch1 = 'A';
+		System.out.println(ch1);    // A
+		System.out.println(ch1+0);  // 65
 		
+		int n1 = 65;
+		System.out.println(n1);        // 65
+		System.out.println((char)n1);  // A
 		
+		System.out.println(ch1+32);    // 65+32 => 97
 		
+		System.out.println((char)(ch1+32));    // 97 => a
+		
+		char ch2 = 'a';
+		System.out.println((char)(ch2-32));    // 97-32 => 65 => A
+		
+		char ch3 = 9748;
+		System.out.println(ch3);
+		
+		char ch4 = 49552;  // 손
+		char ch5 = 54812;  // 혜
+		char ch6 = 51221;  // 정
+		System.out.println(ch4+ch5+ch6);  // 155585 -> int 값
+		System.out.println("" +ch4+ch5+ch6); // 손혜정 -> "" 문자열
 		
 	}
 	
