@@ -192,11 +192,63 @@ public class Main_Operator {
 		if( (m1++ == 0) || (n1++ == 2) ) {
 			/*
 			   m1 == 0, m1 = m1+1 => 1 => true
-			   n1 == 2 => false 뒤 스킵
+			   앞이 true 이므로 뒤는 스킵함
 			*/
 			m1=42;  // 실행함
 		}
 		System.out.println("m1 => " + m1 + ", n1 => " + n1);    // m1 => 42, n1 => 1
+		
+		
+	// #### 5. 비교 연산자 ####
+	/*
+	   == 같다, != 같지않다
+	   > 크다, < 작다, >= 같거나 크다, <= 같거나 작다
+	*/
+			
+		
+		
+		
+	// #### 6. 할당 연산자(연산후 대입 연산자) ####	
+	//         +=   -=   *=   /=    %=
+		System.out.println("\n==== 6. 할당 연산자(연산후 대입 연산자) ====");
+		
+		int no = 1;
+		no+=3;   // no = no + 3; 와 같은 것이다.
+		System.out.println("no = " + no);    // no = 4
+		
+		no-=2;   // no = no - 2; 와 같은 것이다.
+		System.out.println("no = " + no);    // no = 2
+		
+		no*=5;   // no = no * 5; 와 같은 것이다.
+		System.out.println("no = " + no);    // no = 10
+		
+		no/=4;   // no = no / 4; 와 같은 것이다.
+		System.out.println("no = " + no);    // no = 2
+		
+		no%=3;   // no = no % 3; 와 같은 것이다.
+		System.out.println("no = " + no);    // no = 2
+		
+		
+		
+		
+	// #### 7. 삼항 연산자 ####	
+	/*
+	   변수선언 = (조건식)?값1:값2
+	   
+	   변수를 선언하고 나서 값을 부여하고자 할 때 사용되어지는데,
+	   조건식이 참 이라면 변수에 ? 다음에 나오는 값1을 대입해주고,
+	   조건식이 거짓 이라면 변수에 : 다음에 나오는 값2를 대입해준다.
+	*/
+		
+		System.out.println("\n==== 7. 삼항 연산자 ====");
+		
+		int num1 = 50, num2 = 60;
+		int num3 = (num1 > num2)?num1:num2;
+		System.out.println("num = " + num3);
+		// num => 60
+		
+		
+		
 		
 		
 	}
