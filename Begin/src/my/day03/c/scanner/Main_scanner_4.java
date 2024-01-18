@@ -9,7 +9,7 @@ public class Main_scanner_4 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String str_no = "";
+		String str_no = "";  // 지역변수 초기화 필요. 그래서 String 타입의 아무거나 써도 됨.
 		// 또는 String str_no = null; 해도 상관 없음
 		// str_no = sc.nextLine();에서 null 대신 내가 입력한 값으로 바꾸겠다는 의미
 				
