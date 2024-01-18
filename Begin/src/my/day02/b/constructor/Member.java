@@ -43,6 +43,13 @@ public class Member {
 		this.point = point;
 	}
 
+	Member(String userid, String passwd, String name, String email, int age, int point){	
+	this(userid, passwd, name, age, point);  // 생성자(파라미터가 없는 기본생성자) == Member() {}와 동일
+	this.email = email;						// 위에서 정의한 파라미터가 있는 생성자를 호출한다는 것이다.
+	
+	}
+
+	
 	
 //////////////////////////////////////////////////////////	
 
@@ -56,7 +63,30 @@ public class Member {
 						+ "4. 나이 : " + age + "\n"
 						+ "5. 포인트 : " + point + "\n"
 						+ "6. 이메일 : " + email + "\n");
-								
+										
+	}
+	
+	// == 퀴즈 == //
+	
+	void update(String userid, String passwd, String name, String email, int age, int point) {
+		System.out.println(">>> 변경전 정보 <<<");
+		info_print();
+		
+		System.out.println(">>> 변경후 정보 <<<");
+		
+		/* this(userid, passwd, name, email, age, point); 
+		   생성자로 사용되는 this() 또는 this(파라미터, 파라미터,...)은
+		   오로지 생성자(Member) 내에서 사용 가능!!, 메소드인 void update 내에서는 불가
+		*/		
+		
+		this.userid = userid; 
+		this.passwd = passwd;
+		this.name = name;
+		this.age = age;
+		this.point = point;
+		
+		
+		info_print();
 	}
 	
 }
