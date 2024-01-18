@@ -4,8 +4,8 @@ public class Main_Operator {
 
 	public static void main(String[] args) {
 		
-		// #### 1. 산술연산자 ####
-		//       + - * / %(나머지)
+	// #### 1. 산술연산자 ####
+	//       + - * / %(나머지)
 		
 		System.out.println("==== 1. 산술연산자 + - * / %(나머지) ====");
 		
@@ -24,8 +24,8 @@ public class Main_Operator {
 		System.out.println("n%3 = "+ (n%3));  // n%3 = 1  10을 3으로 나누었을 때의 나머지를 말함.
 		
 		
-		// #### 2. 증감연산자 ####
-		//         ++ --
+	// #### 2. 증감연산자 ####
+	//         ++ --
 		System.out.println("\n==== 2. 증감연산자 ++ -- ====");
 		
 		/*
@@ -57,9 +57,9 @@ public class Main_Operator {
 		--b;
 		System.out.println("b => " + b);    // b => 1
 		
-	// !!!! 꼭 암기하세요 !!!! //
-    // 후위증감연산자(a++; b--;)는 다른 연산을 다 마친 이후에 1씩 증감한다.
-    // 전위증감연산자(++a; --b;)는 맨먼저 1씩 증감을 마친 이후에 다른 연산을 한다.
+		// !!!! 꼭 암기하세요 !!!! //
+	    // 후위증감연산자(a++; b--;)는 다른 연산을 다 마친 이후에 1씩 증감한다.
+	    // 전위증감연산자(++a; --b;)는 맨먼저 1씩 증감을 마친 이후에 다른 연산을 한다.
 		int x = 10, y = 10;
 		int z = ++x;    // x = x + 1; 먼저 실행 후 int z = x; 하는 것과 같다.
 		System.out.println("z => " + z);  // z => 11
@@ -78,7 +78,125 @@ public class Main_Operator {
 		
 		
 		
+	// #### 3. 논리 부정 연산자 ####
+	//          !
+		System.out.println("\n==== 3. 논리 부정 연산자 ! ====");
+		boolean bool = false;
+		System.out.println("bool => " + bool);       // bool => false
+		System.out.println("!bool => " + !bool);     // !bool => true
 		
+		
+		
+		
+	// #### 4. 논리 연산자 ####
+	//        & | && ||	
+		System.out.println("\n==== 4. 논리 연산자 & | && || ====");
+		/*
+		   수학에서는 T ∧(AND) T ∧ F ==> F 
+		   수학에서는 T ∧(AND) T ∧ T ==> T
+		   
+		   수학에서는 T ∨(OR) T ∨ F ==> T
+		   수학에서는 T ∨(OR) T ∨ T ==> T
+		   수학에서는 F ∨(OR) F ∨ F ==> F
+		*/
+		int c=50, d=60, e=70;
+		
+		bool = (c > d) && (d < e) && (c == e);
+		     // false  &&(그리고) 뒤는 **스킵**. &&는 그리고인데, 하나라도 false 가 나오면 false => 속도 빠름
+		System.out.println("bool => " + bool);    // bool => false
+		
+		bool = (c > d) & (d < e) & (c == e);
+	         // false & true & false 를 보여줌
+		System.out.println("bool => " + bool);    // bool => false
+		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		
+		bool = (c > d) || (d < e) || (c == e);
+	         // false  || true || **스킵** 
+		System.out.println("bool => " + bool);    // bool => true
+		
+		bool = (c > d) | (d < e) | (c == e);
+        // false  || true || false
+		System.out.println("bool => " + bool);    // bool => true
+		
+		
+		
+		
+	/*
+    if(조건) {
+              실행해야할 명령;     
+    }
+    ==> 조건이 참일때만 실행해야할 명령; 을 구동한다.
+    ==> 조건이 거짓이라면 실행해야할 명령; 을 구동안한다.
+    */
+	   int n1 = 10;
+	   
+	   if(n1 < 20) {
+	    // true
+	      System.out.println(">> n1은 20보다 작습니다.");
+	   }
+		
+///////////////////////////////////////////////////////	
+	   
+		System.out.println("\n~~~~~~~~ 퀴즈1 ~~~~~~~~~~\n");
+		int i = 1;
+		int j = i++;  // int j = i;  i = i + 1;
+					  // j = 1; i = 2;
+		
+		if( (i > ++j) & (i++ == j)) {
+			/*
+			   j = j + 1; j => 2가 되고 이후, i > j? => 2 > 2? => false
+			   i == j; 이후, i = i + 1; => 2 == 2, i = 3  => true 
+			   -----------
+			   false  i==>3
+			*/
+			i = i + j;    // false 이므로수행하지 않음
+		}
+		
+		System.out.println("i = " + i);  // i = 3
+		
+		i = 1;
+		j = i++;    // j=i;  i=i+1;
+					// j==>1 , i==>2
+		
+		if ( (i > ++j) && (i++ == j)) {
+			/*
+			   j=j+1; j==>2 이후 2 > 2? => false
+			   false 이므로 나머지 스킵
+			   ------------------------
+			   false   i==>2
+			*/
+			i = i + j;   // false 이므로 수행하지 않음
+		}
+		
+		System.out.println("i = " + i);   // i = 2
+		
+///////////////////////////////////////////////////////////		
+		
+		System.out.println("\n~~~~~~~~ 퀴즈2 ~~~~~~~~~~\n");
+		
+		int m1=0;
+		n1=1;
+		
+		if( (m1++ == 0) | (n1++ == 2) ) {
+			/*
+			   m1 == 0, m1 = m1+1 => 1  => true
+			   n1 == 2 => false => n1 = n1+1 = 2
+			*/
+			m1=42;  // 실행함
+		}
+		System.out.println("m1 => " + m1 + ", n1 => " + n1);    // m1 => 42, n1 => 2
+		
+		m1 = 0;
+		n1 = 1;
+		if( (m1++ == 0) || (n1++ == 2) ) {
+			/*
+			   m1 == 0, m1 = m1+1 => 1 => true
+			   n1 == 2 => false 뒤 스킵
+			*/
+			m1=42;  // 실행함
+		}
+		System.out.println("m1 => " + m1 + ", n1 => " + n1);    // m1 => 42, n1 => 1
 		
 		
 	}
