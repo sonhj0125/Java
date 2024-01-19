@@ -34,7 +34,6 @@ public class Main_sungjuk {
 				return;    // return 을 만나면 해당 메소드가 종료.
 			}
 			else {
-				
 				sj.kor = kor;
 			}
 			
@@ -49,8 +48,7 @@ public class Main_sungjuk {
 				sc.close();
 				return;    
 			}
-			else {
-				
+			else {				
 				sj.eng = eng;
 			}
 			
@@ -64,12 +62,10 @@ public class Main_sungjuk {
 				sc.close();
 				return;    
 			}
-			else {
-				
+			else {				
 				sj.math = math;
 			}
-			
-			
+						
 			status = 2;
 			System.out.print("6. 나이 : ");
 			input_str = sc.nextLine();					// 25
@@ -90,6 +86,7 @@ public class Main_sungjuk {
 			// 성적 출력하기
 
 			sj.sungjuk_print();
+			
 			/*
 			   === 이순신님의 성적결과 ===
 			  1. 학번 : 091234
@@ -100,6 +97,7 @@ public class Main_sungjuk {
 			  6. 총점 : 248
 			  7. 평균 : 82.666666666667
 			  8. 학점 : B
+			  9. 나이 : 27
 			*/
 			
 		} catch(NumberFormatException e) {
