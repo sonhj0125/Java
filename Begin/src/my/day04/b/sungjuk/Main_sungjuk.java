@@ -16,8 +16,11 @@ public class Main_sungjuk {
 		sj.name = sc.nextLine();         // "이순신"
 				
 		String input_str = "";
+		int status = 0;  // 점수를 입력해주는 상태 : 1,
+						 // 나이를 입력해주는 상태 : 2
 		
 		try {
+			status = 1;
 			System.out.print("3. 국어 : ");
 	
 			// === *** 유효성 검사하기(올바른 데이터인지 틀린 데이터인지 검사하는 것) *** === //
@@ -66,13 +69,55 @@ public class Main_sungjuk {
 				sj.math = math;
 			}
 			
+			
+			status = 2;
+			System.out.print("6. 나이 : ");
+			input_str = sc.nextLine();					// 25
+														// 70
+														// 50000
+														// "홍대클럽"
+			short age = Short.parseShort(input_str);
+			
+			if( !sj.check_age(age) ) {
+				sc.close();
+				return;
+			}
+			else {
+				sj.age = age;
+			}
+			
+			
+			// 성적 출력하기
+
+			sj.sungjuk_print();
+			/*
+			   === 이순신님의 성적결과 ===
+			  1. 학번 : 091234
+			  2. 성명 : 이순신
+			  3. 국어 : 90
+			  4. 영어 : 80
+			  5. 수학 : 78
+			  6. 총점 : 248
+			  7. 평균 : 82.666666666667
+			  8. 학점 : B
+			*/
+			
 		} catch(NumberFormatException e) {
 			// e.printStackTrace();
 			// System.out.println(e.getMessage());
-			System.out.println(">> 입력하신 "+input_str+" 는 올바른 데이터가 아닙니다. <<");
+			
+			System.out.println("\n>> 입력하신 "+input_str+"은(는) 올바른 데이터가 아닙니다.<<");
+					
+			if(status == 1) { // 점수를 입력해주는 상태이라면
+				System.out.println("[점수에 대한 경고] 점수는 0 ~ 100 까지의 정수만 입력하세요!");
+			}
+			else { // 나이를 입력해주는 상태이라면
+				System.out.println("[나이에 대한 경고] 나이는 20 ~ 50 까지의 정수만 입력하세요!");
 		}
-		
-		sc.close();
-	}
+			
+		 sc.close();
+		 
+	  }
 
+   }
 }
