@@ -33,8 +33,8 @@ public class Main_wrapper {
 		System.out.println((ch+1));          // (int)ch+1 => 97+1 => 98
 		System.out.println((char)(ch-32));   // (int)ch-32 => 65 => (char) => A
 		
-		// Character chr = new Character('a');  => jdk 1.8에서 사용
-		// 생성자 Character(char) 는 더이상 사용되지 않으며, 제거 대상으로 표시되었습니다.
+	// Character chr = new Character('a');  => jdk 1.8에서 사용
+	// 생성자 Character(char) 는 더이상 사용되지 않으며, 제거 대상으로 표시되었습니다.
 		
 		Character chr = Character.valueOf('a');  // jdk 11에서 사용
 		System.out.println("chr => " + chr);     // chr => a

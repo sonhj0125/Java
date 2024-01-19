@@ -15,7 +15,7 @@ public class Main_scanner_4 {
 				
 		try {
 		
-			System.out.print("1. 첫 번째 정수 입력 : ");				
+			System.out.print("1. 첫 번째 정수 입력 : ");			
 			str_no = sc.nextLine();		
 			int first_no = Integer.parseInt(str_no);
 				

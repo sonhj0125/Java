@@ -6,23 +6,23 @@ public class Main_sungjuk {
 
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);
-		
-		Sungjuk sj = new Sungjuk();  // 기본생성자
+		Scanner sc = new Scanner(System.in);		
+		Sungjuk sj = new Sungjuk();      // 기본생성자
 		
 		System.out.print("1. 학번 : ");
-		sj.hakbun = sc.nextLine();  // "091234"
+		sj.hakbun = sc.nextLine();       // "091234"
 		
 		System.out.print("2. 성명 : ");
-		sj.name = sc.nextLine();  // "이순신"
+		sj.name = sc.nextLine();         // "이순신"
+				
+		String input_str = "";
 		
 		try {
 			System.out.print("3. 국어 : ");
-			
 	
-			
 			// === *** 유효성 검사하기(올바른 데이터인지 틀린 데이터인지 검사하는 것) *** === //
-			byte kor = Byte.parseByte(sc.nextLine());   // 90
+			input_str = sc.nextLine();
+			byte kor = Byte.parseByte(input_str);       // 90
 											            // 101
 													    // 2343242
 													    // "똘똘이"
@@ -37,7 +37,8 @@ public class Main_sungjuk {
 			
 			
 			System.out.print("4. 영어 : ");
-			byte eng = Byte.parseByte(sc.nextLine()); // 100
+			input_str = sc.nextLine();
+			byte eng = Byte.parseByte(input_str);     // 100
 													  // -20
 													  // 68456456
 													  // "호호하하하"
@@ -51,7 +52,8 @@ public class Main_sungjuk {
 			}
 			
 			System.out.print("5. 수학 : ");
-			byte math = Byte.parseByte(sc.nextLine());  // 80
+			input_str = sc.nextLine();		
+			byte math = Byte.parseByte(input_str);      // 80
 													    // 128
 													    // -5946166
 													    // "헤헤헤"
@@ -67,7 +69,7 @@ public class Main_sungjuk {
 		} catch(NumberFormatException e) {
 			// e.printStackTrace();
 			// System.out.println(e.getMessage());
-			System.out.println(">> 입력하신 "+e.getMessage()+"는 올바른 데이터가 아닙니다. <<");
+			System.out.println(">> 입력하신 "+input_str+" 는 올바른 데이터가 아닙니다. <<");
 		}
 		
 		sc.close();
