@@ -60,10 +60,14 @@ public class Main_sungjuk {
 				return;    
 			}
 			else {
+				
 				sj.math = math;
 			}
-		} catch(NumberFormatException e) {
 			
+		} catch(NumberFormatException e) {
+			// e.printStackTrace();
+			// System.out.println(e.getMessage());
+			System.out.println(">> 입력하신 "+e.getMessage()+"는 올바른 데이터가 아닙니다. <<");
 		}
 		
 		sc.close();
