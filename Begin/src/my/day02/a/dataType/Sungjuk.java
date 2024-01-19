@@ -200,6 +200,7 @@ public class Sungjuk {
 	// ==== 문자형인 char 타입 알아보기 ==== //
 	static void char_print() {
 		// 자바는 char 타입을 표현할 때 unicode 를 사용한다.
+		// 참조(유니코드 table) : https://www.tamasoft.co.jp/en/general-info/unicode.html
 		
 		// 아스키(ASCII : American Standard Code for Information Interchange)
 		// 2진수(0,1), 8진수(0-7), 10진수(0-9), 16진수(00-FF)
