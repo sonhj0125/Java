@@ -151,9 +151,8 @@ public class Main_wrapper {
 		System.out.println("a2 => " + a2);  // a2 => 10
 		
 		int b1 = 10;
-	 //	Integer b2 = b1;    // Auto Boxing(박싱)
-	 //	System.out.println("b2 => " + b2);   // b2 => 10
-		System.out.println(b1);
+	 	Integer b2 = b1;    // Auto Boxing(박싱)
+	 	System.out.println("b2 => " + b2);   // b2 => 10
 		
 		
 	 // UnBoxing(언박싱, 포장을 푸는것) 이란?   
@@ -165,8 +164,8 @@ public class Main_wrapper {
 		int a4 = a3.intValue();             // UnBoxing(언박싱)		
 		System.out.println("a4 => " + a4);  // a4 => 20
 		
-	 //	int a5 = Integer.valueOf(20);       // Auto UnBoxing(언박싱)
-	 //	System.out.println("a5 => " + a5);  // a5 => 20
+	 	int a5 = Integer.valueOf(20);       // Auto UnBoxing(언박싱)
+	 	System.out.println("a5 => " + a5);  // a5 => 20
 		
 		
 		sc.close();		
