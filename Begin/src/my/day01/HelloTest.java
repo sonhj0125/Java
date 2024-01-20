@@ -73,13 +73,13 @@ public class HelloTest {
 		*/
 		
 		System.out.print("안녕하세요.\n");
-		//System.out.println("\n"); 은 줄바꿈을 말한다. Enter의 역할.
+		//System.out.println("\n"); 은 줄바꿈을 말한다. Enter 의 역할.
 		
 		System.out.println("반갑습니다.");
 		// println = \n
 		
 		System.out.println("자바 첫날 입니다.\n");
-		// println과 \n 은 줄바꾸기 2번(\n\n과 동일)
+		// println 과 \n 은 줄바꾸기 2번(\n\n 과 동일)
 		
 		System.out.println("조금 뒤 자기소개를 할 예정입니다.");
 		
