@@ -34,8 +34,7 @@ public class Main_for_2_break_continue {
 			>> 프로그램 종료 <<
 		*/
 		
-		
-		
+	
 		System.out.println("\n>> 2. continue <<");
 		
 		for(int i=0; i<10; i++) {
@@ -75,17 +74,15 @@ public class Main_for_2_break_continue {
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		
 		for(int i=0; i<10; i++) {
-			if( (i+1)%2 == 0 ) {
-				continue;
+			if( (i+1)%2 == 0 ) { // 출력하고자 하는 값이 짝수이라면
+				continue;		 // 밑으로 내려가지 않고, 가장 가까운 반복문의 증감식으로 이동
 			}
 			
-			String str = (i<8)?",":"";     			
+			String str = ((i+1) < 9)?",":"";     			  // i+1 은 홀수만 나옴. 맨 마지막 홀수는 9. 9보다 작다면 "," 아니면 "" 없다.
 			System.out.print( (i+1) + str);
 			
-		}
+		}// end of for-------------------------------
 			// 1,3,5,7,9
-		
-		
 		
 		
 		
