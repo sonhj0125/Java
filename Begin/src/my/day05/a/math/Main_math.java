@@ -75,7 +75,17 @@ public class Main_math {
 		// db3 => 54, db4 => 54, db5 => 54
 		
 		
+		// 4. >> 절대값에 대해서 알아본다. << 잘 쓰이진 x
 		
+		System.out.println("\n=== 절대값 ===");
+		
+		int a = 20, b = -30;
+		
+		System.out.println("a => " + a + ", b => " + b);
+		// a => 20, b => -30
+
+		System.out.println("a => " + Math.abs(a) + ", b => " + Math.abs(b));
+		// a => 20, b => 30
 		
 	}
 
