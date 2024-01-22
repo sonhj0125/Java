@@ -23,7 +23,6 @@ public class Main_for_2_break_continue {
 					break;		
 			}
 		
-		System.out.println("\n>> 프로그램 종료 <<");
 		
 		/*
 		    1번째 반복
@@ -49,30 +48,52 @@ public class Main_for_2_break_continue {
 			// i==>2 (i+1)==>3 ==> 출력
 			// i==>3 (i+1)==>4 ==> continue; i++로 이동, 출력하지 않음
 			// 1 3 5 7 9 
-			
-			
-			
+				
 		} // end of for----------------------------------------
 		
 		
+		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		
+		for(int i=0; i<10; i++) {
+			
+			/*
+				if(i<9) {
+				System.out.print( (i+1) + ", ");
+				}
+				else {
+				System.out.print( (i+1) ); 밑과 동일
+				}
+			*/ 
+			
+			String str = (i<9)?",":"";          // i 가 9 가 아니라면 ","
+			System.out.print( (i+1) + str);
+			
+	     }
+			// 1,2,3,4,5,6,7,8,9,10
+		
+		
+		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		
+		for(int i=0; i<10; i++) {
+			if( (i+1)%2 == 0 ) {
+				continue;
+			}
+			
+			String str = (i<8)?",":"";     			
+			System.out.print( (i+1) + str);
+			
+		}
+			// 1,3,5,7,9
 		
 		
 		
 		
 		
+		System.out.println("\n>> 프로그램 종료 <<");
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 	} // end of public static void main(String[] args)-------------
+
 
 }
