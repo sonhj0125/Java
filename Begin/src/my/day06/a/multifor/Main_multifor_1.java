@@ -53,10 +53,23 @@ public class Main_multifor_1 {
 		
 		// 단일 for 문을 사용하여 출력해본다.
 		
+		int m = 0, n = 0;
 		for(int i=0; i<12; i++) {
-			int m = 0, n = 0;
 			
-			System.out.print("["+m+","+n+"]");
+			/*
+			   i ==> 0~2  이라면 m => 0   n => 0 1 2
+			   i ==> 3~5  이라면 m => 1   n => 0 1 2
+			   i ==> 6~8  이라면 m => 2   n => 0 1 2
+			   i ==> 9~11 이라면 m => 3   n => 0 1 2
+			 
+			*/
+			
+			if(i>0 && i%3==0) {
+				m++;
+				n=0;    // n 은 매번 초기화되어서 0 1 2 로 시작
+			}
+			
+			System.out.print("["+m+","+ n++ +"]");
 			
 			if( (i+1)%3 == 0 ) {
 				System.out.print("\n");
@@ -139,7 +152,7 @@ public class Main_multifor_1 {
 		
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 		
-		System.out.println("안녕하세요\t내일\t또 뵐게요.");
+		System.out.println("안녕하세요\t내일\t또 뵐게요.\n");
 		
 		/*
 		   >> 4호와 4층은 뺄 것. <<
@@ -158,8 +171,8 @@ public class Main_multifor_1 {
 				
 				if(j == 4) continue;
 				
-				System.out.print(i + "0" + j + "호\t");
-			}
+				System.out.print(i+"0"+j+"호\t");
+			}// end of for-----------------------------------
 			
 			System.out.println();
 			
@@ -168,7 +181,7 @@ public class Main_multifor_1 {
 		
 		
 		
-		
+		System.out.println("\n>> 프로그램 종료 <<");
 		
 	} // end of main()------------------------------------
 
