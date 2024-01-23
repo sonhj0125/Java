@@ -15,7 +15,11 @@ public class Main_quiz_1 {
 		System.out.println(word.charAt(7));  // '#'
 		System.out.println(word.charAt(4));  // '한'
 		
+		
+		
 		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		
+		
 		
 		int upper_cnt = 0, lower_cnt = 0, number_cnt = 0, hangul_cnt = 0, special_cnt = 0;
 		
