@@ -178,9 +178,6 @@ public class Main_multifor_1 {
 			
 		} // end of for-----------------------------------
 		
-		
-		
-		
 		System.out.println("\n>> 프로그램 종료 <<");
 		
 	} // end of main()------------------------------------
