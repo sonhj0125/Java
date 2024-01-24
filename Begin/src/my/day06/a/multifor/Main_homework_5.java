@@ -100,16 +100,23 @@ public class Main_homework_5 {
 		
 		System.out.println("== 숙제 2 ==");
 		
-		for(int i=1; i<=5 ; i--) {		
+		for(int i=1; i<6 ; i++) {		
 
-			for(int j=5; j>i; j++) { 
+			for(int j=5; j>i; j--) { 
 				
-				System.out.print("*");
+				System.out.print(" ");
 				
 			} // end of for------------------------	
 			
-			System.out.println();	
+			for(int j=0; j<i; j++) {
+				
+				System.out.print("*");	
+			}
 			
+			System.out.println();
+			
+		} // end of for-------------------------
+		
 		/* 
 		  == 숙제 2 ==
 		           *
@@ -117,25 +124,23 @@ public class Main_homework_5 {
 		         ***
 		        ****
 		       ***** 	
-		 */
+		*/
 
-
+		System.out.println("== 숙제 3 ==");
 			
-			System.out.println("== 숙제 3 ==");	
+			
 			
 			
 		
-			/*
-				  == 숙제 3 == 
-			      *****   
-			      ****    
-			      ***    
-			      **     
-			      *   	
-			*/	
+		/*
+			  == 숙제 3 == 
+		      *****   
+		      ****    
+		      ***    
+		      **     
+		      *   	
+		*/	
 			
-		} // end of for-------------------------
-
 	} // end of main()-----------------------------
 
 
