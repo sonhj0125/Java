@@ -2,6 +2,7 @@ package my.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 public class MyUtil {
 	
@@ -16,6 +17,36 @@ public class MyUtil {
 		
 		System.out.println("== 현재시각 : " + sdfmt.format(now));
 		
-	}
+	} // end of current_time_print()----------------------	
+		
+	
+	
+	
+	
+	// === certification key 를 만들어주는 static 메소드를 생성한다. === //
+		
+	public static String certification_key() {	
+		
+		Random rnd = new Random(); // 랜덤한 정수
+		
+		String certification_key = "";
+				
+		for(int i=0; i<7; i++) {
+			if(i<3) {
+				char ch = (char)(rnd.nextInt('z' - 'a' + 1) + 'a');
+				certification_key += ch;				
+			}
+			else {
+				int n = (int)(rnd.nextInt(9 - 0 + 1) + 0);
+				certification_key += n;
+			}
+			
+		} // end of for----------------------------------
+		
+		return certification_key;
+	
+	} // end of certification_key()-----------------------------
 
 }
+	
+
