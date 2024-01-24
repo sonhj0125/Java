@@ -52,8 +52,7 @@ public class Main_primenumber_3 {
 		System.out.println(">>>>> 실행결과 <<<<<\n");	
 		
 		Scanner sc = new Scanner(System.in);		
-		
-		
+				
 		do {
 			
 			try {
@@ -64,18 +63,57 @@ public class Main_primenumber_3 {
 				System.out.print("▷ 끝 자연수 : ");
 				int end_no = sc.nextInt();      // 10엔터 또는 6.2665엔터 또는 똘똘이
 				
-				break;
+				/*
+				  소수란? 1과 자기 자신의 수로만 나누었을 때 나머지가 0, 1 이외의 정수를 말한다. (2,3,5,7...)
+				*/
 				
+				String str_reslut = "";   // 소수 쌓는 곳
+				int cnt = 0, sum = 0;     // 소수 개수, 합
+				
+				for(int i = start_no; i <= end_no; i++) {
+					
+					if(i == 1)   // 1은 소수가 아니므로 소수인지 판별할 필요가 없기에 continue; 를 한다.
+						continue;
+					
+					/*
+					   나누기를 했을 때 나머지가 얼마가 되는지 일일이 검사를 한다.
+				       만약에 i 가 2 이라면 2는 소수이다.
+				       만약에 i 가 3 이라면 ==> 3%2!=0 / 3은 소수이다.
+				       만약에 i 가 4 이라면 ==> 4%2==0 / 4는 소수가 아니다.
+				       만약에 i 가 5 이라면 ==> 5%2!=0 / 5%3!=0 / 5%4!=0 따라서 5는 소수이다.
+				       만약에 i 가 6 이라면 ==> 6%2==0 / 6은 소수가 아니다.
+				       만약에 i 가 7 이라면 ==> 7%2!=0 / 7%3!=0 / 7%4!=0 / 7%5!=0 / 7%6!=0 /따라서 7은 소수이다.
+				       만약에 i 가 8 이라면 ==> 8%2==0 / 8은 소수가 아니다.
+				       만약에 i 가 9 이라면 ==> 9%2!=0 / 9%3==0 / 9는 소수가 아니다.
+				       만약에 i 가 10 이라면 ==> 10%2==0 / 10은 소수가 아니다.
+					*/
+					
+					boolean isSosu = true;
+					
+					
+					for(int bunmo=2; bunmo < i; bunmo++) {
+						if(i%bunmo == 0) {
+							isSosu = false;
+							break;
+						}
+					} // end of for------------------------------------
+					
+					
+					
+				} // end of for------------------------------------
+				
+				break;
+		
 			} catch(InputMismatchException e) {
 				System.out.println(" >> [경고] 자연수만 입력하세요!!\n");
 				sc.nextLine();
-				
-				
+	
 			} // end of try_catch--------------------------------------
 			
 		} while(true);
-		// end of do_while--------------------------------------
+		// end of do_while-------------------------------------
 		
+	
 		System.out.println("\n>> 프로그램 종료 <<");
 		
 		
