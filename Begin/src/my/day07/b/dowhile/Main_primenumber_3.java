@@ -67,7 +67,7 @@ public class Main_primenumber_3 {
 				  소수란? 1과 자기 자신의 수로만 나누었을 때 나머지가 0, 1 이외의 정수를 말한다. (2,3,5,7...)
 				*/
 				
-				String str_reslut = "";   // 소수 쌓는 곳
+				String str_result = "";   // 소수 쌓는 곳
 				int cnt = 0, sum = 0;     // 소수 개수, 합
 				
 				for(int i = start_no; i <= end_no; i++) {
@@ -98,10 +98,36 @@ public class Main_primenumber_3 {
 						}
 					} // end of for------------------------------------
 					
-					
+					if(isSosu) {  // 검사대상인 i 가 소수이라면
+						cnt++;    // 소수의 개수
+						sum+=i;   // 소수들의 누적 합계	
+						
+						
+						// 소수 , 나열 방법1
+						 String add = (cnt == 1)?"":",";	
+						// 첫번째 소수는 소수앞에 ""을 붙여주고, 두번째 이후부터 나오는 소수는 소수앞에 ","를 붙여준다. 
+						 str_result += add + i;
+						// 1부터10까지의 소수는?
+						// 2,3,5,7
+			
+						/* 또는 방법2
+						  if(cnt == 1) 
+						  		str_result += i; 
+						  else 
+						  		str_result += "," + i;
+						*/
+						
+						
+					}
 					
 				} // end of for------------------------------------
+
+					
+				System.out.println(start_no + "부터 " + end_no + "까지의 소수는?\n" + str_result);
+				System.out.println(start_no + "부터 " + end_no + "까지의 소수의 개수는? " + cnt + "개");
+				System.out.println(start_no + "부터 " + end_no + "까지의 소수들의 합? " + sum);
 				
+				sc.close();
 				break;
 		
 			} catch(InputMismatchException e) {
@@ -114,15 +140,8 @@ public class Main_primenumber_3 {
 		// end of do_while-------------------------------------
 		
 	
-		System.out.println("\n>> 프로그램 종료 <<");
-		
-		
-		
-		
-		
-		
-		sc.close();
-
+		System.out.println("\n== 프로그램 종료 ==");
+	
 	} // end of main()-----------------------------------------------------------
 
 }

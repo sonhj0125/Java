@@ -73,7 +73,7 @@ public class Main_homework_5 {
 	   */   
 		
 		
-		System.out.println("== 숙제 1 ==");
+		System.out.println("== 숙제 1 ==\n");
 		
 		for(int i=1; i<=5; i++) {		
 			
@@ -98,7 +98,7 @@ public class Main_homework_5 {
 		
 		
 		
-		System.out.println("== 숙제 2 ==");
+		System.out.println("\n== 숙제 2 ==\n");
 		
 		for(int i=1; i<6 ; i++) {		
 
@@ -126,21 +126,40 @@ public class Main_homework_5 {
 		       ***** 	
 		*/
 
-		System.out.println("== 숙제 3 ==");
+		System.out.println("\n== 숙제 3 ==\n");
 			
+		for(int i=5; i>0; i--) {		
 			
+			for(int j=0; j<i; j++) { 
+				
+				System.out.print("*");
+				
+			} // end of for------------------------	
 			
+			System.out.println();	
 			
-		
+		} // end of for-------------------------	
+			
+	
 		/*
-		  == 숙제 3 == 
-	      *****   
-	      ****    
-	      ***    
-	      **     
-	      *   	
+			  == 숙제 3 == 
+		      *****   
+		      ****    
+		      ***    
+		      **     
+		      *   	
 		*/	
 			
+		System.out.println("\n== 숙제 4 ==\n");
+		
+		
+		
+		/*
+			 == 숙제 4 ==
+				 *
+				***
+			   ***** 			 
+		 */
 	} // end of main()-----------------------------
 
 
