@@ -152,31 +152,58 @@ public class Main_homework_5 {
 			
 		System.out.println("\n== 숙제 4 ==\n");
 		
-		for(int i=0; i<=5; i++) {		
+		for(int i=0; i<3; i++) {
+		
+			for(int j=0; j<3-i; j++) {		
 			
-			for(int j=0; j<i; j++) { 
-				
-				System.out.print("*");
+				System.out.print(" ");	
 				
 			} // end of for------------------------	
-			
-			System.out.println();	
-			
+				
+			for(int j=0; j<2*i+1; j++) { 
+								
+				System.out.print("*");
+
+			} // end of for-------------------------
+		
+				System.out.println();
+				
 		} // end of for-------------------------
 		
-		
 		/*
-			 == 숙제 4 ==
+			== 숙제 4 ==
 				 *
 				***
 			   ***** 			 
 		 */
 		
+		System.out.println("\n== 숙제 5 ==\n");
 		
+		for(int i=3; i>0; i--) {
+			
+			for(int j=0; j<3-i; j++) {		
+			
+				System.out.print(" ");	
+				
+			} // end of for------------------------	
+				
+			for(int j=0; j<2*i+1; j++) { 
+								
+				System.out.print("*");
+
+			} // end of for-------------------------
 		
+				System.out.println();
+				
+		} // end of for-------------------------
 		
-		
-		
+		/*
+		   == 숙제 5  ==
+			  *****
+	           ***
+	            *			 
+		*/
+	
 	} // end of main()-----------------------------
 
 

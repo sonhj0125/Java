@@ -40,13 +40,13 @@ public class Main_lotto_review {
 					arr_temp[i] = idx;
 				}
 				
-				
-				
-				
-				
-				
+				String add = (i<5)?",":"";
+				result += arr_ball[idx] + add;	
 		} // end of for------------------------		
 
-	}
+		System.out.println("\n로또 1등 당첨번호 : " + result);
+		
+		
+	} // end of main()----------------------------------------------------------------
 
 }
