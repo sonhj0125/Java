@@ -46,7 +46,19 @@ public class MyUtil {
 		return certification_key;
 	
 	} // end of certification_key()-----------------------------
-
+	
+	
+	
+	
+	// === 공백을 빼주는 static 메소드를 생성한다. === //
+	
+	public static String space_delete() {
+		
+		
+		
+		return null;
+		
+	} // end of space_delete()
 }
 	
 

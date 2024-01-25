@@ -65,7 +65,7 @@ public class Main_random_1 {
 		Random rndom = new Random();
 		
 		// 처음 얼마부터 마지막 얼마까지 랜덤한 정수
-		// rndom.nextInt(마지막 수 - 처음 수 + 1) + 처음 수
+		// rndom.nextInt(마지막 수 - 처음 수 + 1) + 처음 수;
 		
 		n1 = rndom.nextInt(10 - 1 + 1) + 1;
 		n2 = rndom.nextInt(7 - 3 + 1) + 3;
