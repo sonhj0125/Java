@@ -254,38 +254,41 @@ public class Main_homework_5 {
 		
 		System.out.println("\n== 입사문제 ==\n");
 		
-		for(int i=9; i>0; i--) {		
+		 for(int i=1; i<10; i++) {
+	      
+			 for(int j=10; j>i; j--) { 
+	    	  
+	            	System.out.print("*");
+	            	
+	            } // end of for------------------------
+	         
+			 System.out.println(i);
+	       
+	         } // end of for------------------------ 
+		 
+		 System.out.println();
 			
-			for(int j=1; j<=i; j++) { 
-				
-				int num = 0;
-				if(j<=i) {
-					System.out.print("*" + num);
-				}
-				else {
-				System.out.print("*");
-				}
-			} // end of for------------------------	
-			
-			System.out.println();	
-			
-		} // end of for-------------------------
-		
-		
-		
-	/*    == 입사문제 == 
-		           
-		   *********1
-		   ********2
-		   *******3
-		   ******4
-		   *****5
-		   ****6
-		   ***7
-		   **8
-		   *9
-	*/
-	} // end of main()-----------------------------
+/*    == 입사문제 == 
+       
+	   *********1
+	   ********2
+	   *******3
+	   ******4
+	   *****5
+	   ****6
+	   ***7
+	   **8
+	   *9
+*/
+	
 
+	} // end of main()-------------------------
+	
+	
 
 }
+		
+	
+		
+
+
