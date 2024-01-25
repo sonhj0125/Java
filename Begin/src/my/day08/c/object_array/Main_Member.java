@@ -81,17 +81,11 @@ public class Main_Member {
 						break;
 					
 				} while(true);
-						
+				// end of do_while----------------------------------------------------------		
 						
 				// 공백이 없는 한글로만 되어야 하고 글자길이는 2글자 이상 6글자 이하이어야만 한다.
-				
-				
-				String name = "";
-				do {	
-					System.out.print("▶ 성명 : ");
-					name = sc.nextLine();
 					
-					if(name.length() < 2 || name.length() < 6) {
+		/*			if(name.length() < 2 || name.length() > 6) {
 						System.out.println(">>[경고] 글자길이는 2글자 이상 6글자 이하로 하세요.");
 						continue;
 					}
@@ -110,8 +104,36 @@ public class Main_Member {
 							break;					
 				} while(true);
 				// end of do_while--------------------
+		*/
+								
+				String name = "";
+				do {	
+						System.out.print("▶ 성명 : ");
+						name = sc.nextLine();
+						
+					boolean isUseName = true;
+					
+					if(name.length() < 2 || name.length() > 6 ) {
+						isUseName = false;
+					}
+					else { // 입력한 성명의 길이가 2글자 이상 6글자 이하인 경우
+						for(int i=0; i<name.length(); i++) {
+							if( !('가' <= name.charAt(i) && name.charAt(i) <= '힣') ) {  // 한글을 뺀 나머지인 경우
+								isUseName = false;
+								break;
+							}
+						} // end of for------------------------------------
+					}
 				
-				
+					if(isUseName) {
+						break;
+					}
+					else {
+						System.out.println(">>[경고] 성명은 공백이 없는 한글로만 2글자 이상 6글자 이하로 입력하세요.\n");
+					}
+										
+				} while(true);
+				// end of do_while-----------------------------------------------------
 				
 				Member mbr = new Member();
 				mbr.id = id;

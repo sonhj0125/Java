@@ -179,7 +179,35 @@ public class Main_homework_5 {
 		
 		System.out.println("\n== 숙제 5 ==\n");
 		
-		for(int i=3; i>0; i--) {
+		for(int i=0; i<3; i++) {
+			
+			for(int j=0; j<=i; j++) {		
+			
+				System.out.print(" ");	
+				
+			} // end of for------------------------	
+				
+			for(int j=5; j>=2*i+1; j--) { 
+								
+				System.out.print("*");
+
+			} // end of for-------------------------
+		
+				System.out.println();
+				
+		} // end of for-------------------------
+	
+		/*
+		   == 숙제 5  ==
+			  *****
+	           ***
+	            *			 
+		*/
+	
+		
+		System.out.println("\n== 숙제 6 ==\n");
+		
+		for(int i=0; i<2; i++) {
 			
 			for(int j=0; j<3-i; j++) {		
 			
@@ -197,13 +225,66 @@ public class Main_homework_5 {
 				
 		} // end of for-------------------------
 		
-		/*
-		   == 숙제 5  ==
-			  *****
-	           ***
-	            *			 
-		*/
-	
+		for(int i=0; i<5; i++) {
+			
+			for(int j=0; j<=i; j++) {		
+			
+				System.out.print(" ");	
+				
+			} // end of for------------------------	
+				
+			for(int j=5; j>=2*i+1; j--) { 
+								
+				System.out.print("*");
+
+			} // end of for-------------------------
+		
+				System.out.println();
+				
+		} // end of for-------------------------		
+		
+		/* 	 == 숙제 6 ==
+		          
+		         *
+		        ***
+		       *****
+		        ***   
+		         *
+	    */        
+		
+		System.out.println("\n== 입사문제 ==\n");
+		
+		for(int i=9; i>0; i--) {		
+			
+			for(int j=1; j<=i; j++) { 
+				
+				int num = 0;
+				if(j<=i) {
+					System.out.print("*" + num);
+				}
+				else {
+				System.out.print("*");
+				}
+			} // end of for------------------------	
+			
+			System.out.println();	
+			
+		} // end of for-------------------------
+		
+		
+		
+	/*    == 입사문제 == 
+		           
+		   *********1
+		   ********2
+		   *******3
+		   ******4
+		   *****5
+		   ****6
+		   ***7
+		   **8
+		   *9
+	*/
 	} // end of main()-----------------------------
 
 
