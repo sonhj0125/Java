@@ -215,6 +215,29 @@ public class Main_twodimension_array_1 {
 				arr_subject_total[i] += jumsu_arr[j][i];
 				
 			} // end of for--------------------------------------
+			
+		/*	
+		   arr_subject_total[0] += jumsu_arr[0][0];
+		   					   	+= jumsu_arr[1][0];
+		   					 	+= jumsu_arr[2][0];
+		   					 	+= jumsu_arr[3][0];
+		   					 	+= jumsu_arr[4][0];
+		   					 	
+		   arr_subject_total[1] += jumsu_arr[0][1];
+		   					   	+= jumsu_arr[1][1];
+		   					 	+= jumsu_arr[2][1];
+		   					 	+= jumsu_arr[3][1];
+		   					 	+= jumsu_arr[4][1];	
+		   					 					 	
+		   arr_subject_total[2] += jumsu_arr[0][2];
+		   					   	+= jumsu_arr[1][2];
+		   					 	+= jumsu_arr[2][2];
+		   					 	+= jumsu_arr[3][2];
+		   					 	+= jumsu_arr[4][2];					 	
+		   					 	
+		 */
+			
+			
 						
 		} // end of for--------------------------------------
 		
