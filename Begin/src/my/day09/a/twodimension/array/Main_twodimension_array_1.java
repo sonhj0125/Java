@@ -266,6 +266,41 @@ public class Main_twodimension_array_1 {
 			   79.0  80.0  72.4     과목별 평균
 		*/
 		
+		
+		System.out.println("\n####################################################\n");
+		
+		System.out.println(">> 배열 arr_subject_total 에 저장되어진 값을 꺼내오는 첫번째 방법 <<");
+		
+		for(int i=0; i<arr_subject_total.length; i++) {
+			System.out.println(arr_subject_total[i]);
+		} // end of for----------------------------------------
+		
+		/*
+		  395 
+		  400 
+		  362
+		*/
+		
+		System.out.println("\n>> 배열 arr_subject_total 에 저장되어진 값을 꺼내오는 두번째 방법 <<");
+		
+		// 아래의 for 문을 "확장 for 문" 또는 "개선된 for 문" 이라 부른다.
+		for(int subject_total : arr_subject_total) {    // 형태 지역변수명(아무거나) : 반복의 횟수가 되는 배열
+			// 반복의 횟수는 arr_subject_total 배열의 길이 만큼 한다.
+			// int subject_total = arr_subject_total[0];
+			// int subject_total = arr_subject_total[1];
+			// int subject_total = arr_subject_total[2];
+			
+			System.out.println(subject_total);
+			
+		} // end of for----------------------------------------
+		
+		/*
+		  395 
+		  400 
+		  362
+		*/
+		
+	
 	} // end of main()-------------------------------------------------
 
 }
