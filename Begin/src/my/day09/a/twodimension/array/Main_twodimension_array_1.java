@@ -108,40 +108,21 @@ public class Main_twodimension_array_1 {
 							// 국어 영어 수학
 		int[][] jumsu_arr = { {90, 80, 70},  // 이순신
 							  {80, 85, 76},  // 엄정화
+							  {80, 85, 76},  // 홍길동, 동점
 							  {85, 70, 90},  // 공유
 							  {60, 80, 50}   // 아이유
 							  };
 		
+		int[] total_arr = new int[jumsu_arr.length];
+		// 각 학생별 총점을 저장시켜두는 곳이다.
+		
+		String[] result_arr = new String[jumsu_arr.length];
+		// 학생별로 등수를 제외한 국어, 영어, 수학, 총점, 평균, 학점까지 성적 결과를 저장시켜두는 장소
+				
+				
 		System.out.println("----------------------------------------------------");
 		System.out.println("국어\t영어\t수학\t총점\t평균\t학점\t등수");
 		System.out.println("----------------------------------------------------");
-		
-		
-		int[] arr_sum = new int[jumsu_arr.length];
-		
-			for(int i = 0; i < jumsu_arr.length; i++) {
-				
-				for(int j = 0; j < jumsu_arr.length; j++) {
-					
-					//if(<) {
-					//	j++;
-				//	}
-					
-					
-					
-					
-				} // end of for-------------------------------
-				
-			} // end of for-------------------------------
-						
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		for(int i=0; i<jumsu_arr.length; i++) {
@@ -178,21 +159,64 @@ public class Main_twodimension_array_1 {
 				
 			} // end of switch---------------------------------------
 			
-			result += sum + "\t" + avg + "\t" + grade + "\n";
+			result += sum + "\t" + avg + "\t" + grade + "\t";		
+		//	System.out.println(result);
 			
-			System.out.println(result);
+			result_arr[i] = result; // 각 학생별 국어, 영어, 수학, 총점, 평균, 등급 까지 결과만을 구해서 배열 result_arr 에 저장시켜 둔다.
 			
+			total_arr[i] = sum;     // 각 학생별 총점을 구해서 배열 total_arr 에 저장시켜 둔다.		
 		} // end of for------------------------------
+		
+		// >>> 등수를 구해서 성적결과 출력하기 <<< //
+		for(int i = 0; i < total_arr.length; i++) {  // total_arr[i] 가 자신의 점수
 			
+			int rank = 1;
+			for(int j = 0; j < total_arr.length; j++) { // total_arr[j] 는 타인의 점수
+				
+				if(i != j && total_arr[i] < total_arr[j]){
+					rank++;
+				}
+				
+			} // end of for----------------------------------------
+					
+			System.out.println(result_arr[i] += rank);
+						
+		} // end of for----------------------------------------
+		
+		
+		System.out.println("====================================================\n");
+		
+		int kor_sum = 0, eng_sum = 0, math_sum = 0;
+		
+		for(int i = 0; i < jumsu_arr.length; i++) {
+			
+			kor_sum += jumsu_arr[i][0];
+			eng_sum += jumsu_arr[i][1];
+			math_sum += jumsu_arr[i][2];	
+			
+		} // end of for----------------------------------
+		
+		double avg_kor = Math.round((double)kor_sum/jumsu_arr.length*10)/10.0;
+		double avg_eng = Math.round((double)eng_sum/jumsu_arr.length*10)/10.0;
+		double avg_math = Math.round((double)math_sum/jumsu_arr.length*10)/10.0;
+		
+		
+		System.out.println(kor_sum + "\t" + eng_sum + "\t" + math_sum + "\t 과목별 총점" );
+		System.out.println(avg_kor + "\t" + avg_eng + "\t" + avg_math + "\t 과목별 평균");
+		
+		
 		/*
-		   ----------------------------
-		    국어  영어  수학  총점   평균  학점
-		   ----------------------------
-		    90   80   70  240  80.0  B
-		    80   85   76  241  80.0  B
-		    85   70   90  245  81.0  B
-		    60	 80   50  190  63.0	 D  
-		   ----------------------------
+			   ----------------------------------
+			    국어  영어  수학  총점   평균  학점  *등수
+			   ----------------------------------
+			    90   80   70  240  80.0  B 	   4
+			    80   85   76  241  80.0  B	   2
+			    80   85   76  241  80.0  B	   2
+			    85   70   90  245  81.0  B	   1
+			    60	 80   50  190  63.0	 D     5
+			   ==================================
+			   395   400   362      과목별 총점
+			   79.0  80.0  72.4     과목별 평균
 		*/
 		
 	} // end of main()-------------------------------------------------
