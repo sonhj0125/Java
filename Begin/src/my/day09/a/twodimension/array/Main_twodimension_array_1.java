@@ -117,7 +117,23 @@ public class Main_twodimension_array_1 {
 		System.out.println("----------------------------------------------------");
 		
 		
+		int[] arr_sum = new int[jumsu_arr.length];
 		
+			for(int i = 0; i < jumsu_arr.length; i++) {
+				
+				for(int j = 0; j < jumsu_arr.length; j++) {
+					
+					//if(<) {
+					//	j++;
+				//	}
+					
+					
+					
+					
+				} // end of for-------------------------------
+				
+			} // end of for-------------------------------
+						
 		
 		
 		
