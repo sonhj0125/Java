@@ -46,6 +46,24 @@ public class Main_twodimension_array_2 {
 		} // end of for--------------------------------
 		
 		
+		System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		
+		
+		int[][] num_arr_2 = {{10, 20, 30}, 
+							 {40, 50},
+							 {70, 0, 90, 100},
+							 {0, 0, 0}
+							 };
+		
+		for(int i=0; i<num_arr_2.length; i++) {   // 행
+			
+			for(int j=0; j<num_arr_2[i].length; j++) {    // 열
+				String add = (j<num_arr_2[i].length-1)?",":"\n";
+				System.out.printf("%2d%s", num_arr_2[i][j], add);
+			} // end of for---------------
+			
+		} // end of for--------------------------------
+		
 	} // end of main()--------------------------------------------------------------------
 
 }
