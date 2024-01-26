@@ -13,9 +13,7 @@ public class Member {
 	
 	// method
 	public String view_info() {
-		return "1. 아이디 : " + id + "\n" +
-			   "2. 비밀번호 : " + passwd + "\n" +
-			   "3. 셩명 : " + name + "\n";		
+		return id+"\t"+passwd+"\t"+name;	
 	}
 	
 	
