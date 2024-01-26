@@ -186,23 +186,47 @@ public class Main_twodimension_array_1 {
 		
 		System.out.println("====================================================\n");
 		
-		int kor_sum = 0, eng_sum = 0, math_sum = 0;
+		/*
+		  int kor_sum = 0, eng_sum = 0, math_sum = 0;
+		  
+		  for(int i = 0; i < jumsu_arr.length; i++) {
+		  
+		  kor_sum += jumsu_arr[i][0]; 
+		  eng_sum += jumsu_arr[i][1]; 
+		  math_sum += jumsu_arr[i][2];
+		  
+		  } // end of for----------------------------------
+		  
+		  double avg_kor = Math.round((double)kor_sum/jumsu_arr.length*10)/10.0; 
+		  double avg_eng = Math.round((double)eng_sum/jumsu_arr.length*10)/10.0; 
+		  double avg_math = Math.round((double)math_sum/jumsu_arr.length*10)/10.0;
+		  
+		  
+		  System.out.println(kor_sum + "\t" + eng_sum + "\t" + math_sum + "\t 과목별 총점"); 
+		  System.out.println(avg_kor + "\t" + avg_eng + "\t" + avg_math + "\t 과목별 평균");
+		 */
 		
-		for(int i = 0; i < jumsu_arr.length; i++) {
+		int[] arr_subject_total = new int[jumsu_arr[0].length];
+		// 각 과목별 총점을 저장시켜두는 곳
+		
+		for (int i=0; i<arr_subject_total.length; i++) {
 			
-			kor_sum += jumsu_arr[i][0];
-			eng_sum += jumsu_arr[i][1];
-			math_sum += jumsu_arr[i][2];	
+			for (int j=0; j<jumsu_arr.length; j++) {
+				arr_subject_total[i] += jumsu_arr[j][i];
+				
+			} // end of for--------------------------------------
+						
+		} // end of for--------------------------------------
+		
+		String str_subject_total = "", str_subject_avg = "";
+		for(int i=0; i<arr_subject_total.length; i++) {
+			str_subject_total += arr_subject_total[i] + "\t";
+			str_subject_avg += Math.round((double)arr_subject_total[i] / jumsu_arr.length * 10)/10.0 + "\t";
 			
-		} // end of for----------------------------------
+		} // end of for--------------------------------------
 		
-		double avg_kor = Math.round((double)kor_sum/jumsu_arr.length*10)/10.0;
-		double avg_eng = Math.round((double)eng_sum/jumsu_arr.length*10)/10.0;
-		double avg_math = Math.round((double)math_sum/jumsu_arr.length*10)/10.0;
-		
-		
-		System.out.println(kor_sum + "\t" + eng_sum + "\t" + math_sum + "\t 과목별 총점" );
-		System.out.println(avg_kor + "\t" + avg_eng + "\t" + avg_math + "\t 과목별 평균");
+		System.out.println(str_subject_total);
+		System.out.println(str_subject_avg);
 		
 		
 		/*
