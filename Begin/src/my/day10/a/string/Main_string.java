@@ -1,5 +1,7 @@
 package my.day10.a.string;
 
+import java.text.DecimalFormat;
+
 import my.util.MyUtil;
 
 public class Main_string {
@@ -223,7 +225,22 @@ public class Main_string {
 	    //   2,500,000	  2500000		글자 길이 7글자(3의 배수가 아님)	콤마의 개수는 7/3 == 2 ==> 2
 	    // 892,500,000	892500000		글자 길이 9글자(3의 배수)			콤마의 개수는 9/3 == 3 ==> 3-1
 	  
-	  
+	 ///////////////////////////////////////////////////////////////////////////////////////////
+	    
+	    // (실제로 사용)
+	    money_1 = "$2,000,000";
+	    money_2 = "$500,000";
+	    
+	    sum_money = MyUtil.delete_character(money_1) + MyUtil.delete_character(money_2);
+	    System.out.println(sum_money);
+	    // 2500000
+	    
+	    DecimalFormat df = new DecimalFormat("#,###");				// 3자리 마다 콤마(,)를 찍어준다.
+	    System.out.println("$" + df.format(sum_money)); 
+	    // $2,500,000
+	    
+	    
+	    
 	    
 	} // end of main()-----------------------------------------------
 
