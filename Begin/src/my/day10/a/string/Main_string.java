@@ -28,6 +28,9 @@ public class Main_string {
 	     // 요세하녕안
 	     
 	     
+	     
+	     
+	     
 	      // === 2. "문자열".toCharArray() ===	     
 	      // "안녕하세요".toCharArray()  ==> char 타입의 배열로 만들어준다.
 	      // ------------------------
@@ -44,6 +47,9 @@ public class Main_string {
 	     
 	     System.out.println(result);
 		 // 요세하녕안
+	     
+	     
+	     
 	     
 	      // === 3. "문자열".substring(int 시작인덱스, int 끝인덱스) ===
 	      // "안녕하세요".substring(1, 4); 
@@ -68,6 +74,9 @@ public class Main_string {
 	     str = "안녕하세요".substring(2);
 	     System.out.println(str);
 	     // 하세요
+	     
+	     
+	     
 	     
 	     
 	     // === 5. "문자열".indexOf("찾을문자열") ====
@@ -161,6 +170,9 @@ public class Main_string {
 	  */   	     
 	 
 	     
+	     
+	     
+	     
 	  // === 6. "문자열".lastIndexOf("찾을문자열") ====
 	  //        "문자열" 에서 마지막으로 나오는 "찾을문자열"의 인덱스(int)를 알려준다.   
 	     	     
@@ -238,6 +250,143 @@ public class Main_string {
 	    DecimalFormat df = new DecimalFormat("#,###");				// 3자리 마다 콤마(,)를 찍어준다.
 	    System.out.println("$" + df.format(sum_money)); 
 	    // $2,500,000
+	    
+	    
+	    
+	    
+	   	    
+	    // === 7. "문자열".split("구분자") ====  ★★★웹에서 많이 사용★★★
+	    //        "문자열"을 "구분자"로 잘라서 String 타입의 배열로 돌려주는 것이다. 
+	    
+	    
+	    System.out.println("\n 1.====================================================== \n");
+	    
+	    String food = "제육볶음,볶음밥,닭가슴살,함박스테이크,소고기덮밥";
+	    
+	    String[] food_arr = food.split(",");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"}
+	    
+	    for(int i=0; i<food_arr.length; i++) {
+	    	System.out.println((i+1) +"."+ food_arr[i]);
+	    } // end of for-----------------------------------------
+	/*    
+	    1.제육볶음
+	    2.볶음밥
+	    3.닭가슴살
+	    4.함박스테이크
+	    5.소고기덮밥
+	*/    
+	    
+	    System.out.println("--------------------------------------------");
+	    
+	    for(String fd : food_arr) {
+	    	System.out.println(fd);
+	    } // end of for-----------------------------------------
+	/*    
+	    제육볶음
+	    볶음밥
+	    닭가슴살
+	    함박스테이크
+	    소고기덮밥
+	*/    
+	    
+	    
+	    System.out.println("\n 2.====================================================== \n");
+	    
+	    food = "제육볶음	볶음밥	닭가슴살	함박스테이크	소고기덮밥";
+	    
+	    food_arr = food.split("\t");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"}
+	    
+	    for(int i=0; i<food_arr.length; i++) {
+	    	System.out.println((i+1) +"."+ food_arr[i]);
+	    } // end of for-----------------------------------------
+	/*    
+	    1.제육볶음
+	    2.볶음밥
+	    3.닭가슴살
+	    4.함박스테이크
+	    5.소고기덮밥
+	*/     
+	    
+	    
+	    System.out.println("\n 3.=== split 사용시 구분자로 . | / 등의 특수문자를 사용하려고 하는 경우 === \n");
+	    
+	    food = "제육볶음.볶음밥.닭가슴살.함박스테이크.소고기덮밥";
+	    
+	    food_arr = food.split(".");
+	    System.out.println("food_arr.length => " + food_arr.length);
+	    // food_arr.length => 0 잘못된 것. 쪼개지 못함
+	    //  ==> 0 이 나옴. 즉, .단독만으로는 구분자로 인식을 못함. ( , 나 \t 은 인식함)
+        // split 사용시 구분자로 . | / 등 특수문자를 사용하려고 할 경우에는 구분자로 인식을 못할 경우가 많으므로
+        // 구분자 앞에 \\ 를 붙이거나 구분자를 [] 로 씌워주면 된다.
+        // ★★★ 즉, \\구분자  이거나  [구분자] 이렇게 해야 한다.
+	    
+	    
+	    food_arr = food.split("\\.");    	    
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"}
+	    
+	    // 또는
+	    
+	    food_arr = food.split("[.]");    	    
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"}
+	    
+	    
+	    for(int i=0; i<food_arr.length; i++) {
+	    	System.out.println((i+1) +"."+ food_arr[i]);
+	    } // end of for-----------------------------------------
+	    
+	/*    
+	    1.제육볶음
+	    2.볶음밥
+	    3.닭가슴살
+	    4.함박스테이크
+	    5.소고기덮밥
+	*/       
+	    
+	    
+	    
+	    System.out.println("\n 4.=== split 사용시 구분자로 . | / 등의 특수문자를 사용하려고 하는 경우 === \n");
+	    
+	    food = "제육볶음,볶음밥.닭가슴살|함박스테이크,소고기덮밥	라면";
+	    
+	    food.split("\\, | \\. | \\| \\\t");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"} 
+	    
+	    for(int i=0; i<food_arr.length; i++) {
+	    	System.out.println((i+1) +"."+ food_arr[i]);
+	    } // end of for-----------------------------------------
+	
+	/*    
+	    1.제육볶음
+	    2.볶음밥
+	    3.닭가슴살
+	    4.함박스테이크
+	    5.소고기덮밥
+	*/       
+	    	    
+	    
+	    
+	    
+	    
+	    System.out.println("\n 5.=== split 사용시 구분자로 . | / 등의 특수문자를 사용하려고 하는 경우 === \n");
+	    
+	    food = "제육볶음,볶음밥.닭가슴살|함박스테이크,소고기덮밥	라면";
+	    
+	    food.split("[, . | \t]");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"} 
+	    
+	    for(int i=0; i<food_arr.length; i++) {
+	    	System.out.println((i+1) +"."+ food_arr[i]);
+	    } // end of for-----------------------------------------
+	
+	/*    
+	    1.제육볶음
+	    2.볶음밥
+	    3.닭가슴살
+	    4.함박스테이크
+	    5.소고기덮밥
+	*/       
 	    
 	    
 	    
