@@ -183,14 +183,15 @@ public class Main_string {
 	    for(int i=0; i<pathFileNameArr.length; i++) {
 	    	int idx = pathFileNameArr[i].lastIndexOf("/");
 	    	if(idx != -1) {
-	    		System.out.println(pathFileNameArr[i].substring(idx+1));	    		  		
-	    	}
+	    		System.out.println(pathFileNameArr[i].substring(idx+1));	 
+	    		
+	 //  pathFileNameArr[i].substring(idx+1) 은 마지막으로 나오는 "/" 의 인덱스 그 다음부터 끝까지 뽑아낸다.	
+	    		
+	    	} // end of if---------------------------
 	    	
 	    } // end of for------------------------------------
 	     
-	     
-	     
-	     
+     
 	} // end of main()-----------------------------------------------
 
 }
