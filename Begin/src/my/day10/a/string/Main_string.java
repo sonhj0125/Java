@@ -430,7 +430,7 @@ public class Main_string {
 	    money_2 = "$500,000";
 	    
 	    money_1 = String.join("", money_1.split("[$]"));  	// {"2,000,000"}
-	    // "2,000,000"
+	    // "2,000, 000"
 	    
 	    money_1 = String.join("", money_1.split("[,]"));  	// {"2',"000","000"}
 	    // "2000000"
