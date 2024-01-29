@@ -126,12 +126,113 @@ public class MyUtil {
 		return flag_upper && flag_lower && flag_number && flag_special;
 
 	
+
+	} // end of isCheckPasswd(String passwd)------------------------------------
+
+
 	
+	// == Main_string 문자열 합쳐서 $2,500,000 만들기 == //
 	
+	public static long delete_character(String money) {
+		
+		// money => // "$2,000,000"
+		// money => // "2,000,000$"		
+		// money => // "$2,000,000$"
+		// money => // "$$2,000,000$"			// $를 기준으로 잘라서 합치기를 반복하면 $를 전부 없앨 수 있음.
+		// money => // "2,$000,$000$"
+												// "2," + "000,$000$" => "2,000,$000$" => "2,000," + "000$" => "2,000,000$" => "2,000,000"+"" => "2,000,000"
+		// money => // "2,000,000"
+		// money => // "$500"
+		// money => // "500"
+		
+		do {
+			
+			int dollor_index = money.indexOf("$");
+			
+			if(dollor_index == -1)
+				break;		
+			
+			money = money.substring(0, dollor_index) + money.substring(dollor_index + 1);
+			
+		} while (true);
+		
+		// System.out.println(money);
+		// "2,000,000"
+		
+		do {
+			
+			int comma_index = money.indexOf(",");
+			
+			if(comma_index == -1)
+				break;		
+			
+			money = money.substring(0, comma_index) + money.substring(comma_index + 1);
+			
+		} while (true);
+		
+		// System.out.println(money);
+		// "2000000"
+		
+		
+		return Long.parseLong(money);
+		// 20000000
+	} // end of public static long delete_character(String str)------------------------------------------
+
+
 	
-	} // end of isCheckPasswd(String passwd)------------------------
+	// === 숫자에 3자리 마다 , 를 추가해서 문자열로 리턴시켜주는 메소드 생성하기 === //
+	
+	public static String append_comma(long num) {
+		
+		// 숫자를 문자열로 변경시켜주는 메소드
+		// Integer.toString(12345); ==> "12345"
+		// Long.toString(12345678901234567890L); ==> "12345678901234567890"
+		
+		// String.valueOf(12345);  // int 타입을 String 타입인 "12345" 바꿈
+		// String.valueOf(12345678901234567890L); ==> "12345678901234567890" int 를 long 타입으로 바꿈
+		
+		String temp = String.valueOf(num);
+		// num 이 2500000 이라면 temp 는 "2500000"
+	    // num 이 892500000 이라면 temp 는 "892500000"
+		
+		char[] origin_arr = temp.toCharArray();
+		
+		/*
+		  ---------------				-------------------
+		  |2|5|0|0|0|0|0|				|8|9|2|5|0|0|0|0|0|
+		  ---------------				-------------------
+		   글자길이 7/3 = 2				   글자길이 9/3-1=2
+		*/
+		
+		// 콤마개수 (글자길이에 맞춰 콤마가 들어감)
+		int comma_len = (origin_arr.length%3 == 0)?(origin_arr.length/3)-1:(origin_arr.length/3);
+		char[] result_arr = new char[origin_arr.length + comma_len];
+		
+		/*
+		  -------------------				-----------------------
+		  |2|,|5|0|0|,|0|0|0|				|8|9|2|,|5|0|0|,|0|0|0|
+		  -------------------				-----------------------
+		  
+		*/
+		// 콤마가 들어가는 자리는 4, 8... 4의 배수자리, 뒤에서부터 콤마찍기
+		for(int i = origin_arr.length-1, j = result_arr.length-1, count = 1; i>=0; i--, j--, count++) {	
+			if(count%4 != 0) {
+				result_arr[j] = origin_arr[i];	
+			}	
+			else {
+				result_arr[j] = ',';
+			// i?? 콤마를 중간에 끼웠기 때문에 i 가 감소해서는 안됨
+				i++;
+			}
+			
+		// |'2'|','|'5'|'0'|'0'|','|'0'|'0'|'0'|
+						
+		} // end of for---------------------------------------------
+	
+		return String.valueOf(result_arr);
+		
+	} // end of public static char[] append_comma(long sum_money)----------------------------------------
 		
 
 }
 	
-

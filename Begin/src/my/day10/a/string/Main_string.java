@@ -1,5 +1,7 @@
 package my.day10.a.string;
 
+import my.util.MyUtil;
+
 public class Main_string {
 
 	public static void main(String[] args) {
@@ -190,8 +192,39 @@ public class Main_string {
 	    	} // end of if---------------------------
 	    	
 	    } // end of for------------------------------------
-	     
+	    
+	/*     
+	    나의이력서.hwp
+	    mymusic.mp3
+	    내얼굴.jpg
+	*/
      
+	    
+	    
+	    System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	    
+	    String money_1 = "$2,000,000";
+	    String money_2 = "$500,000";
+	    // 두 money 문자열을 합쳐서 $2,500,000을 만들고자 함.
+	    
+	    
+	    long sum_money = MyUtil.delete_character(money_1) + MyUtil.delete_character(money_2);
+	    // 2000000 + 500000
+	    // 달러와 콤마를 일단 제거
+	    
+	  
+	    System.out.println(sum_money);
+	    // 2500000
+	    
+
+	    System.out.println("$" + MyUtil.append_comma(sum_money));			// $2,500,000
+	    //	       500	   	  500 		글자 길이 3글자(3의 배수)			콤마의 개수는 3/3 == 1 ==> 1-1
+	    //     500,000	   500000 		글자 길이 6글자(3의 배수)			콤마의 개수는 6/3 == 2 ==> 2-1
+	    //   2,500,000	  2500000		글자 길이 7글자(3의 배수가 아님)	콤마의 개수는 7/3 == 2 ==> 2
+	    // 892,500,000	892500000		글자 길이 9글자(3의 배수)			콤마의 개수는 9/3 == 3 ==> 3-1
+	  
+	  
+	    
 	} // end of main()-----------------------------------------------
 
 }
