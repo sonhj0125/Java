@@ -40,7 +40,7 @@ public class Main_twodimension_array_2 {
 			
 			for(int j=0; j<num_arr[i].length; j++) {    // 열
 				String add = (j<num_arr[i].length-1)?",":"\n";
-				System.out.printf("%2d%s", num_arr[i][j], add);
+		//		System.out.printf("%2d%s", num_arr[i][j], add);
 			} // end of for---------------
 			
 		} // end of for--------------------------------
@@ -59,7 +59,7 @@ public class Main_twodimension_array_2 {
 			
 			for(int j=0; j<num_arr_2[i].length; j++) {    // 열
 				String add = (j<num_arr_2[i].length-1)?",":"\n";
-				System.out.printf("%2d%s", num_arr_2[i][j], add);
+	//			System.out.printf("%2d%s", num_arr_2[i][j], add);
 			} // end of for---------------
 			
 		} // end of for--------------------------------

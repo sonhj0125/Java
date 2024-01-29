@@ -150,10 +150,10 @@ public class Main_wrapper {
 		Integer a2 = Integer.valueOf(a1);   // jdk 11 방식
 		System.out.println("a2 => " + a2);  // a2 => 10
 		
-		int b1 = 10;
-	 	Integer b2 = b1;    // Auto Boxing(박싱)
-	 	System.out.println("b2 => " + b2);   // b2 => 10
-		
+		/*
+		 * int b1 = 10; Integer b2 = b1; // Auto Boxing(박싱) System.out.println("b2 => "
+		 * + b2); // b2 => 10
+		 */
 		
 	 // UnBoxing(언박싱, 포장을 푸는것) 이란?   
      // ==> Wrapper 클래스(Boolean, Byte, Short, Integer, Long, Character, Float, Double)로 
@@ -163,10 +163,10 @@ public class Main_wrapper {
 		Integer a3 = Integer.valueOf(20);
 		int a4 = a3.intValue();             // UnBoxing(언박싱)		
 		System.out.println("a4 => " + a4);  // a4 => 20
-		
-	 	int a5 = Integer.valueOf(20);       // Auto UnBoxing(언박싱)
-	 	System.out.println("a5 => " + a5);  // a5 => 20
-		
+		/*
+		 * int a5 = Integer.valueOf(20); // Auto UnBoxing(언박싱)
+		 * System.out.println("a5 => " + a5); // a5 => 20
+		 */
 		
 		sc.close();		
 	}

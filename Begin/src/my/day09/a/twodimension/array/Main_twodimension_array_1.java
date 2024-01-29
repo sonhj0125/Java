@@ -98,7 +98,7 @@ public class Main_twodimension_array_1 {
 			
 			for(int j=0; j<point_arr[i].length; j++) { // 열
 				String add = (j<point_arr[i].length-1)?",":"\n";
-				System.out.printf("%3d%s", point_arr[i][j], add);				
+	//			System.out.printf("%3d%s", point_arr[i][j], add);				
 			} // end of for-----------------------------------
 			
 		} // end of for-----------------------------------
@@ -284,13 +284,13 @@ public class Main_twodimension_array_1 {
 		System.out.println("\n>> 배열 arr_subject_total 에 저장되어진 값을 꺼내오는 두번째 방법 <<");
 		
 		// 아래의 for 문을 "확장 for 문" 또는 "개선된 for 문" 이라 부른다.
-		for(int subject_total : arr_subject_total) {    // 형태 지역변수명(아무거나) : 반복의 횟수가 되는 배열
+//		for(int subject_total : arr_subject_total) {    // 형태 지역변수명(아무거나) : 반복의 횟수가 되는 배열
 			// 반복의 횟수는 arr_subject_total 배열의 길이 만큼 한다.
 			// int subject_total = arr_subject_total[0];
 			// int subject_total = arr_subject_total[1];
 			// int subject_total = arr_subject_total[2];
 			
-			System.out.println(subject_total);
+	//		System.out.println(subject_total);
 			
 		} // end of for----------------------------------------
 		
@@ -303,4 +303,4 @@ public class Main_twodimension_array_1 {
 	
 	} // end of main()-------------------------------------------------
 
-}
+

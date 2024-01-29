@@ -206,7 +206,7 @@ public class Main_Member {
 						
 					} // end of for-------------------------
 					
-				}			
+		//		}			
 				
 				/*
 				   >> 가입된 회원이 없습니다. <<
@@ -223,6 +223,7 @@ public class Main_Member {
 				*/
 					
 				break; // switch 문을 빠져나간다.
+				}
 			case "3":    // 프로그램 종료
 				
 				break; // switch 문을 빠져나간다.
@@ -234,13 +235,18 @@ public class Main_Member {
 			} // end of switch------------------------------------
 				
 			
-			
+				
 		} while ( !("3".equals(str_menu_no)) );   // 입력한 메뉴번호가 3번이라면 반복문을 빠져나와야 한다.
 		// end of do_while-------------------------------------
 		sc.close();
+				
 			System.out.println("\n>> 프로그램 종료 <<");
 		
-		
-	} // end of main()-------------------------------------------------------
+				
+		} // end of main()-------------------------------------------------------
+	
+	
+ }
 
-}
+
+			
