@@ -350,8 +350,8 @@ public class Main_string {
 	    
 	    food = "제육볶음,볶음밥.닭가슴살|함박스테이크,소고기덮밥	라면";
 	    
-	    food.split("\\, | \\. | \\| \\\t");
-	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"} 
+	    food_arr = food.split("\\,|\\.|\\||\\\t");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥","라면"} 
 	    
 	    for(int i=0; i<food_arr.length; i++) {
 	    	System.out.println((i+1) +"."+ food_arr[i]);
@@ -363,6 +363,7 @@ public class Main_string {
 	    3.닭가슴살
 	    4.함박스테이크
 	    5.소고기덮밥
+	    6.라면
 	*/       
 	    	    
 	    
@@ -373,8 +374,8 @@ public class Main_string {
 	    
 	    food = "제육볶음,볶음밥.닭가슴살|함박스테이크,소고기덮밥	라면";
 	    
-	    food.split("[, . | \t]");
-	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥"} 
+	    food_arr = food.split("[, . | \t]");
+	    // {"제육볶음","볶음밥","닭가슴살","함박스테이크","소고기덮밥","라면"} 
 	    
 	    for(int i=0; i<food_arr.length; i++) {
 	    	System.out.println((i+1) +"."+ food_arr[i]);
@@ -386,8 +387,69 @@ public class Main_string {
 	    3.닭가슴살
 	    4.함박스테이크
 	    5.소고기덮밥
+	    6.라면
 	*/       
 	    
+	    System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	    
+	    // === [참고] \ 역슬래쉬를 escape 문자라고 부른다. === //
+	    System.out.println("나의 이름은 \"이순신\"입니다.");
+	    // 나의 이름은 "이순신"입니다.
+	    
+	    System.out.println("C:\\NCS\\workspace_java");
+	    // 역슬래쉬는 2개를 적어야 1개로 인식
+	    // C:\NCS\workspace_java
+	    
+	    
+	    
+	    
+	    
+	    // === 8. String.join("합칠구분자", 문자열배열명) ====
+	    //        문자열배열을 "합칠구분자"로 합쳐서 String 타입으로 돌려주는 것이다.
+	    
+	    String[] name_arr = {"한석규","두석규","세석규","네석규","오석규"};
+	    String names = String.join("-", name_arr);
+	    System.out.println(names);
+	    // 한석규-두석규-세석규-네석규-오석규
+	    
+	    String str_1 = "시작하세요 안녕하세요 건강하세요";	    
+	    str_1  = String.join("", str_1.split("하세요"));  // {"시작","안녕","건강"}	    
+	    System.out.println(str_1);
+	    // "시작 안녕 건강"
+	    
+	    String bank_book_no = "103-465-8594-20";
+	    bank_book_no = String.join("", bank_book_no.split("[-]"));	    // {"103","465","8594","20"}
+	    System.out.println(bank_book_no);
+	    // 103456859420
+	    
+	    
+	    System.out.println("\n===========================================\n");
+	    
+	    
+	    money_1 = "$2,000,000";
+	    money_2 = "$500,000";
+	    
+	    money_1 = String.join("", money_1.split("[$]"));  	// {"2,000,000"}
+	    // "2,000,000"
+	    
+	    money_1 = String.join("", money_1.split("[,]"));  	// {"2',"000","000"}
+	    // "2000000"
+	    
+	    money_2 = String.join("", money_2.split("[$]"));	// {"500,000"}
+	    // "500,000"
+	    
+	    money_2 = String.join("", money_2.split("[,]"));	// {"500","000"}
+	    // "500000"
+	    
+	    sum_money = Integer.parseInt(money_1) + Integer.parseInt(money_2);
+	        
+	    
+	    System.out.println(sum_money);
+	    // 2500000
+	    
+	    df = new DecimalFormat("#,###");				// 3자리 마다 콤마(,)를 찍어준다.
+	    System.out.println("$" + df.format(sum_money)); 
+	    // $2,500,000
 	    
 	    
 	    
