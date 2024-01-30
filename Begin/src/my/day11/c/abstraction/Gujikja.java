@@ -85,10 +85,5 @@ public class Gujikja {
     } // end of public Gujikja()--------------------------------------------
     
 	
-	
-	
-	
-	
-	
 
 }
