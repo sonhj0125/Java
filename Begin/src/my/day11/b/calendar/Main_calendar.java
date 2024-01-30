@@ -1,5 +1,6 @@
 package my.day11.b.calendar;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,6 +45,37 @@ public class Main_calendar {
 		System.out.println(">> 현재시각 3 => " + currentTime);
 		// >> 현재시각 3 => 2024-01-30 오후 12:33:38 화요일 GMT+09:00
 
+		
+		
+		/* == 입력한 날짜가 실제로 유효한 날짜 인지 검사하기 == */
+				
+		sdformat = new SimpleDateFormat("yyyyMMdd");
+		
+		sdformat.setLenient(false);
+		// false 로 해주어야만 입력한 값을 날짜 타입으로 변경할때 날짜로 되지 못하는 값일 경우 오류가 발생한다.
+		// 날짜로 파싱될 때 허술하게 하지 말고 엄격하게 하라고 설정해주는 것이라고 생각하면 된다. 
+		
+		
+		// === 문자열을 날짜 형태로 변환하기 === //
+		
+		try {
+		//	Date d = sdformat.parse("19900430");    // 존재하는 값, Mon Apr 30 00:00:00 GMT+09:00 1990
+			Date d = sdformat.parse("19900431");	// 존재하지 않는 값, >> 달력에 존재하지 않는 값입니다. <<
+			System.out.println(d);
+			
+		} catch (ParseException e) {				
+			// e.printStackTrace();  오류 정보 파악해줌
+			System.out.println(">> 달력에 존재하지 않는 값입니다. <<");
+			
+		} // end of try_catch----------------------------------------
+		
+		
+		
+		/* == 2개의 날짜를 비교하여 2개의 날짜가 같은 날짜인지 아니면, 2개의 날짜중 어떤 날짜가 이전날짜 인지, 이후날짜 인지 알아오기 == */
+		
+		
+		
+		
 		
 		
 		
