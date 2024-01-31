@@ -73,7 +73,7 @@ public class Gujikja {
                           // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
     String register_day;  // 가입일자(자동적으로 생성됨)
 
-    static int count;	  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해
+    static int count;	  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
     
     
     // 기본생성자
@@ -86,35 +86,9 @@ public class Gujikja {
     } // end of public Gujikja()--------------------------------------------
 
     
-    
-    
-    // === 구직자의 정보를 한줄로 출력해주는 메소드 생성하기 === //
-
-	public String getinfo() {
-		// eomjh   qWe******	엄정화	961020		여성		 27	     2024-01-31 10:30:40
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(userid + "\t");
-		
-		sb.append(passwd.substring(0, 3) + "*".repeat(passwd.length() - 3) + "\t");			// 비밀번호 뒷자리 3자리 빼고 별찍기
-		
-		sb.append(name + "\t");
-		
-		sb.append(jubun.substring(0, 6) + "\t");		// (0, 6) 또는 (0, jubun.length() - 1)
-		
-		// == 성별 구하기 == //
-		
-		if("1".equals(jubun.substring(jubun.length()-1)) || 
-		   "3".equals(jubun.substring(jubun.length()-1)) ) {
-			sb.append("남성" + "\t");
-		}
-		else {
-			sb.append("여성" + "\t");
-		}
-		
-		
-		// == 만나이 구하기 == //
-		
+    // == 구직자의 만나이를 알려주는 메소드 생성하기 == //
+    int getAge() {  
+		// == 만나이 구하기 == //		
 		int age = 0;
 		
 		// 구직자의 올해 생일이 현재날짜와 같거나 보다 이전(과거)이라면
@@ -151,19 +125,46 @@ public class Gujikja {
 				age = now_year - birth_year;
 			}
 		} catch (ParseException e) {
-		
+    	
 		} // end of try_catch--------------------------------------
 		
-		sb.append(age + "\t");
-				
-		// 가입일자
+		return age;
+		
+    } // end of int getAge()--------------------------------------------------------------
+    
+    
+   
+    // === 구직자의 정보를 한줄로 출력해주는 메소드 생성하기 === //
+
+	String getinfo() {
+		// eomjh   qWe******	엄정화	961020		여성		 27	     2024-01-31 10:30:40
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(userid + "\t");
+		
+		sb.append(passwd.substring(0, 3) + "*".repeat(passwd.length() - 3) + "\t");			// 비밀번호 뒷자리 3자리 빼고 별찍기
+		
+		sb.append(name + "\t");
+		
+		sb.append(jubun.substring(0, 6) + "\t");		// (0, 6) 또는 (0, jubun.length() - 1)
+		
+		
+		// == 성별 구하기 == //
+		if( "1".equals(jubun.substring(jubun.length() - 1)) ||
+			"3".equals(jubun.substring(jubun.length() - 1)) ) {
+			sb.append("남성\t");			
+		}
+		else {
+			sb.append("여성\t");
+		}
+		
+		sb.append(getAge() + "\t");
 		
 		sb.append("\t" + register_day);
 		
 		return sb.toString();		// 쌓인 정보들을 String 타입으로 변환
 		
-	} // end of public String getinfo()---------------------------------------
-    
-	
+	} // end of String getinfo()--------------------------------------
+
 
 }

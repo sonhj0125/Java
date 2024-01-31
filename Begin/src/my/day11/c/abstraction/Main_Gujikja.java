@@ -16,7 +16,7 @@ public class Main_Gujikja {
 	    gu1.userid = "eomjh";
 	    gu1.passwd = "qWer1234$";
 	    gu1.name = "엄정화";
-	    gu1.jubun = "9610202";
+	    gu1.jubun = "8610202";
 	    gu_arr[Gujikja.count++] = gu1;
 	    
 	    Gujikja gu2 = new Gujikja();
@@ -54,8 +54,7 @@ public class Main_Gujikja {
 					break;
 					
 				case "3":	// 검색하기
-					
-					
+					ctrl.search_menu(sc, gu_arr);					
 					break;
 					
 				case "4":	// 프로그램 종료
