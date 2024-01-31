@@ -228,7 +228,7 @@ public class Ctrl_gujikja {
 				break;
 				
 			case "2":	// 성별 검색
-				
+				search_gender(sc, gu_arr);	
 				break;	
 					
 			case "3":	// 연령대 및 성별 검색
@@ -255,6 +255,7 @@ public class Ctrl_gujikja {
 		
 		
 	} // end of void search_menu(Scanner sc, Gujikja[] gu_arr)--------------------------------
+
 
 
 	// == 연령대 검색해주는 메소드 == // 
@@ -328,5 +329,68 @@ public class Ctrl_gujikja {
 	} // end of void search_ageLine(Scanner sc, Gujikja[] gu_arr)--------------------------------
 	
 	
+	
+	// == 성별을 검색해주는 메소드 == //
+	void search_gender(Scanner sc, Gujikja[] gu_arr) {
+		
+		if(Gujikja.count == 0) { // 구직자가 없는 경우
+			System.out.println(">> 구직자로 가입된 회원이 아무도 없습니다. <<\n");			
+		}
+		else {		// 구직자가 존재하는 경우
+			
+			String input_gender = "";
+			boolean isUse_input_gender = false;
+			
+			do {		
+				System.out.print("▶ 검색하고자 하는 성별[남/여] : ");
+				input_gender = sc.nextLine();		// "남" "여" "   남" "   여" ... ==> 정상
+													// "" "     " "강아지"...  ==> 비정상
+			
+				switch (input_gender.trim()) {
+					case "남" : 
+					case "여" : 
+					isUse_input_gender = true;
+					input_gender = input_gender.trim();
+					break;
 
+				default:
+					System.out.println("[경고] 올바른 성별을 기입하세요.\n");
+					break;
+				} // end of switch-----------------------------------
+							
+			} while (!isUse_input_gender);
+			// end of do_while-----------------------------------------
+			
+			
+			// == 입력받은 연령대에 해당하는 구직자 찾기 == //
+			StringBuilder sb = new StringBuilder();			
+			boolean isSearch = false;
+			
+			for(int i=0; i<Gujikja.count; i++) {
+				
+				if( input_gender.equals(gu_arr[i].getGender()) ) {
+					isSearch = true;
+					sb.append(gu_arr[i].getinfo() + "\n");
+				}
+						
+			} // end of for-----------------------------
+		
+			if(isSearch) {
+				title();
+				System.out.println(sb.toString());
+			}
+			else {
+				System.out.println("[검색결과 성별이 "+ input_gender+ "성인 구직자는 없습니다.]\n");
+			} // end of if~else-----------------------------------
+		
+		} 
+
+	} // end of void search_gender(Scanner sc, Gujikja[] gu_arr)-----------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
 }

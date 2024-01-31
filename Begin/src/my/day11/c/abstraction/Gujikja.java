@@ -133,7 +133,25 @@ public class Gujikja {
     } // end of int getAge()--------------------------------------------------------------
     
     
+    
+    
+    // == 성별을 구해주는 메소드 == //
+	String getGender() {
+		
+	    if( "1".equals(jubun.substring(jubun.length() - 1)) ||
+			"3".equals(jubun.substring(jubun.length() - 1)) ) {
+				return "남";	
+			}
+			else {
+				return "여";
+			}
+		
+	} // end of String getinfo()--------------------------------------
    
+	
+	
+	
+	
     // === 구직자의 정보를 한줄로 출력해주는 메소드 생성하기 === //
 
 	String getinfo() {
@@ -148,15 +166,7 @@ public class Gujikja {
 		
 		sb.append(jubun.substring(0, 6) + "\t");		// (0, 6) 또는 (0, jubun.length() - 1)
 		
-		
-		// == 성별 구하기 == //
-		if( "1".equals(jubun.substring(jubun.length() - 1)) ||
-			"3".equals(jubun.substring(jubun.length() - 1)) ) {
-			sb.append("남성\t");			
-		}
-		else {
-			sb.append("여성\t");
-		}
+		sb.append(getGender() + "\t");
 		
 		sb.append(getAge() + "\t");
 		
