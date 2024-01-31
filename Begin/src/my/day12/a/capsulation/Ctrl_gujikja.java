@@ -1,4 +1,4 @@
-package my.day11.c.abstraction;
+package my.day12.a.capsulation;
 
 //실행하는 방식은 여기서 만듦. Main 메소드를 실행하기 위해
 
