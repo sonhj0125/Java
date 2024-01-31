@@ -13,21 +13,23 @@ public class Main_Gujikja {
 		///////////////////////////////////////////////////
 		
 		Gujikja gu1 = new Gujikja();
-	    gu1.userid = "eomjh";
-	    gu1.passwd = "a";
+		gu1.setUserid("eomjh");
+	    
+		
+	    gu1.passwd = "aaaaaaaaaaaaaaaaaaaaaaaa";
 	    gu1.name = "Eom Jung Hwa";
-	    gu1.jubun = "tab0202";
+	    gu1.jubun = "8610022";
 	    gu_arr[Gujikja.count++] = gu1;
 	    
 	    Gujikja gu2 = new Gujikja();
-	    gu2.userid = "leess";
+	 //   gu2.userid = "leess";
 	    gu2.passwd = "abCd12345$";
 	    gu2.name = "이순신";
 	    gu2.jubun = "9209201";
 	    gu_arr[Gujikja.count++] = gu2;
 		
 	    Gujikja gu3 = new Gujikja();
-	    gu3.userid = "chaew";
+	//    gu3.userid = "chaew";
 	    gu3.passwd = "aSdf1234$";
 	    gu3.name = "차은우";
 	    gu3.jubun = "0106203";

@@ -52,7 +52,7 @@ public class Ctrl_gujikja {
 					else {
 						
 						for(int i=0; i<Gujikja.count; i++) {
-							if( userid.equals(gu_arr[i].userid) ) {
+//								if( userid.equals(gu_arr[i].userid) ) {
 								System.out.println(">> 이미 사용중인 아이디 입니다. <<\n");
 								isUse_userid = false;
 								break;
@@ -60,7 +60,7 @@ public class Ctrl_gujikja {
 							
 						} // end of for---------------------------------
 			
-					}
+//					}
 	
 				} while(!isUse_userid);
 				// end of do_while---------------------------------------------
@@ -81,7 +81,7 @@ public class Ctrl_gujikja {
 						isUse_passwd = false;
 					}
 										
-				} while (!isUse_passwd);
+					} while (!isUse_passwd);
 				// end of do_while----------------------------------------------
 				
 				
@@ -150,7 +150,7 @@ public class Ctrl_gujikja {
 				
 				
 				Gujikja gu = new Gujikja();
-				gu.userid = userid;
+		//		gu.userid = userid;
 				gu.passwd = passwd;
 				gu.name = name;
 				gu.jubun = jubun;

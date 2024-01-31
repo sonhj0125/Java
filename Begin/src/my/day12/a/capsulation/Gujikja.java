@@ -21,8 +21,8 @@ import java.util.Date;
 
  ※ OOP 의 4가지 특징(!!!! 필수암기 !!!!)
  --> 1. 상속성(Inheritance) : 클래스의 재사용과 소스 코드의 중복제거를 목적으로 하는 기술 
- --> 2. 추상화(Abstraction) : 프로그램이 필요로 하는 실제 데이터들을 모델링하는 기술 
- --> 3. 캡슐화(EnCapsulation == 은닉화) : 객체지향의 가장 중요한 데이터 보호 기술   
+ --> 2. 추상화(Abstraction) : 프로그램이 필요로 하는 실제 데이터들을 모델링하는 기술 -day11
+ --> 3. 캡슐화(EnCapsulation == 은닉화) : 객체지향의 가장 중요한 데이터 보호 기술 -day12
  --> 4. 다형성(Polymorphism) : 상속을 이용하여 여러 클래스 타입을 하나의 클래스 타입으로 다루는 기술
  
  
@@ -62,18 +62,27 @@ Gujikja(클래스)
 */   
 
 public class Gujikja {
-	
+/*
+   ---------------------------------------------------------------------------------------------------------------------------
+   접근제한자(접근지정자, accessmodifier)    자기자신클래스내부       동일패키지에있는다른클래스       다른패키지에있는하위(자식)클래스          그외의영역  
+   --------------------------------------------------------------------------------------------------------------------------- 
+   public                                    O                    O                         O                        O  
+   protected                                 O                    O                         O                        X
+   없음(default)                              O                    O                         X                        X
+   private                                   O                    X                         X                        X
+*/
 	
 	// == field 생성 == //
+	// field 의 캡슐화(EnCapsulation == 은닉화)
 	
-	String userid;        // 아이디
+	private String userid;        // 아이디
 	String passwd;        // 비밀번호
-    String name;          // 성명
-    String jubun;         // 주민번호인데 앞자리 6자리에 + 성별을 나타내는 1자리까지만 입력한다. 
-                          // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
-    String register_day;  // 가입일자(자동적으로 생성됨)
+	String name;          // 성명
+	String jubun;         // 주민번호인데 앞자리 6자리에 + 성별을 나타내는 1자리까지만 입력한다. 
+                          		  // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
+	String register_day;  // 가입일자(자동적으로 생성됨)
 
-    static int count;	  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
+    static int count;	  		  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
     
     
     // 기본생성자
@@ -85,6 +94,22 @@ public class Gujikja {
     	// 2024-01-30 15:12:10
     } // end of public Gujikja()--------------------------------------------
 
+    
+    
+    // 캡슐화 되어진 field 를 메소드를 통해 접근하도록 만들기 //
+    public void setUserid(String userid) {
+    	
+    	if( userid == null || userid.isBlank() ) {
+    		System.out.println("[경고] 아이디는 공백이 아닌 글자로 입력하셔야 합니다.\n");
+    	}
+    	else {
+    		this.userid = userid;
+    	}
+     	
+    } // end of public void setUserid(String userid)-------------------------------------------------------------------
+    
+    
+    
     
     // == 구직자의 만나이를 알려주는 메소드 생성하기 == //
     int getAge() {  
