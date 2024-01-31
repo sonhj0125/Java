@@ -1,5 +1,6 @@
 package my.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -232,7 +233,67 @@ public class MyUtil {
 		return String.valueOf(result_arr);
 		
 	} // end of public static char[] append_comma(long sum_money)----------------------------------------
+
+
+
+	// === 주민번호 7자리를 입력받아서 올바른 데이터인지 검사해주는 메소드 생성 === //
+	public static boolean isCheckJubun(String jubun) {
+		
+		// jubun 의 길이는 7자리 이면서 마지막 7번째에 들어오는 문자는 "1" "2" "3" "4" 중에 하나이어야 한다.
+		if(jubun.length() != 7) {
+			return false;
+		}
+		else if( !("1".equals(jubun.substring(6)) || "2".equals(jubun.substring(6)) || 
+				   "3".equals(jubun.substring(6)) || "4".equals(jubun.substring(6))) ) {  // 1,2,3,4가 모두 아닌경우
+			return false;
+		}
+		else {
+			String str_birthday = "";
+			if( "1".equals(jubun.substring(6)) || "2".equals(jubun.substring(6)) ) {
+				str_birthday = "19" + jubun.substring(0, 6);
+			}
+			else {
+				str_birthday = "20" + jubun.substring(0, 6);
+			}
+				
+			SimpleDateFormat sdformat = new SimpleDateFormat("yyyyMMdd");
+			sdformat.setLenient(false);
+			// false 로 해주어야만 입력한 값을 날짜 타입으로 변경할때 날짜로 되지 못하는 값일 경우 오류가 발생한다.
+			// 날짜로 파싱될 때 허술하게 하지 말고 엄격하게 하라고 설정해주는 것이라고 생각하면 된다. 
+			
+			
+			// === 문자열을 날짜 형태로 변환하기 === //
+			
+			try {
+				Date birthday = sdformat.parse(str_birthday); 
+				
+				// 현재날짜(연월일)와 회원의 생일 날짜를 비교해서 회원의 생일 날짜가 현재날짜보다 이후라면 안된다.
+				Date now = new Date(); 		// 현재날짜시각
+				String str_now = sdformat.format(now);		// 20240131
+				now = sdformat.parse(str_now);
+				
+			     if(birthday.compareTo(now) > 0) {			// 생년월일이 현재일 보다 미래인 경우
+				        return false;
+				     }
+				     else {									// 생년월일이 현재일이거나 또는 생년월일이 현재일 보다 과거인 경우
+				    	 return true;
+				     }
+				
+			} catch (ParseException e) {				
+				return false;
+				
+			} // end of try_catch----------------------------------------	
+			
+		}
+		
+	} // end of public static boolean isCheckJubun(String jubun)----------------------------------------
 		
 
+	
+	
+	
+	
+	
+	
 }
 	

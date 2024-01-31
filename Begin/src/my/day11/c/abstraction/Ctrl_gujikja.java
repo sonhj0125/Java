@@ -139,15 +139,15 @@ public class Ctrl_gujikja {
 				do {
 					isUse_jubun = true;
 					System.out.print("4. 주민번호 : ");
-					jubun = sc.nextLine();		
+					jubun = sc.nextLine();		// "9610021" "9610022" "0010023" "0010024"
 					
-					/*
-					 * if ( !MyUtil.isCheckJubun(jubun) ) {
-					 * System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); isUse_jubun = false; }
-					 */
+					
+					if ( !MyUtil.isCheckJubun(jubun) ) {
+						System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); isUse_jubun = false; }					
 										
 				} while (!isUse_jubun);
 				// end of do_while----------------------------------------------
+	
 				
 				
 				Gujikja gu = new Gujikja();
@@ -158,17 +158,58 @@ public class Ctrl_gujikja {
 								
 				gu_arr[Gujikja.count++] = gu; 
 				
-				System.out.println(">> 구직자 회원가입 성공 <<\n");
+				System.out.println(">> 구직자 회원가입 성공 <<\n");				
 				
-				
-			}	
-		 
+			}			 
 					
 		else {	// 지금까지 생성된 구직자 회원수가 gu_arr.length(==>정원) 와 같거나 큰 경우에는 신규회원을 받아들이면 안된다.
 			System.out.println(">> 정원 "+ gu_arr.length + "명이 꽉차서 구직자 회원가입이 불가합니다. <<\n");
 		}
 		
 	} // end of void register(Scanner sc, Gujikja[] gu_arr)--------------------------------
+
+
+	
+	// == 구직자 모두보기 메소드 == //
+	void view_all_info(Gujikja[] gu_arr) {
+		
+		/*
+		  ------------------------------------------------------------------------------
+		  아이디	    비밀번호       성명      생년월일      성별    현재나이(만)        가입일자
+		  ------------------------------------------------------------------------------
+		  eomjh   qWe******		엄정화	961020		여성		 27	     2024-01-31 10:30:40
+		  leess   abC*******	이순신	960120		남성		 28		 2024-01-31 10:30:40
+		  chaew	  aSd******		차은우	010620		남성		 22		 2024-01-31 10:30:40	
+		  ------------------------------------------------------------------------------
+		*/
+		
+		if(Gujikja.count == 0) {
+			System.out.println(">> 구직자로 가입된 회원이 존재하지 않습니다. <<\n");			
+		}
+		else {
+			title();			
+			StringBuilder sb = new StringBuilder();
+			
+			for(int i=0; i<Gujikja.count; i++) {
+				sb.append(gu_arr[i].getinfo()+"\n");			
+			} // end of for---------------------------------
+			
+			System.out.println(sb.toString());
+		
+		}
+	
+	} // end of void view_all_info(Gujikja[] gu_arr)--------------------------------
+	
+	
+	
+	
+	void title() {
+		System.out.println("-".repeat(75) + "\n"
+						+ "아이디\t비밀번호\t\t성명\t생년월일\t성별\t현재나이(만)\t가입일자 \n"
+						+ "-".repeat(75));
+		
+	}
+	
 	
 
 }
