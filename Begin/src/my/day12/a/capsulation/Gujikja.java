@@ -84,7 +84,7 @@ public class Gujikja {
 	private String name;          // 성명
 	private String jubun;         // 주민번호인데 앞자리 6자리에 + 성별을 나타내는 1자리까지만 입력한다. 
                           		  // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
-	String register_day;  // 가입일자(자동적으로 생성됨)
+	private String register_day;  // 가입일자(자동적으로 생성됨)
 
     static int count;	  		  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
     

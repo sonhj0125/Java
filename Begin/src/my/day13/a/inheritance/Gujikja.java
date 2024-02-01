@@ -1,8 +1,9 @@
-package my.day11.c.abstraction;
+package my.day13.a.inheritance;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import my.util.MyUtil;
 
 /*
 ==== *** 객체지향 프로그래밍(Object Oriented Programming)이란? *** ==== 
@@ -21,8 +22,8 @@ import java.util.Date;
 
  ※ OOP 의 4가지 특징(!!!! 필수암기 !!!!)
  --> 1. 상속성(Inheritance) : 클래스의 재사용과 소스 코드의 중복제거를 목적으로 하는 기술 - day13
- --> 2. 추상화(Abstraction) : 프로그램이 필요로 하는 실제 데이터들을 모델링하는 기술 - day 11
- --> 3. 캡슐화(EnCapsulation == 은닉화) : 객체지향의 가장 중요한 데이터 보호 기술 - day 12
+ --> 2. 추상화(Abstraction) : 프로그램이 필요로 하는 실제 데이터들을 모델링하는 기술 -day11
+ --> 3. 캡슐화(EnCapsulation == 은닉화) : 객체지향의 가장 중요한 데이터 보호 기술 -day12
  --> 4. 다형성(Polymorphism) : 상속을 이용하여 여러 클래스 타입을 하나의 클래스 타입으로 다루는 기술
  
  
@@ -61,32 +62,66 @@ Gujikja(클래스)
 
 */   
 
-public class Gujikja {
+public class Gujikja extends CommonMember {
+// Gujikja 클래스는 CommonMember 클래스에 생성되어진 field 및 method 및 기본생성자를 상속 받아온다.	
+// CommonMember 클래스는 부모클래스가 되어지고, Gujikja 클래스는 자식클래스가 된다.
 	
+	
+/*
+   ---------------------------------------------------------------------------------------------------------------------------
+   접근제한자(접근지정자, accessmodifier)    자기자신클래스내부       동일패키지에있는다른클래스       다른패키지에있는하위(자식)클래스          그외의영역  
+   --------------------------------------------------------------------------------------------------------------------------- 
+   public                                    O                    O                         O                        O  
+   protected                                 O                    O                         O                        X
+   없음(default)                              O                    O                         X                        X
+   private                                   O                    X                         X                        X
+*/
 	
 	// == field 생성 == //
+	// field 의 캡슐화(EnCapsulation == 은닉화)
 	
-	String userid;        // 아이디
-	String passwd;        // 비밀번호
-    String name;          // 성명
-    String jubun;         // 주민번호인데 앞자리 6자리에 + 성별을 나타내는 1자리까지만 입력한다. 
-                          // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
-    String register_day;  // 가입일자(자동적으로 생성됨)
+	private String jubun;         // 주민번호인데 앞자리 6자리에 + 성별을 나타내는 1자리까지만 입력한다. 
+                          		  // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
+	
 
-    static int count;	  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
+    static int count;	  		  // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도, 몇 명이 가입했는지 알기 위해, 인스턴스가 다같이 공유
     
     
-    // 기본생성자
+    // 기본생성자 생략(빼도 존재하는 것임)
+    // (CommonMember 클래스에 존재)
+/*    
     public Gujikja() {
+    //	super();				// 부모클래스인 CommonMember 클래스의 기본생성자를 호출한다는 것이다.
+    	
     	Date now = new Date(); 	// 현재시각
     	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     	
     	register_day = df.format(now);
     	// 2024-01-30 15:12:10
     } // end of public Gujikja()--------------------------------------------
-
+*/
     
-    // == 구직자의 만나이를 알려주는 메소드 생성하기 == //
+    
+	// getter, setter Jubun
+	public String getJubun() {
+		return jubun;
+	}
+
+	
+	public void setJubun(String jubun) {
+		
+		if ( MyUtil.isCheckJubun(jubun) ) {
+			this.jubun = jubun;
+		}
+		else {
+			System.out.println("[경고] 주민번호 앞에서부터 7자리 까지 올바르게 입력하세요.");
+		}
+					
+	}  // end of public void setjubun(String jubun)------------------------------------------------------------
+
+
+
+	// == 구직자의 만나이를 알려주는 메소드 생성하기 == //
     int getAge() {  
 		// == 만나이 구하기 == //		
 		int age = 0;
@@ -158,11 +193,11 @@ public class Gujikja {
 		// eomjh   qWe******	엄정화	961020		여성		 27	     2024-01-31 10:30:40
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(userid + "\t");
+		sb.append(super.getId() + "\t");
 		
-		sb.append(passwd.substring(0, 3) + "*".repeat(passwd.length() - 3) + "\t");			// 비밀번호 뒷자리 3자리 빼고 별찍기
+		sb.append(super.getPasswd().substring(0, 3) + "*".repeat(super.getPasswd().length() - 3) + "\t");			// 비밀번호 뒷자리 3자리 빼고 별찍기
 		
-		sb.append(name + "\t");
+		sb.append(super.getName() + "\t");
 		
 		sb.append(jubun.substring(0, 6) + "\t");		// (0, 6) 또는 (0, jubun.length() - 1)
 		
@@ -170,11 +205,23 @@ public class Gujikja {
 		
 		sb.append(getAge() + "\t");
 		
-		sb.append("\t" + register_day);
+		sb.append("\t" + super.getRegister_day());
 		
 		return sb.toString();		// 쌓인 정보들을 String 타입으로 변환
 		
 	} // end of String getinfo()--------------------------------------
 
+	
+	
+	///////////////////////////////////////////////////////////
+	
+	void test_1() {
+		System.out.println(super.parent_test_1());
+		// 또는
+		System.out.println(this.parent_test_1());
+		// 또는
+		System.out.println(parent_test_1());
+	}
+	
 
 }

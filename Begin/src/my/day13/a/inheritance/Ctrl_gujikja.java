@@ -1,23 +1,12 @@
-package my.day12.a.capsulation;
+package my.day13.a.inheritance;
 
 //실행하는 방식은 여기서 만듦. Main 메소드를 실행하기 위해
 
 import java.util.Scanner;
 
-import my.util.MyUtil;
+public class Ctrl_gujikja extends Ctrl_common {
+	
 
-public class Ctrl_gujikja {
-	
-	// == 메인 메뉴를 보여주는 메소드 생성하기 == //
-	
-	void main_menu() {
-		System.out.println("\n === 메인메뉴 ===\n"
-						+ "1. 구직자 회원가입   2. 구직자 모두보기   3. 검색하기   4. 프로그램 종료\n");
-		System.out.print("▶ 메뉴번호 선택 : ");		
-	} // end of void main_menu()----------------------------------------------------------
-
-	
-	
 	// == 구직자(Gujikja) 신규 회원가입시 
 	// Gujikja 클래스의 field 의 요구사항에 모두 맞으면,
 	// Gujikja[] gu_arr 에 저장시켜주는 메소드 생성하기 == //
@@ -33,12 +22,12 @@ public class Ctrl_gujikja {
 			outer:
 			do {
 				System.out.print("1. 아이디 : ");
-				String userid = sc.nextLine();	
+				String id = sc.nextLine();	
 				
 				// 중복 아이디 검사하기 시작 //
 				for(int i=0; i<Gujikja.count; i++) {
 					
-					if( userid.equals(gu_arr[i].getUserid()) ) {
+					if( id.equals(gu_arr[i].getId()) ) {
 						System.out.println(">> 이미 사용중인 아이디이므로 다른 아이디를 입력하세요. <<\n");
 						continue outer;
 					}
@@ -46,9 +35,9 @@ public class Ctrl_gujikja {
 				} // end of for--------------------------------
 				// 중복 아이디 검사하기 끝 //
 								
-				gu.setUserid(userid);
+				gu.setId(id);
 				
-			} while( !(gu.getUserid() != null) );
+			} while( !(gu.getId() != null) );
 			// end of do_while----------------------------------------------
 
 			
@@ -365,7 +354,7 @@ public class Ctrl_gujikja {
 		// end of do_while-----------------------------------------
 		
 		
-		// == 입력받은 연령대에 해당하는 구직자 찾기 == //
+		// 입력받은 연령대에 해당하는 구직자 찾기 //
 		boolean is_ageline_search = false;
 		
 		for(int i=0; i<Gujikja.count; i++) {
@@ -411,7 +400,7 @@ public class Ctrl_gujikja {
 			// end of do_while-----------------------------------------
 		
 		
-			// 입력받은 연령대 및 성별에 해당하는 구독자 찾기			
+			// 입력받은 연령대 및 성별에 해당하는 구독자 찾기	 //		
 			StringBuilder sb = new StringBuilder();
 			boolean is_ageline_gender_Search = false;		
 			
@@ -433,11 +422,107 @@ public class Ctrl_gujikja {
 		else { 
 			System.out.println("[검색결과 연령대 "+str_ageLine+"대인 "+ input_gender +"자 구직자는 없습니다.]\n");
 		}		
-			// === 성별 검색 끝 === //
+			// 성별 검색 끝 //
 		}
 		
 		} // end of if~else----------------------------------	
 		
 	} // end of void search_ageLine_gender(Scanner sc, Gujikja[] gu_arr)-----------------------------------------------------------
 
+
+	
+	
+	// == 구직자 로그인 메소드 생성하기 == //
+	public Gujikja login(Scanner sc, Gujikja[] gu_arr) {
+		
+		System.out.print("▶ 구직자 ID : ");
+		String id = sc.nextLine();
+		
+		System.out.print("▶ 비밀번호 : ");
+		String passwd = sc.nextLine();
+		
+		for(int i=0; i<Gujikja.count; i++) {
+			if(id.equals(gu_arr[i].getId()) &&
+			   passwd.equals(gu_arr[i].getPasswd())) {
+				
+				return gu_arr[i];			
+			}						
+		} // end of for--------------------------------------
+		
+		return null;
+		
+	} // end of public void login(Scanner sc, Gujikja[] gu_arr)-------------------------------------------------------------------
+
+	
+	
+	
+
+	// == 구직자 전용메뉴 메소드 생성하기 == //
+	public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr) {
+
+		String str_menuno;
+		do {
+			System.out.println("\n === 구직자 전용메뉴("+login_gu.getName()+"님 로그인중) ===\n"
+					+ "1. 내정보 보기   2. 내정보 수정   3. 모든 구인회사 조회  4. 로그아웃\n");
+			System.out.print("▶ 메뉴번호 선택 : ");		
+			
+			str_menuno = sc.nextLine();
+			
+			switch (str_menuno) {
+			case "1":	// 내정보 보기
+				view_myInfo(login_gu);
+				
+				break;
+				
+			case "2":	// 내정보 수정
+				
+				break;
+				
+			case "3":	// 모든 구인회사 조회
+				
+				break;
+				
+			case "4":	// 로그아웃
+				
+				break;
+
+			default:
+				System.out.println(">>[경고] 선택하신 번호는 메뉴에 없습니다. <<\n");
+				break;
+			} // end of switch----------------------------------
+			
+		} while(!"4".equals(str_menuno));
+		// end of do_while-----------------------------------
+		
+			System.out.println(">> 로그아웃 되었습니다. <<\n");
+		
+	} // end of public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr)-------------------------------------------------------------------
+
+
+	// == 내정보 보기 == //
+	private void view_myInfo(Gujikja login_gu) {
+	
+		System.out.println("\n\t>>> 엄정화님의 정보 <<<");
+		System.out.println(" --------------------------------------");
+		System.out.println(" 아이디\t비밀번호\t\t성명\t주민번호");
+		System.out.println(" --------------------------------------");
+		System.out.println(login_gu.getId() + "\t"
+						 + login_gu.getPasswd() + "\t"
+						 + login_gu.getName() + "\t"
+						 + login_gu.getJubun() + "\t");
+		
+	} // end of private void view_myInfo(Gujikja login_gu)-------------------------------------------------------------------
+
+/*
+    >>> 엄정화님의 정보 <<<
+   --------------------------------------
+   아이디    	비밀번호    	성명    	주민번호
+   -------------------------------------
+   eomjh	qWer1234$	엄정화	8610022
+ 
+*/
+
+
+	
+	
 }
