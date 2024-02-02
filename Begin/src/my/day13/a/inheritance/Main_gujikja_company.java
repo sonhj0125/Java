@@ -9,6 +9,7 @@ public class Main_gujikja_company {
 		Gujikja[] gu_arr = new Gujikja[5];
 		
 		///////////////////////////////////////////////
+		
 		Gujikja gu1 = new Gujikja();
 		gu1.setId("eomjh");
 		gu1.setPasswd("qWer1234$");
@@ -29,6 +30,7 @@ public class Main_gujikja_company {
 		gu3.setName("차은우");
 		gu3.setJubun("0106203");
 		gu_arr[Gujikja.count++] = gu3;
+		
         ///////////////////////////////////////////////
 		
 		Company[] cp_arr = new Company[3];
@@ -52,17 +54,17 @@ public class Main_gujikja_company {
 		cp_arr[Company.count++] = cp2; 
 		
 		///////////////////////////////////////////////
+				
+		Recruit[] rc_arr = new Recruit[10];
 		
+		Recruit rc1 = new Recruit();
+		rc1.setCp(cp1);
+		rc1.setWork_type("연구직");
+		rc1.setCnt(5);
+		rc1.setFinish_day("2024-02-08");
+		rc_arr[Recruit.count++] = rc1;
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		///////////////////////////////////////////////
 		
 		Scanner sc = new Scanner(System.in);
 		Ctrl_common  ctrl_common = new Ctrl_common();
@@ -103,7 +105,7 @@ public class Main_gujikja_company {
 					if(login_cp != null) {
 						System.out.println(">> 구인회사 "+ login_cp.getName() +"기업 로그인 성공^^ << \n"); 
 						
-						ctrl_cp.cp_menu(sc, login_cp, gu_arr); // 구인회사 전용메뉴
+						ctrl_cp.cp_menu(sc, login_cp, gu_arr, rc_arr); // 구인회사 전용메뉴
 					}
 					else {
 						System.out.println(">> 구인회사 로그인 실패 ㅜㅜ <<\n");

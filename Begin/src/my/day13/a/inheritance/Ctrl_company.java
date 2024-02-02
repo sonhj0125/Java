@@ -104,7 +104,7 @@ public class Ctrl_company extends Ctrl_common {
 
 
 	// == 구인회사 전용메뉴 ==
-	public void cp_menu(Scanner sc, Company login_cp, Gujikja[] gu_arr) {
+	public void cp_menu(Scanner sc, Company login_cp, Gujikja[] gu_arr, Recruit[] rc_arr) {
 
 		String str_menuno;
 		do {
@@ -140,7 +140,7 @@ public class Ctrl_company extends Ctrl_common {
 					break;
 					
 				case "7": // 사원모집공고
-					register_recruit(sc, login_cp);
+					register_recruit(sc, login_cp, rc_arr);
 					break;	
 					
 				case "8": // 모집공고지원자 조회
@@ -643,7 +643,7 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	// == 사원모집공고 ==
-	private void register_recruit(Scanner sc, Company login_cp) {
+	private void register_recruit(Scanner sc, Company login_cp, Recruit[] rc_arr) {
 		
 		
 		
