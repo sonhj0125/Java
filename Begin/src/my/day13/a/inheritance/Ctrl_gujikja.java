@@ -490,7 +490,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 				break;
 				
 			case "5":	// 로그아웃
-				
+				login_gu = null;
 				break;
 
 			default:
@@ -592,7 +592,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 				
 			}
 			else {		// 입력한 이름이 엔터인 경우
-				exit_pwd = true;
+				exit_name = true;
 			}
 		} while(!exit_name);
 		// end of do_while-------------------------------------------------

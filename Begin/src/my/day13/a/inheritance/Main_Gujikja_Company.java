@@ -99,6 +99,16 @@ public class Main_Gujikja_Company {
 					break;
 					
 				case "4":	// 구인회사 로그인
+					Company login_cp = ctrl_cp.login(sc, cp_arr);
+					
+					if(login_cp != null) {
+						System.out.println(">> 구인회사 "+login_cp.getName()+"기업 로그인 성공했습니다.<<\n");
+						ctrl_cp.cp_menu(sc, login_cp, gu_arr);
+					}
+					else {
+						System.out.println(">> 구인회사 로그인을 실패했습니다.<<\n");
+					}
+					
 					
 					break;
 					
@@ -116,7 +126,7 @@ public class Main_Gujikja_Company {
 	        
 	    sc.close();
 	    System.out.println("\n>>> 프로그램 종료 <<<");
-	    
+	   
 	    
 	} // end of main()----------------------------------------------------------------------------------
 
