@@ -133,11 +133,13 @@ public class Ctrl_company extends Ctrl_common {
 			
 			switch (str_menuno) {
 			case "1":	// 우리회사정보 보기
-				view_companyInfo(login_cp);		
+				view_companyInfo(login_cp);	
+				
 				break;
 				
 			case "2":	// 우리회사정보 수정
 				update_comInfo(sc, login_cp);
+				
 				break;	
 					
 			case "3":	// 모든구직자 조회
