@@ -747,7 +747,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 			for(int i=0; i<Company.count; i++) {
 				if( search_seed_money <= cp_arr[i].getSeed_money() ) {
 					is_existence = true;
-					sb.append(cp_arr[i].getInfo() + "\n");
+					sb.append(cp_arr[i].getInfo() + "\n");		// 회사의 getinfo 를 쌓아둠
 				}
 			} // end of for-------------------------------------------
 			
