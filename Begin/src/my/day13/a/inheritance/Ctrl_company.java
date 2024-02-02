@@ -319,6 +319,74 @@ public class Ctrl_company extends Ctrl_common {
 			}
 		} while(!exit_business_number);
 		// end of do_while-------------------------------------------------
+			
+		
+		
+			boolean exit_job_type = false;
+			
+			do {
+				System.out.print("4. 회사직종타입 : ");			
+				String new_job_type = sc.nextLine();		
+														
+														
+				if(!new_job_type.equals("")) {
+					
+					if(login_cp.getJop_type().equals(new_job_type)) {
+						System.out.println(">> 입력하신 직종타입은 기존과 동일합니다.");
+					}
+					else {
+						login_cp.setName(new_job_type);
+						if(new_job_type.equals(login_cp.getJop_type())) {
+							exit_job_type = true;
+						}
+						
+					}
+					
+				}
+				else {		// 입력한 이름이 엔터인 경우
+					exit_job_type = true;
+				}
+			} while(!exit_job_type);
+			// end of do_while-------------------------------------------------	
+			
+			boolean exit_seed_money = false;
+			
+			do {
+				  System.out.print("5.자본금 : ");
+			         
+			         String str_new_seed_money = sc.nextLine(); 
+			         
+			         if(!str_new_seed_money.equals("")) {  
+			   
+			            long new_seed_money = 0;
+			            
+			            try {
+			                new_seed_money = Long.parseLong(str_new_seed_money);
+			            } catch(NumberFormatException e) {
+			               System.out.println(">> [경고] 자본금은 정수로만 입력하셔야 합니다.!! \n"); 
+			               continue;
+			            }
+			            
+			            if(login_cp.getSeed_money() == new_seed_money) {  
+			               System.out.println(">> 기존의 자본금과 동일하므로 변경이 불가합니다.!!");
+			            }
+			            else {
+			               login_cp.setSeed_money(new_seed_money); 
+			               
+			               if(login_cp.getSeed_money() == new_seed_money) {
+			                  exit_seed_money = true;
+			               }
+			            }
+			   
+			         }
+			         
+			         else { // 입력한 자본금이 엔터일 경우
+			            exit_seed_money = true;
+			         }
+			         /////////////////////////////////////////////////////////////////   
+			      } while(!exit_seed_money);      
+
+			
 		
 	} // end of private void update_comInfo(Scanner sc, Company login_cp)----------------------------------------
 
