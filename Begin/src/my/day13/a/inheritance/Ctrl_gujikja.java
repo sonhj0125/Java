@@ -463,7 +463,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 		String str_menuno;
 		do {
 			System.out.println("\n === 구직자 전용메뉴("+login_gu.getName()+"님 로그인중) ===\n"
-					+ "1. 내정보 보기   2. 내정보 수정   3. 모든 구인회사 조회  4. 로그아웃\n");
+					+ "1. 내정보 보기   2. 내정보 수정   3. 모든 구인회사 조회  4. 구인회사 검색 5. 로그아웃\n");
 			System.out.print("▶ 메뉴번호 선택 : ");		
 			
 			str_menuno = sc.nextLine();
@@ -484,7 +484,12 @@ public class Ctrl_gujikja extends Ctrl_common {
 				
 				break;
 				
-			case "4":	// 로그아웃
+			case "4":	// 구인회사 검색
+				search_company(sc, cp_arr);
+				
+				break;
+				
+			case "5":	// 로그아웃
 				
 				break;
 
@@ -493,7 +498,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 				break;
 			} // end of switch----------------------------------
 			
-		} while(!"4".equals(str_menuno));
+		} while(!"5".equals(str_menuno));
 		// end of do_while-----------------------------------
 		
 			System.out.println(">> 로그아웃 되었습니다. <<\n");
@@ -625,17 +630,145 @@ public class Ctrl_gujikja extends Ctrl_common {
 	// == 모든 구인회사 조회 == //
 	private void view_all_company_Info(Company[] cp_arr) {
 		
+		if(Company.count == 0) {
+			System.out.println(">> 구인회사로 등록된 회사가 존재하지 않습니다.");
+		}
+		else {
+			title_company();
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for(int i=0; i<Company.count; i++) {
+				sb.append(cp_arr[i].getInfo() + "\n");
+			} // end of for-----------------------------------------
+			
+			System.out.println(sb.toString());
+		}
 		
 		
+	} // end of private void view_all_company_Info(Company[] cp_arr)-----------------------------------------------------------------------
+
+
+	private void title_company() {
 		
+		System.out.println("=".repeat(55));
+		System.out.println("회사명	업종	사업자등록번호	자본금");
+		System.out.println("=".repeat(55));
 		
+	} // end of private void title_company()------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	// == 구인회사 검색하기 == //
+	private void search_company(Scanner sc, Company[] cp_arr) {
 		
+		String str_menuno = "";
+		do {
+			System.out.println("\n>>> 구인회사 검색메뉴 <<<\n"
+					+ "1. 업종 검색   2. 자본금 검색   3. 구직자메뉴로 이동\n");
+			System.out.print("▶ 검색메뉴번호 입력 : ");		
+			
+			str_menuno = sc.nextLine();
+			
+			switch (str_menuno) {
+			case "1":	// 업종 검색
+				search_jop_type(sc, cp_arr);			
+				break;
+				
+			case "2":	// 자본금 검색
+				search_seed_money(sc, cp_arr);	
+				break;	
+					
+			case "3":	// 구직자메뉴로 이동
+				
+				break;
+								
+			default:
+				System.out.println("[경고] 검색메뉴에 존재하는 번호만 입력해주세요.\n");
+				break;
+			} // end of switch----------------------------------
+			
+		} while (!"3".equals(str_menuno));			// "3" 선택 시 반복문 빠져나옴
+		// end of do_while--------------------------------------
+	
+	} // end of private void search_company(Scanner sc, Company[] cp_arr)------------------------------------------------------------------------------------------------
+
+
+
+	// == 업종 검색해주는 메소드 == //
+	private void search_jop_type(Scanner sc, Company[] cp_arr) {
 		
+		System.out.print("▶ 업종명 : ");
+		String job_type_name = sc.nextLine().toLowerCase();		// toLowerCase(), 입력한 문자와 저장되어있는 문자를 대, 소문자 관계없이 소문자로 통일해서 보기
+			
+			StringBuilder sb = new StringBuilder();
+			boolean is_existence = false;	
+			
+			for(int i=0; i<Company.count; i++) {
+				
+				if(cp_arr[i].getJop_type().toLowerCase().contains(String.join("", job_type_name.split("\\ ")))) {								
+					// arr에 저장되어있던 jop_type을 불러오는데 소문자로 바꿔서 불러옴. 이후 소문자에 contains 안에 있는 내용이 포함되어져 있는지 확인
+					// 공백이 있다면, 공백을 없애기 위해 공백으로 배열을 나눠서(split) String 타입으로 합치기(join)
+					is_existence = true;
+					sb.append(cp_arr[i].getInfo() + "\n");
+				}
+				
+			} // end of for-----------------------------------------
+			
+				if(is_existence) {
+					title_company();
+					System.out.println(sb.toString());
+				}
+				else {
+					System.out.println(">> 검색하시려는 "+ job_type_name +"업종에 해당하는 회사는 없습니다.\n");
+					
+				} // end of if~else-----------------------------------
+	
+	} // end of private void search_jop_type(Scanner sc, Company[] cp_arr)------------------------------------------------------------------------------------------------
+
+	
+	
+	
+	
+	// == 자본금 검색해주는 메소드 == //
+	private void search_seed_money(Scanner sc, Company[] cp_arr) {
 		
+		System.out.println("▶ 자본금 : ");
+		String str_search_seed_money = sc.nextLine();
 		
+		try {
+			long search_seed_money = Long.parseLong(str_search_seed_money);
+			
+			StringBuilder sb = new StringBuilder();
+			boolean is_existence = false;
+			
+			for(int i=0; i<Company.count; i++) {
+				if( search_seed_money <= cp_arr[i].getSeed_money() ) {
+					is_existence = true;
+					sb.append(cp_arr[i].getInfo() + "\n");
+				}
+			} // end of for-------------------------------------------
+			
+			if(is_existence) {
+				title_company();
+				System.out.println(sb.toString());
+			}
+			else {
+				System.out.println(">> 검색하시려는 자본금이 " + str_search_seed_money +"원 이상인 회사는 없습니다.\n");
+			}
+			
+		} catch(NumberFormatException e) {
+			System.out.println(">>[경고] 자본금은 정수로만 입력하세요.\n");
+		} // end of try_catch----------------------------------------
 		
-		
-	} // end of private void view_all_company_Info(Company[] cp_arr)-------------------------------------------------------------------
+	} // end of private void search_seed_money(Scanner sc, Company[] cp_arr)-----------------------------------------------------------------------------------------------
+
+
+	
+	
+	
 	
 	
 	

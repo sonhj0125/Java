@@ -1,5 +1,6 @@
 package my.day13.a.inheritance;
 
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -94,7 +95,27 @@ public class Company extends CommonMember {
 		}
 	} // end of public void setSeed_money(long seed_money)-------------------------------
 
+	
+	
+	
+	
+	// === 구인회사의 정보를 한줄로 출력해주는 메소드 생성하기 === //	
+	
+	public String getInfo() {
+		
+	    DecimalFormat df = new DecimalFormat("#,###");				// 3자리 마다 콤마(,)를 찍어준다.
+	    
+	    //  회사명	   업종		     사업자등록번호		       자본금 \n
+	    
+			return super.getName() + "\t" + jop_type + "\t" + business_number + "\t" + df.format(seed_money) + "원";
+			// 또는 this.getName(); 또는 getName();
+			
+		
+		
+		
+	} // end of public String getInfo()-------------------------------
 
+	
 	
 
 }
