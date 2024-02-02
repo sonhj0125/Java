@@ -475,10 +475,12 @@ public class Ctrl_gujikja extends Ctrl_common {
 				break;
 				
 			case "2":	// 내정보 수정
-				
+				update_myInfo(sc, login_gu);
+						
 				break;
 				
 			case "3":	// 모든 구인회사 조회
+				view_all_company_Info(cp_arr);
 				
 				break;
 				
@@ -499,10 +501,11 @@ public class Ctrl_gujikja extends Ctrl_common {
 	} // end of public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr)-------------------------------------------------------------------
 
 
+
 	// == 내정보 보기 == //
 	private void view_myInfo(Gujikja login_gu) {
 	
-		System.out.println("\n\t>>> 엄정화님의 정보 <<<");
+		System.out.println("\n\t>>> "+login_gu.getName()+"님의 정보 <<<");
 		System.out.println(" --------------------------------------");
 		System.out.println(" 아이디\t비밀번호\t\t성명\t주민번호");
 		System.out.println(" --------------------------------------");
@@ -521,8 +524,119 @@ public class Ctrl_gujikja extends Ctrl_common {
    eomjh	qWer1234$	엄정화	8610022
  
 */
+	
+	
+	// == 내정보 수정 == //
+	private void update_myInfo(Scanner sc, Gujikja login_gu) {
+		
+		view_myInfo(login_gu);
+		
+		System.out.println("\n>> [주의사항] 변경하지 않고 예전의 데이터값을 그대로 사용하시려면, Enter(엔터)를 눌러주세요.\n");
+	
+		boolean exit_pwd = false;
+		do {
+			System.out.print("1. 비밀번호 : ");
+			String new_passwd = sc.nextLine();		// 기존 비밀번호인 qWer1234$ 을 qWer0070$ 으로 변경하려한다.
+													// 기존 비밀번호인 qWer1234$ 을 qWer1234$ 으로 동일하게 변경하려한다. ==> 기존 암호와 동일하므로 변경이 불가하다.
+													// 기존 비밀번호를 변경하지 않는다.
+													// 기존 비밀번호인 qWer1234$ 을 abcd 으로 변경하고자 할 때는 비밀번호 규칙에 맞지 않으므로, 변경 불가.
+			
+			if(!new_passwd.equals("")) {			// 입력한 비밀번호가 엔터가 아닐 경우
+													// "\r\n" 이 원래 Enter(엔터)
+				if(login_gu.getPasswd().equals(new_passwd)) {		// 입력한 비밀번호가 기존과 동일한 경우
+					System.out.println(">> 입력하신 비밀번호는 기존 암호와 동일합니다.\n");
+					
+				}
+				else {	// 기존과 동일하지 않은 경우
+					login_gu.setPasswd(new_passwd);
+					
+					if(new_passwd.equals(login_gu.getPasswd())) {		// 바꿔서 설정된 비밀번호와 내가 변경하고자 입력했던 비밀번호가 동일하면 true 출력
+						exit_pwd = true;
+					}
+					
+				}
+				
+			}
+			else {		// 입력한 비밀번호가 엔터인 경우
+				exit_pwd = true;
+			}
+			
+		} while(!exit_pwd);
+		// end of do_while-------------------------------------------------
+		
+		
+		boolean exit_name = false;
+		
+		do {
+			System.out.print("2. 성명 : ");			// 기존 성명인 엄정화를 엄화정으로 변경하려한다.
+			String new_name = sc.nextLine();		// 기존 성명인 엄정화를 엄정화로 동일하게 변경하려한다. ==> 기존 성명과 동일하므로 변경이 불가하다.
+													// 기존 성명를 변경하지 않는다.
+													// 기존 성명인 엄정화을 엄jungHwa로 변경하고자 할 때는 비밀번호 규칙에 맞지 않으므로, 변경 불가.
+			if(!new_name.equals("")) {
+				
+				if(login_gu.getName().equals(new_name)) {
+					System.out.println(">> 입력하신 성명은 기존과 동일합니다.");
+				}
+				else {
+					login_gu.setName(new_name);
+					if(new_name.equals(login_gu.getName())) {
+						exit_name = true;
+					}
+					
+				}
+				
+			}
+			else {		// 입력한 이름이 엔터인 경우
+				exit_pwd = true;
+			}
+		} while(!exit_name);
+		// end of do_while-------------------------------------------------
+		
+		
+		
+		boolean exit_jubun = false;
+		
+		do {
+			System.out.print("3. 주민번호 : ");
+			String new_jubun = sc.nextLine();
+			
+			if(!new_jubun.equals("")) {
+				
+				if(login_gu.getJubun().equals(new_jubun)) {
+					System.out.println(">> 입력하신 주민번호는 기존과 동일합니다.");
+				}
+				else {
+					login_gu.setJubun(new_jubun);
+					if(new_jubun.equals(login_gu.getJubun())) {
+						exit_jubun = true;
+					}
+				}
+			}
+			else {		// 입력한 주민번호가 엔터인 경우
+				exit_jubun = true;
+			}
+		} while(!exit_jubun);
+		// end of do_while-------------------------------------------------
+			
+	} // end of private void update_myInfo(Scanner sc, Gujikja login_gu)-------------------------------------------------------------------
 
-
+		
+	
+	// == 모든 구인회사 조회 == //
+	private void view_all_company_Info(Company[] cp_arr) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	} // end of private void view_all_company_Info(Company[] cp_arr)-------------------------------------------------------------------
+	
 	
 	
 }

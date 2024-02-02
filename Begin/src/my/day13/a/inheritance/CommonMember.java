@@ -144,7 +144,7 @@ public class CommonMember {
 				this.name = name;
 			}
 			else {
-				System.out.println("[경고] 성명은 공백이 없는 한글로만 이루어져야 하며 최소 2글자 최대 6글자로만 되어야 합니다.\\n");
+				System.out.println("\n[경고] 성명은 공백이 없는 한글로만 이루어져야 하며 최소 2글자 최대 6글자로만 되어야 합니다.\n");
 			}
 		
 		
