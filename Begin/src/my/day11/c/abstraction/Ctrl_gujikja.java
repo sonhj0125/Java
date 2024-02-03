@@ -142,7 +142,8 @@ public class Ctrl_gujikja {
 					
 					
 					if ( !MyUtil.isCheckJubun(jubun) ) {
-						System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); isUse_jubun = false; 
+						System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); 
+						isUse_jubun = false; 
 						}					
 										
 				} while (!isUse_jubun);
