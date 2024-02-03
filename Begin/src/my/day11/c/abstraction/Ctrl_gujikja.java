@@ -142,7 +142,8 @@ public class Ctrl_gujikja {
 					
 					
 					if ( !MyUtil.isCheckJubun(jubun) ) {
-						System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); isUse_jubun = false; }					
+						System.out.println("[경고] 올바른 주민번호를 입력해주세요. \n"); isUse_jubun = false; 
+						}					
 										
 				} while (!isUse_jubun);
 				// end of do_while----------------------------------------------
@@ -159,7 +160,7 @@ public class Ctrl_gujikja {
 				
 				System.out.println(">> 구직자 회원가입 성공 <<\n");				
 				
-			}			 
+			} // end of if(Gujikja.count < gu_arr.length)			 
 					
 		else {	// 지금까지 생성된 구직자 회원수가 gu_arr.length(==>정원) 와 같거나 큰 경우에는 신규회원을 받아들이면 안된다.
 			System.out.println(">> 정원 "+ gu_arr.length + "명이 꽉차서 구직자 회원가입이 불가합니다. <<\n");

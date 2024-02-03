@@ -232,7 +232,7 @@ public class MyUtil {
 	
 		return String.valueOf(result_arr);
 		
-	} // end of public static char[] append_comma(long sum_money)----------------------------------------
+	} // end of public static String append_comma(long num)----------------------------------------
 
 
 
