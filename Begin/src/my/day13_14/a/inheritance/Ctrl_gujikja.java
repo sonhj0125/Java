@@ -452,7 +452,9 @@ public class Ctrl_gujikja extends Ctrl_common {
 	// == 채용응모 == //
 	private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 			
-		boolean is_existence = false;
+		// 채용공고번호는 채용공고로 올라온 번호만 입력해야 한다.
+		
+		boolean is_existence = false, is_duplicate_recruit_no = false;
 		
 		do {
 			System.out.print("▶ 채용공고번호 : ");
@@ -470,11 +472,36 @@ public class Ctrl_gujikja extends Ctrl_common {
 			if(!is_existence) {
 				System.out.println(">> 입력하신 "+ input_recruit_no +"번은 채용공고에 존재하지 않는 번호입니다.");
 			}
+			else {	// 존재하는 경우. 입력한 번호가 1,2,3 중에 하나인 경우.
+				
+				for(int i=0; i<RecruitApply.count; i++) {
 					
-		} while ( !is_existence );		// 존재하면 빠져나옴
+					/*
+					  rcApply_arr[i].getRc().getRecruit_no(); ==> 채용공고번호(int 타입)
+					  rcApply_arr[i].getGu().getId(); ==> 채용공고에 지원한 구직자 아이디
+					*/		
+					
+					if( String.valueOf( rcApply_arr[i].getRc().getRecruit_no() ).equals(input_recruit_no) && rcApply_arr[i].getGu().getId().equals(login_gu.getId()) ) {
+						is_duplicate_recruit_no = true;
+						break;		// for문 빠져나오는 break;
+					}			
+					
+				} // end of for------------------------------------------------
+				
+				if(is_duplicate_recruit_no) {
+					System.out.println(">> 입력하신 채용공고 번호 "+ input_recruit_no +"번은 이미 응모하신 번호입니다.\n");
+				}			
+				
+			} // end of if_else-------------------------------------------------------------------------
+			
+			// 채용공고번호는 채용공고로 올라온 번호이지만, 이미 응모한 채용공고문에는 입력하면 안된다.
+			
+		} while ( !(is_existence && !is_duplicate_recruit_no) );		// 1,2,3 이면서, 중복이 아니면 빠져나온다.
 		
 		
 		
+		
+		 
 		
 		
 		
