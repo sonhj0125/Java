@@ -140,7 +140,7 @@ public class Ctrl_company extends Ctrl_common {
 					break;
 					
 				case "7": // 채용공고 입력하기
-					// register_recruit(sc, login_cp, rc_arr);
+					register_recruit(sc, login_cp, rc_arr);
 					break;	
 					
 				case "8": // 우리회사 채용공고 조회
@@ -642,18 +642,89 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	
-	// == 사원모집공고 ==
+	// == 7. 채용공고 입력하기 ==
 	private void register_recruit(Scanner sc, Company login_cp, Recruit[] rc_arr) {
 		
+		System.out.println("======= " + login_cp.getName() + " 채용공고 등록=======");
+		
+		Recruit rc = new Recruit();
+		
+		do {
+			System.out.print("1. 채용제목 : ");
+			String subject = sc.nextLine();
+			rc.setSubject(subject);
+			
+		} while ( !(rc.getSubject() != null) );		// 채용제목이 null이 아니라면 빠져나온다.
 		
 		
+		do {
+			System.out.print("2. 채용분야[예 > 사무직] : ");
+			String work_type = sc.nextLine();
+			rc.setWork_type(work_type);
+			
+		} while ( !(rc.getWork_type() != null) );	
+		
+		
+		do {
+			System.out.print("3. 채용인원 : ");
+			String str_cnt = sc.nextLine();
+			
+			try {
+				int cnt = Integer.parseInt(str_cnt);
+				if(cnt <= 0) {
+					System.out.println("[경고] 1 이상 입력하세요!!");
+				}
+				else {
+					rc.setCnt(cnt);		// 0보다 크면 set 이후 get으로 빠져나감
+				}
+				
+			} catch(NumberFormatException e) {
+				System.out.println("[경고] 1 이상 입력하세요!!");
+				
+			} // end of try_catch--------------------------------			
+			
+		} while ( !(rc.getCnt() > 0) );	
+		
+					
+		do {
+			System.out.print("4. 연봉[단위 만원] : ");
+			String str_yearpay = sc.nextLine();
+			
+			try {
+				int yearpay = Integer.parseInt(str_yearpay);
+				if(yearpay <= 0) {
+					System.out.println("[경고] 1 이상 입력하세요!!");
+				}
+				else {
+					rc.setYearpay(yearpay);		// 0보다 크면 set 이후 get으로 빠져나감
+				}
+				
+			} catch(NumberFormatException e) {
+				System.out.println("[경고] 1 이상 입력하세요!!");
+				
+			} // end of try_catch--------------------------------
+					
+		} while ( !(rc.getYearpay() > 0) );	
+		
+		
+		do {
+			System.out.print("5. 채용마감일자[예> 20240208] : ");
+			String finish_day = sc.nextLine();
+			rc.setFinish_day(finish_day);
+			
+		} while ( !(rc.getFinish_day() != null) );	
+		
+		System.out.println("");
+		
+		rc.setCp(login_cp);				// 로그인한 회사를 가져와서
+		rc_arr[Recruit.count++] = rc;	// 배열에 넣기
 		
 	} // end of private void register_recruit(Scanner sc, Company login_cp)--------------------
 	
 	
 	
 	
-	// == 우리회사 채용공고 조회 == //
+	// == 8. 우리회사 채용공고 조회 == //
 	private void view_recruit_mycompany(Company login_cp, Recruit[] rc_arr) {
 		
 		boolean is_existence = false;
@@ -670,9 +741,6 @@ public class Ctrl_company extends Ctrl_common {
 		if( !is_existence ) {
 			System.out.println(">> 채용공고를 낸 것이 없습니다.<<\n");
 		}
-			
-		
-		
 		
 	} // end of private void view_recruit_mycompany(Company login_cp, Recruit[] rc_arr)--------------------------------------
 	

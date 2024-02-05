@@ -1,5 +1,6 @@
 package my.day13_14.a.inheritance;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Ctrl_gujikja extends Ctrl_common {
@@ -103,12 +104,13 @@ public class Ctrl_gujikja extends Ctrl_common {
 
 	
 	// == 구직자 전용메뉴 메소드 생성하기 == //
-	public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr) {
+	public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 		
 		String str_menuno;
 		do {
 			System.out.println("\n === 구직자 전용메뉴("+ login_gu.getName() +"님 로그인중) ===\n"
-			                 + "1.내정보 보기   2.내정보 수정   3.모든구인회사 조회    4.구인회사검색하기    5.로그아웃\n");  
+			                 + "1. 내정보 보기   2. 내정보 수정   3. 모든구인회사 조회    4. 구인회사검색하기\n"
+			                 + "5. 모든채용공고 조회   6. 채용응모   7. 채용응모조회   8. 로그아웃\n");  
 			System.out.print("▷ 메뉴번호 선택 : ");
 			str_menuno = sc.nextLine();
 			
@@ -129,7 +131,19 @@ public class Ctrl_gujikja extends Ctrl_common {
 					search_company(sc, cp_arr);
 					break;
 					
-				case "5": // 로그아웃
+				case "5": // 모든채용공고 조회
+					view_all_recruit_info(rc_arr);
+					break;	
+					
+				case "6": // 채용응모
+					input_recruitApply(sc, login_gu, rc_arr, rcApply_arr);
+					break;	
+					
+				case "7": // 채용응모조회 
+					
+					break;	
+					
+				case "8": // 로그아웃
 					login_gu = null;
 					break;					
 	
@@ -138,15 +152,16 @@ public class Ctrl_gujikja extends Ctrl_common {
 					break;
 			}// end of switch (str_menuno)-----------------------
 			
-		} while(!"5".equals(str_menuno));
+		} while(!"8".equals(str_menuno));
 		// end of do~while-----------------------------
 		
 		System.out.println(">> 로그아웃 되었습니다. <<\n");
 		
 	}// end of public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr)--------------
 
-	
-	// 내정보 보기
+
+
+	// == 내정보 보기 == //
 	private void view_myInfo(Gujikja login_gu) {
 	/*
 	     
@@ -272,7 +287,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	}// end of private void update_myInfo(Scanner sc, Gujikja login_gu)------	
 	
 	
-	// 모든구인회사 조회
+	// == 모든구인회사 조회 == //
 	private void view_all_company_info(Company[] cp_arr) {
 		
 		if(Company.count == 0) {
@@ -303,7 +318,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	}// end of private void title_company()-------------------------------
 	
 	
-	// 구인회사검색하기
+	// == 구인회사검색하기 == //
 	private void search_company(Scanner sc, Company[] cp_arr) {
 		
 		String str_menuno = "";		
@@ -338,7 +353,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	}// end of private void search_company(Scanner sc, Company[] cp_arr)----------	
 
 	
-	// 업종검색
+	// == 업종검색 == //
 	private void search_jobtype_company(Scanner sc, Company[] cp_arr) {
 		
 		System.out.print("▷ 업종명 : ");
@@ -364,7 +379,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	}// end of private void search_jobtype_company(Company[] cp_arr)------
 
 	
-	// 자본금검색
+	// == 자본금검색 == //
 	private void search_seedmoney_company(Scanner sc, Company[] cp_arr) {
 		
 		System.out.print("▷ 자본금 : ");
@@ -397,6 +412,77 @@ public class Ctrl_gujikja extends Ctrl_common {
 		
 	}// end of private void search_seedmoney_company(Company[] cp_arr)------
 
+	
+	
+	
+	// == 모든채용공고 조회 == //
+	private void view_all_recruit_info(Recruit[] rc_arr) {
+		
+		if(Recruit.count == 0) {
+			System.out.println(">> 채용공고가 존재하지 않습니다. <<\n");
+		}
+		else {
+		
+			StringBuilder sb = new StringBuilder();			
+				
+			for(int i=0; i<Recruit.count; i++) {
+				sb.append(rc_arr[i].getRecruit_no()+"\t\t"+
+						  rc_arr[i].getCp().getName()+"\t"+
+						  rc_arr[i].getCp().getJob_type()+"\t"+
+						  new DecimalFormat("#,###").format(rc_arr[i].getCp().getSeed_money())+"원\t"+
+						  rc_arr[i].getWork_type()+"\t"+
+						  rc_arr[i].getCnt()+"\t"+
+						  rc_arr[i].getRegister_day().substring(0, 4) +"-"+ rc_arr[i].getRegister_day().substring(4, 6) +"-"+ rc_arr[i].getRegister_day().substring(6) +"\t"+
+						  rc_arr[i].getFinish_day().substring(0, 4) +"-"+ rc_arr[i].getFinish_day().substring(4, 6) +"-"+ rc_arr[i].getFinish_day().substring(6) +"\n");
+								
+			} // end of for-------------------------------------------------
+			
+			System.out.println("-".repeat(90));
+			System.out.println("채용공고순번     회사명     회사직종타입     자본금      채용분야(근무형태)     채용인원      채용등록일자      채용마감일자");
+			System.out.println("-".repeat(90));			
+			System.out.println(sb.toString());
+			System.out.println("[채용공고가 "+ Recruit.count +"건이 있습니다]\n");
+		}
+		
+	
+	} // end of private void view_all_recruit_info(Recruit[] rc_arr)------------------------------------
+	
+	
+	
+	// == 채용응모 == //
+	private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
+			
+		boolean is_existence = false;
+		
+		do {
+			System.out.print("▶ 채용공고번호 : ");
+			String input_recruit_no = sc.nextLine();
+						
+			for(int i=0; i<Recruit.count; i++) {
+				
+				if( input_recruit_no.equals(String.valueOf(rc_arr[i].getRecruit_no())) ) {
+					is_existence = true;
+					break;	// for 문의 break. 채용공고가 존재해야 빠져나옴
+				}			
+				
+			} // end of for------------------------------------------------
+			
+			if(!is_existence) {
+				System.out.println(">> 입력하신 "+ input_recruit_no +"번은 채용공고에 존재하지 않는 번호입니다.");
+			}
+					
+		} while ( !is_existence );		// 존재하면 빠져나옴
+		
+		
+		
+		
+		
+		
+		
+		
+	} // end of private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr)------------------------------------------
+	
+	
 	
 	
 }
