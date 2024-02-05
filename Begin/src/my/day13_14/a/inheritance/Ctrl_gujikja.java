@@ -140,7 +140,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 					break;	
 					
 				case "7": // 채용응모조회 
-					
+					view_my_recruitApply(login_gu, rcApply_arr);
 					break;	
 					
 				case "8": // 로그아웃
@@ -451,12 +451,40 @@ public class Ctrl_gujikja extends Ctrl_common {
 	
 	// == 채용응모 == //
 	private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
+		
+		// 구직자 자신이 응모한 채용공고 번호를 알아오자.
+		
+		String str_my_recruit_no = "";
+		for(int i=0; i<RecruitApply.count; i++) {
+			
+			if( rcApply_arr[i].getGu().getId().equals(login_gu.getId()) ) {
+				str_my_recruit_no += rcApply_arr[i].getRc().getRecruit_no()+",";
+			}
+			
+		} // end of for----------------------------------------
+		
+		// str_my_Recruit_no = "1,3,2,";
+		
+		str_my_recruit_no = str_my_recruit_no.substring(0, str_my_recruit_no.length()-1);
+		// "1,3,2"
+		
+		String[] my_recruit_no_arr = str_my_recruit_no.split("\\,");
+		// {"1","3","2"}
+		
+		if( my_recruit_no_arr.length == Recruit.count ) {
+			System.out.println(">> 이미 모든 채용공고에 응모하셨으므로, 더 이상 응모할 공고가 없습니다.\n");
+			return;		// 메소드 종료
+		}
 			
 		// 채용공고번호는 채용공고로 올라온 번호만 입력해야 한다.
 		
-		boolean is_existence = false, is_duplicate_recruit_no = false;
+		boolean is_existence, is_duplicate_recruit_no;
+		Recruit rc = null;
 		
 		do {
+			is_existence = false;
+			is_duplicate_recruit_no = false;
+			
 			System.out.print("▶ 채용공고번호 : ");
 			String input_recruit_no = sc.nextLine();
 						
@@ -464,18 +492,20 @@ public class Ctrl_gujikja extends Ctrl_common {
 				
 				if( input_recruit_no.equals(String.valueOf(rc_arr[i].getRecruit_no())) ) {
 					is_existence = true;
+					rc = rc_arr[i];
 					break;	// for 문의 break. 채용공고가 존재해야 빠져나옴
 				}			
 				
 			} // end of for------------------------------------------------
 			
 			if(!is_existence) {
-				System.out.println(">> 입력하신 "+ input_recruit_no +"번은 채용공고에 존재하지 않는 번호입니다.");
+				System.out.println(">> 입력하신 "+ input_recruit_no +"번은 채용공고에 존재하지 않는 번호입니다.\n");
 			}
 			else {	// 존재하는 경우. 입력한 번호가 1,2,3 중에 하나인 경우.
+					
 				
 				for(int i=0; i<RecruitApply.count; i++) {
-					
+						
 					/*
 					  rcApply_arr[i].getRc().getRecruit_no(); ==> 채용공고번호(int 타입)
 					  rcApply_arr[i].getGu().getId(); ==> 채용공고에 지원한 구직자 아이디
@@ -483,31 +513,71 @@ public class Ctrl_gujikja extends Ctrl_common {
 					
 					if( String.valueOf( rcApply_arr[i].getRc().getRecruit_no() ).equals(input_recruit_no) && rcApply_arr[i].getGu().getId().equals(login_gu.getId()) ) {
 						is_duplicate_recruit_no = true;
-						break;		// for문 빠져나오는 break;
+						
 					}			
 					
 				} // end of for------------------------------------------------
 				
 				if(is_duplicate_recruit_no) {
 					System.out.println(">> 입력하신 채용공고 번호 "+ input_recruit_no +"번은 이미 응모하신 번호입니다.\n");
-				}			
+				}		
+		
+				else {
 				
-			} // end of if_else-------------------------------------------------------------------------
-			
-			// 채용공고번호는 채용공고로 올라온 번호이지만, 이미 응모한 채용공고문에는 입력하면 안된다.
-			
+					do {
+						System.out.print("▶ 지원동기 : ");
+						String apply_motive = sc.nextLine();
+						
+						if(apply_motive.isBlank()) {
+							System.out.println("[경고] 지원동기는 필수로 입력해야 합니다.!!\n");
+						}
+						else {
+							RecruitApply rc_apply = new RecruitApply();
+							rc_apply.setRc(rc);
+							rc_apply.setGu(login_gu);
+							rc_apply.setApply_motive(apply_motive);
+							rcApply_arr[RecruitApply.count++] = rc_apply;
+							break; 		// do_while문을 빠져나옴
+						}
+						
+					} while(true);
+					
+				}	
+					
+			} // end of if_else-------------------------------------------------------------------------					
+		
+		// 채용공고번호는 채용공고로 올라온 번호이지만, 이미 응모한 채용공고문에는 입력하면 안된다.
+		
 		} while ( !(is_existence && !is_duplicate_recruit_no) );		// 1,2,3 이면서, 중복이 아니면 빠져나온다.
-		
-		
-		
-		
-		 
-		
-		
-		
-		
-		
+				
 	} // end of private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr)------------------------------------------
+	
+	
+	
+	
+	
+	
+	// == 채용응모조회 == //
+
+	private void view_my_recruitApply(Gujikja login_gu, RecruitApply[] rcApply_arr) {
+		
+		boolean is_existence = false;
+			
+		for(int i=0; i<RecruitApply.count; i++) {
+			if( login_gu.getId().equals(rcApply_arr[i].getGu().getId()) ) {
+				is_existence = true;
+				System.out.print(rcApply_arr[i].getRc().recruit_info());
+				System.out.println("▶ 지원동기 : " + rcApply_arr[i].getApply_motive() + "\n\n");
+			}
+			
+		} // end of for------------------------------------------	
+		
+		if(!is_existence) {
+			System.out.println(">> 채용공고에 응모한 내역이 없습니다.");
+		}
+		
+	} // end of private void view_my_recruitApply(Gujikja login_gu, RecruitApply[] rcApply_arr)------------------------------------------
+	
 	
 	
 	

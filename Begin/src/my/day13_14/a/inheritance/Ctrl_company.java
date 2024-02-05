@@ -104,13 +104,14 @@ public class Ctrl_company extends Ctrl_common {
 
 
 	// == 구인회사 전용메뉴 ==
-	public void cp_menu(Scanner sc, Company login_cp, Gujikja[] gu_arr, Recruit[] rc_arr) {
+	public void cp_menu(Scanner sc, Company login_cp, Gujikja[] gu_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 
 		String str_menuno;
 		do {
 			System.out.println("=== 구인회사 전용메뉴("+ login_cp.getName() +"님 로그인중) ===\n"
 					         + "1.우리회사정보 보기     2.우리회사정보 수정        3.모든구직자 조회     4.구직자 성별검색\n" 
-					         + "5.구직자 연령대검색     6.구직자 연령대 및 성별검색     7.채용공고 입력하기     8. 우리회사 채용공고 조회     9. 로그아웃\n");
+					         + "5.구직자 연령대검색     6.구직자 연령대 및 성별검색     7.채용공고 입력하기     8. 우리회사 채용공고 조회\n"    
+					         + "9.우리회사 채용공고 지원자 조회     10. 로그아웃\n");
 			System.out.print("▷ 메뉴번호 선택 : ");
 			str_menuno = sc.nextLine();
 			
@@ -146,8 +147,12 @@ public class Ctrl_company extends Ctrl_common {
 				case "8": // 우리회사 채용공고 조회
 					view_recruit_mycompany(login_cp, rc_arr);
 					break;	
+					
+				case "9": // 우리회사 채용공고 지원자 조회
+					view_gujikja_my_recruitApply(login_cp, rcApply_arr);
+					break;	
 				
-				case "9": // 로그아웃
+				case "10": // 로그아웃
 					login_cp = null;
 					break;		
 				
@@ -156,9 +161,10 @@ public class Ctrl_company extends Ctrl_common {
 					break;
 			}// end of switch (str_menuno)------------------------
 			
-		} while(!"9".equals(str_menuno));
+		} while(!"10".equals(str_menuno));
 		
 	}// end of public void cp_menu(Scanner sc, Company login_cp, Gujikja[] gu_arr)--------------------
+
 
 
 
@@ -745,6 +751,42 @@ public class Ctrl_company extends Ctrl_common {
 	} // end of private void view_recruit_mycompany(Company login_cp, Recruit[] rc_arr)--------------------------------------
 	
 	
+	
+	// == 9. 우리회사 채용공고 지원자 조회 == //
+	private void view_gujikja_my_recruitApply(Company login_cp, RecruitApply[] rcApply_arr) {
+		
+		boolean is_existence = false;
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i=0; i<RecruitApply.count; i++) {
+			
+			if( login_cp.getId().equals(rcApply_arr[i].getRc().getCp().getId())  ) {
+				is_existence = true;
+				
+				sb.append(rcApply_arr[i].getRc().getRecruit_no() + "\t" +
+						  rcApply_arr[i].getRc().getSubject() + "\t" +
+						  rcApply_arr[i].getGu().getName() + "\t" +
+						  rcApply_arr[i].getGu().getGender() + "\t" +
+						  rcApply_arr[i].getGu().getAge() + "\t" +
+						  rcApply_arr[i].getApply_motive() + "\n");
+				
+			}	
+			
+		} // end of for---------------------------------------
+		
+		if(is_existence) {
+			System.out.println("=".repeat(100));
+			System.out.println("채용공고번호\t채용제목\t\t지원자명\t성별\t나이\t지원"
+					+ "동기");		
+			System.out.println("=".repeat(100));
+			System.out.println(sb.toString());
+		}
+		else {
+			System.out.println(">> 채용공고에 지원자가 없습니다.<<\n");
+		}
+		
+	} // end of private void view_gujikja_my_recruitApply(Company login_cp, RecruitApply[] rcApply_arr)--------------------------------------
+
 	
 	
 	
