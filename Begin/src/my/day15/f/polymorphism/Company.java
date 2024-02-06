@@ -15,15 +15,15 @@ public class Company extends CommonMember {
 	private String business_number;   // 사업자등록번호 
 	private String job_type;          // 회사직종타입(제조업, 서비스업, IT, ...)
 	private long seed_money;          // 자본금 
-	
-	static int count;     // Company 객체(인스턴스)의 개수를 알아오려는 용도	
 
-	// 기본생성자 생략됨!!
-/*	
+	
+	 // == 기본생성자 == //
+	
 	public Company() {
-	//	super(); // Company 클래스의 부모클래스인 CommonMember 클래스의 기본생성자 이다.
+		super(); 						// Company 클래스의 부모클래스인 CommonMember 클래스의 기본생성자 이다.
+		super.setType(2);
 	}
-*/
+	
 	
 	// == 메소드의 오버라이딩(overriding), 메소드의 재정의 == //
 	@Override

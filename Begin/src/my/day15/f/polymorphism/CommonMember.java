@@ -12,10 +12,15 @@ public abstract class CommonMember {
 
 	// Gujikja 클래스와 Company 클래스에서 공통으로 사용되어지는 field(속성) 생성하기
 	
+	private int type;			 // Gujikja 와 Company 를 구분짓는 용도 
+								 // type 값이 1이라면 Gujikja. 2이라면 Company.
+	
 	private String id;           // 아이디
 	private String passwd;       // 비밀번호
 	private String name;         // 성명 또는 회사명
 	private String register_day; // 가입일자
+	
+	static int count;			 // Gujikja 객체 및 Company 객체가 생성되어진 개수를 알아오는 용도
 	
 	// Gujikja 및 Company 클래스의 부모클래스인 CommonMember 클래스의 기본생성자 
 	public CommonMember(){
@@ -30,6 +35,23 @@ public abstract class CommonMember {
 	
 	// 캡슐화(EnCapsulation == 은닉화) 되어진 field 를 메소드를 통해 접근하도록 만들기 //
 	// == getter, setter 하기 == // 
+	
+	
+	public int getType() {
+		return type;
+	}
+
+
+	public void setType(int type) {
+		if(type == 1 || type == 2) {
+			this.type = type;
+			// type 의 값이 1 이라면, Gujikja. 
+			// type 의 값이 2 이라면 Company.
+		}
+		
+	}
+
+	
 	public void setId(String id) {
 		
 		if( id == null || id.isBlank() ) {
@@ -66,7 +88,7 @@ public abstract class CommonMember {
 		}
 	}
 	
-	
+
 	public String getId() {
 		
 		return id;
@@ -88,33 +110,6 @@ public abstract class CommonMember {
 	public String getPasswd() {
 		return passwd;
 	}
-	
-/*	
-	public void setName(String name) {
-		// 성명은 공백이 없는 한글로만 이루어져야 하며 최소 2글자 이상 최대 6글자로만 되어져야 한다.
-		
-		if(name != null) {
-			char[] ch_arr = name.toCharArray();
-			
-			boolean isOnly_hangul = true;
-		    for(char ch : ch_arr) {
-		       if( !('가' <= ch && ch <= '힣') ) {
-		    	   isOnly_hangul = false;
-		    	   break;
-		       }
-		    }// end of for-----------------
-		    
-		    if(2 <= ch_arr.length && ch_arr.length <= 6 
-		       && isOnly_hangul) {
-		    	this.name = name;
-		    }
-		    else {
-		    	System.out.println("[경고] 성명은 공백이 없는 한글로만 이루어져야 하며 최소 2글자 이상 최대 6글자로만 되어져야 합니다.\n");
-		    }
-		}
-		
-	}
-*/
 	
 	
 	public void setName(String name) {

@@ -88,16 +88,14 @@ public class Gujikja extends CommonMember {
 	                        // 예: "9506201"  "9607202"   "0006203"  "0007204"  "1106203" 
 	
 	
-	static int count;     // Gujikja 객체(인스턴스)의 개수를 알아오려는 용도 
-	
-	// 기본생성자 생략됨!!
-/*	
+	// == 기본생성자 == //
+
 	public Gujikja() {
-	//	super(); // Gujikja 클래스의 부모클래스인 CommonMember 클래스의 기본생성자 이다.
+		super(); 			// Gujikja 클래스의 부모클래스인 CommonMember 클래스의 기본생성자 이다.
+		super.setType(1);
 	}
-*/	
 	
-	
+
 	// === 또는 성명을 정규표현식으로 검사해보겠다. ===
 	// == 메소드의 오버라이딩(overriding), 메소드의 재정의 == //
 	@Override
