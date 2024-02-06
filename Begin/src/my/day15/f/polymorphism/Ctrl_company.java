@@ -70,6 +70,13 @@ public class Ctrl_company extends Ctrl_common {
 			
 			cmbr_arr[CommonMember.count++] = cp;
 			
+			
+			// 업종
+			
+			
+			// 자본금
+			
+			
 			System.out.println(">> 구인회사 회원가입 성공 !! <<\n");
 			
 		}

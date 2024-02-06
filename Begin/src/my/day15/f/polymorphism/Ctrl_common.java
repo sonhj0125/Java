@@ -17,10 +17,10 @@ public class Ctrl_common {
 	// == 구직자 및 구인회사 로그인 메소드 생성하기 == //
 	public CommonMember login(Scanner sc, CommonMember[] cmbr_arr, int type) {
 		
-		System.out.println("▶ ID : ");
+		System.out.print("▶ ID : ");
 		String id = sc.nextLine();
 		
-		System.out.println("▶ 비밀번호 : ");
+		System.out.print("▶ 비밀번호 : ");
 		String passwd = sc.nextLine();
 		
 		for(int i=0; i<CommonMember.count; i++) {
