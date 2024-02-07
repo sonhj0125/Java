@@ -15,7 +15,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 		
 		if(CommonMember.count < cmbr_arr.length) { // 지금까지 생성된 구직자 회원수가 gu_arr.length(==>정원) 보다 적을 경우에만 신규회원을 받아들인다.
 		    
-			Gujikja gu = new Gujikja();
+			Gujikja_imple gu = new Gujikja_imple();
 			
 			// 아이디는 필수 입력사항이면서 아이디 조건에 맞을때 까지 반복해야 한다.
 			outer:
@@ -85,7 +85,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 
 	
 	// == 구직자 전용메뉴 메소드 생성하기 == //
-	public void gu_menu(Scanner sc, Gujikja login_gu, CommonMember[] cmbr_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
+	public void gu_menu(Scanner sc, Gujikja_imple login_gu, CommonMember[] cmbr_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 		
 		String str_menuno;
 		do {
@@ -143,7 +143,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 
 
 	// == 내정보 보기 == //
-	private void view_myInfo(Gujikja login_gu) {
+	private void view_myInfo(Gujikja_imple login_gu) {
 	/*
 	     
 	     >>> 엄정화님의 정보 <<<
@@ -166,7 +166,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	
 	
 	// 내정보 수정
-	private void update_myInfo(Scanner sc, Gujikja login_gu) {
+	private void update_myInfo(Scanner sc, Gujikja_imple login_gu) {
 	
 		view_myInfo(login_gu);
 		
@@ -351,8 +351,8 @@ public class Ctrl_gujikja extends Ctrl_common {
 		StringBuilder sb = new StringBuilder();
 		boolean is_existence = false;
 		for(int i=0; i<CommonMember.count; i++) {
-			if( cmbr_arr[i] instanceof Company &&
-				( (Company)cmbr_arr[i] ).getJob_type().toLowerCase().contains(String.join("", job_type_name.split("\\ "))) ) {
+			if( cmbr_arr[i] instanceof Company_imple &&
+				( (Company_imple)cmbr_arr[i] ).getJob_type().toLowerCase().contains(String.join("", job_type_name.split("\\ "))) ) {
 				// cmbr_arr[i] instanceof Company 은 cmbr_arr[i] 객체(인스턴스)가 Company 객체이라면,
 				
 				is_existence = true;
@@ -386,8 +386,8 @@ public class Ctrl_gujikja extends Ctrl_common {
 			boolean is_existence = false;
 			
 			for(int i=0; i<CommonMember.count; i++) {
-				if( cmbr_arr[i] instanceof Company &&				
-					search_seed_money <= ((Company)cmbr_arr[i]).getSeed_money() ) {
+				if( cmbr_arr[i] instanceof Company_imple &&				
+					search_seed_money <= ((Company_imple)cmbr_arr[i]).getSeed_money() ) {
 					
 					is_existence = true;
 					sb.append(cmbr_arr[i].getInfo()+"\n");
@@ -415,7 +415,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	// == 모든채용공고 조회 (채용마감일자가 오늘보다 이전인 것을 보여주면 안된다.) == //
 	private void view_all_recruit_info(Recruit[] rc_arr) {
 		
-		if(Recruit.count == 0) {
+		if(Recruit_imple.count == 0) {
 			System.out.println(">> 채용공고가 존재하지 않습니다. <<\n");
 		}
 		else {
@@ -429,20 +429,24 @@ public class Ctrl_gujikja extends Ctrl_common {
 				String str_now = sdft.format(now);		// "20240207" 0시0분0초
 				Date today = sdft.parse(sdft.format(now));	// "20240207" ==> 20240207 00:00:00
 				
-				for(int i=0; i<Recruit.count; i++) {
+				for(int i=0; i<Recruit_imple.count; i++) {
+								
+					Recruit_imple rc = (Recruit_imple) rc_arr[i];
 					
-					Date date_finish_day = sdft.parse(rc_arr[i].getFinish_day());		// 채용마감일자의 String 타입을 날짜로 변환
+					Date date_finish_day = sdft.parse(rc.getFinish_day());		// 채용마감일자의 String 타입을 날짜로 변환
 				
 					if( !date_finish_day.before(today)  ) {			
 					
-					sb.append(rc_arr[i].getRecruit_no()+"\t\t"+
-							  rc_arr[i].getCp().getName()+"\t"+
-							  rc_arr[i].getCp().getJob_type()+"\t"+
-							  new DecimalFormat("#,###").format(rc_arr[i].getCp().getSeed_money())+"원\t"+
-							  rc_arr[i].getWork_type()+"\t"+
-							  rc_arr[i].getCnt()+"\t"+
-							  rc_arr[i].getRegister_day().substring(0, 4) +"-"+ rc_arr[i].getRegister_day().substring(4, 6) +"-"+ rc_arr[i].getRegister_day().substring(6) +"\t"+
-							  rc_arr[i].getFinish_day().substring(0, 4) +"-"+ rc_arr[i].getFinish_day().substring(4, 6) +"-"+ rc_arr[i].getFinish_day().substring(6) +"\n");
+						
+						
+					sb.append(rc.getRecruit_no()+"\t\t"+
+							  rc.getCp().getName()+"\t"+
+							  rc.getCp().getJob_type()+"\t"+
+							  new DecimalFormat("#,###").format(rc.getCp().getSeed_money())+"원\t"+
+							  rc.getWork_type()+"\t"+
+							  rc.getCnt()+"\t"+
+							  rc.getRegister_day().substring(0, 4) +"-"+ rc.getRegister_day().substring(4, 6) +"-"+ rc.getRegister_day().substring(6) +"\t"+
+							  rc.getFinish_day().substring(0, 4) +"-"+ rc.getFinish_day().substring(4, 6) +"-"+ rc.getFinish_day().substring(6) +"\n");
 						
 					}
 				} // end of for-------------------------------------------------
@@ -454,7 +458,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 			System.out.println("채용공고순번     회사명     회사직종타입     자본금      채용분야(근무형태)     채용인원      채용등록일자      채용마감일자");
 			System.out.println("-".repeat(90));			
 			System.out.println(sb.toString());
-			System.out.println("[채용공고가 "+ Recruit.count +"건이 있습니다]\n");
+			System.out.println("[채용공고가 "+ Recruit_imple.count +"건이 있습니다]\n");
 		}
 		
 	
@@ -463,7 +467,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	
 	
 	// == 채용응모 == //
-	private void input_recruitApply(Scanner sc, Gujikja login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
+	private void input_recruitApply(Scanner sc, Gujikja_imple login_gu, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 		
 		// 구직자 자신이 응모한 채용공고 번호를 알아오자.
 		
@@ -484,7 +488,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 			String[] my_recruit_no_arr = str_my_recruit_no.split("\\,");
 			// {"1","3","2"}
 			
-			if( my_recruit_no_arr.length == Recruit.count ) {
+			if( my_recruit_no_arr.length == Recruit_imple.count ) {
 				System.out.println(">> 이미 모든 채용공고에 응모하셨으므로, 더 이상 응모할 공고가 없습니다.\n");
 				return;		// 메소드 종료
 			}
@@ -496,7 +500,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 		// 채용공고번호는 채용공고로 올라온 번호만 입력해야 한다.
 		
 		boolean is_existence, is_duplicate_recruit_no;
-		Recruit rc = null;
+		Recruit_imple rc = null;
 		
 		do {
 			is_existence = false;
@@ -505,11 +509,13 @@ public class Ctrl_gujikja extends Ctrl_common {
 			System.out.print("▶ 채용공고번호 : ");
 			String input_recruit_no = sc.nextLine();
 						
-			for(int i=0; i<Recruit.count; i++) {
+			for(int i=0; i<Recruit_imple.count; i++) {
 				
-				if( input_recruit_no.equals(String.valueOf(rc_arr[i].getRecruit_no())) ) {
+				Recruit_imple rc2 = (Recruit_imple) rc_arr[i];
+				
+				if( input_recruit_no.equals(String.valueOf(rc2.getRecruit_no())) ) {
 					is_existence = true;
-					rc = rc_arr[i];
+					rc = rc2;
 					break;	// for 문의 break. 채용공고가 존재해야 빠져나옴
 				}			
 				
@@ -576,7 +582,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	
 	// == 채용응모조회 == //
 
-	private void view_my_recruitApply(Gujikja login_gu, RecruitApply[] rcApply_arr) {
+	private void view_my_recruitApply(Gujikja_imple login_gu, RecruitApply[] rcApply_arr) {
 		
 		boolean is_existence = false;
 			

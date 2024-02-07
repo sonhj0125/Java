@@ -7,8 +7,7 @@ import java.util.regex.Pattern;
 
 import my.util.MyUtil;
 
-// >> 미완성 클래스(== 추상 클래스 == abstract class) << // 
-public abstract class CommonMember {
+public abstract class CommonMember implements Common {
 
 	// Gujikja 클래스와 Company 클래스에서 공통으로 사용되어지는 field(속성) 생성하기
 	
@@ -126,20 +125,16 @@ public abstract class CommonMember {
 		return register_day;
 	}
 
-	
-	////////////////////////////////////////////////////////
-	// >> 미완성 메소드(== 추상메소드 == abstract method) << //
-	public abstract String getInfo();	 // @Override
-	
-	
-	
-
 
 	///////////////////////////////////////////////////////
 	String parent_test() {
 		return "부모클래스에서 만들었어요. 그냥 연습이에요!!";
 	}
-	
+	///////////////////////////////////////////////////////
+
+
+
+
 	
 	
 	

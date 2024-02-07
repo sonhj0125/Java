@@ -12,7 +12,7 @@ public class Ctrl_company extends Ctrl_common {
 		
 		if(CommonMember.count < cmbr_arr.length) { // 지금까지 생성된 구인회사 회원수가  cmbr_arr.length(==>정원) 보다 적을 경우에만 신규회원을 받아들인다.
 		    
-			Company cp = new Company();
+			Company_imple cp = new Company_imple();
 			
 			// 아이디는 필수 입력사항이면서 아이디 조건에 맞을때 까지 반복해야 한다.
 			outer:
@@ -89,7 +89,7 @@ public class Ctrl_company extends Ctrl_common {
 
 
 	// == 구인회사 전용메뉴 ==
-	public void cp_menu(Scanner sc, Company login_cp, CommonMember[] cmbr_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
+	public void cp_menu(Scanner sc, Company_imple login_cp, CommonMember[] cmbr_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 
 		String str_menuno;
 		do {
@@ -154,7 +154,7 @@ public class Ctrl_company extends Ctrl_common {
 
 
 	// == 우리회사정보 보기 ==
-	private void view_myInfo(Company login_cp) {
+	private void view_myInfo(Company_imple login_cp) {
 	/*
 	     
 	     >>> 삼성 기업의 정보 <<<
@@ -180,7 +180,7 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	// == 우리회사정보 수정 ==
-	private void update_myInfo(Scanner sc, Company login_cp) {
+	private void update_myInfo(Scanner sc, Company_imple login_cp) {
 		
 		view_myInfo(login_cp);
 		
@@ -369,7 +369,7 @@ public class Ctrl_company extends Ctrl_common {
 			   }
 			*/
 			//또는
-			if(cmbr_arr[i] instanceof Gujikja) {
+			if(cmbr_arr[i] instanceof Gujikja_imple) {
 				
 				cnt++;
 			}
@@ -385,7 +385,7 @@ public class Ctrl_company extends Ctrl_common {
 			
 			for(int i=0; i<CommonMember.count; i++) {
 				
-				if(cmbr_arr[i] instanceof Gujikja) {	// 구직자만 쌓기
+				if(cmbr_arr[i] instanceof Gujikja_imple) {	// 구직자만 쌓기
 					sb.append(cmbr_arr[i].getInfo()+"\n");   
 				}
 			
@@ -451,8 +451,8 @@ public class Ctrl_company extends Ctrl_common {
 			
 			for(int i=0; i<CommonMember.count; i++) {
 				
-				 if( cmbr_arr[i] instanceof Gujikja &&  
-					 input_gender.equals(((Gujikja)cmbr_arr[i]).getGender()) ) {
+				 if( cmbr_arr[i] instanceof Gujikja_imple &&  
+					 input_gender.equals(((Gujikja_imple)cmbr_arr[i]).getGender()) ) {
 					 
 					 isSearch = true;
 					 sb.append( cmbr_arr[i].getInfo() + "\n");
@@ -526,8 +526,8 @@ public class Ctrl_company extends Ctrl_common {
 			
 			for(int i=0; i<CommonMember.count; i++) {
 				
-				if(cmbr_arr[i] instanceof Gujikja) {				
-					int ageLine = ((Gujikja)cmbr_arr[i]).getAge()/10*10;
+				if(cmbr_arr[i] instanceof Gujikja_imple) {				
+					int ageLine = ((Gujikja_imple)cmbr_arr[i]).getAge()/10*10;
 				//                  						나이/10*10
 				//                 							26/10*10 ==> 20
                 //                  						23/10*10 ==> 20
@@ -603,9 +603,9 @@ public class Ctrl_company extends Ctrl_common {
 			
 			for(int i=0; i<CommonMember.count; i++) {
 				
-				if(cmbr_arr[i] instanceof Gujikja) {
+				if(cmbr_arr[i] instanceof Gujikja_imple) {
 				
-					int ageLine = ((Gujikja)cmbr_arr[i]).getAge()/10*10;
+					int ageLine = ((Gujikja_imple)cmbr_arr[i]).getAge()/10*10;
 					//                  나이/10*10
 					//                  26/10*10 ==> 20
 	                //                  23/10*10 ==> 20
@@ -654,10 +654,10 @@ public class Ctrl_company extends Ctrl_common {
 				
 				for(int i=0; i<CommonMember.count; i++) {
 					
-					if(cmbr_arr[i] instanceof Gujikja) {
+					if(cmbr_arr[i] instanceof Gujikja_imple) {
 					
-						if( Integer.parseInt(str_ageLine) == ((Gujikja)cmbr_arr[i]).getAge()/10*10   
-							&& input_gender.equals(((Gujikja)cmbr_arr[i]).getGender()) ) {
+						if( Integer.parseInt(str_ageLine) == ((Gujikja_imple)cmbr_arr[i]).getAge()/10*10   
+							&& input_gender.equals(((Gujikja_imple)cmbr_arr[i]).getGender()) ) {
 							 
 							is_ageline_gender_Search = true;
 							sb.append( cmbr_arr[i].getInfo() + "\n");
@@ -682,11 +682,11 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	// == 7. 채용공고 입력하기 ==
-	private void register_recruit(Scanner sc, Company login_cp, Recruit[] rc_arr) {
+	private void register_recruit(Scanner sc, Company_imple login_cp, Recruit[] rc_arr) {
 		
 		System.out.println("======= " + login_cp.getName() + " 채용공고 등록=======");
 		
-		Recruit rc = new Recruit();
+		Recruit_imple rc = new Recruit_imple();
 		
 		do {
 			System.out.print("1. 채용제목 : ");
@@ -756,7 +756,7 @@ public class Ctrl_company extends Ctrl_common {
 		System.out.println("");
 		
 		rc.setCp(login_cp);				// 로그인한 회사를 가져와서
-		rc_arr[Recruit.count++] = rc;	// 배열에 넣기
+		rc_arr[Recruit_imple.count++] = rc;	// 배열에 넣기
 		
 	} // end of private void register_recruit(Scanner sc, Company login_cp)--------------------
 	
@@ -764,13 +764,13 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	// == 8. 우리회사 채용공고 조회 == //
-	private void view_recruit_mycompany(Company login_cp, Recruit[] rc_arr) {
+	private void view_recruit_mycompany(Company_imple login_cp, Recruit[] rc_arr) {
 		
 		boolean is_existence = false;
 		
-		for(int i=0; i<Recruit.count; i++) {
+		for(int i=0; i<Recruit_imple.count; i++) {
 			
-			if( login_cp.getId().equals(rc_arr[i].getCp().getId()) ) {	// 로그인한 회사의 아이디와 회사배열에 존재하는 아이디가 동일하다면, 채용공고가 존재 한다. true
+			if( login_cp.getId().equals( ((Recruit_imple)rc_arr[i]).getCp().getId()) ) {	// 로그인한 회사의 아이디와 회사배열에 존재하는 아이디가 동일하다면, 채용공고가 존재 한다. true
 				is_existence = true;
 				System.out.println(rc_arr[i].recruit_info());			// recruit_info(). 채용정보를 보여줌
 			}
@@ -786,7 +786,7 @@ public class Ctrl_company extends Ctrl_common {
 	
 	
 	// == 9. 우리회사 채용공고 지원자 조회 == //
-	private void view_gujikja_my_recruitApply(Company login_cp, RecruitApply[] rcApply_arr) {
+	private void view_gujikja_my_recruitApply(Company_imple login_cp, RecruitApply[] rcApply_arr) {
 		
 		boolean is_existence = false;
 		StringBuilder sb = new StringBuilder();

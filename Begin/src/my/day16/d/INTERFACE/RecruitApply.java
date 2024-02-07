@@ -6,8 +6,8 @@ import java.util.Date;
 public class RecruitApply {
 	
 	// field
-	private Recruit rc;  		 // 채용정보
-	private Gujikja gu;  		 // 구직자정보
+	private Recruit_imple rc;  		 // 채용정보
+	private Gujikja_imple gu;  		 // 구직자정보
 	private String apply_motive; // 지원동기
 	private String register_day; // 등록일자
 	
@@ -24,11 +24,11 @@ public class RecruitApply {
 	
 	// method
 	
-	public Recruit getRc() {
+	public Recruit_imple getRc() {
 		return rc;
 	}
 
-	public void setRc(Recruit rc) {
+	public void setRc(Recruit_imple rc) {
 		
 		if(rc != null) {
 			this.rc = rc;
@@ -38,11 +38,11 @@ public class RecruitApply {
 		}
 	}
 
-	public Gujikja getGu() {
+	public Gujikja_imple getGu() {
 		return gu;
 	}
 
-	public void setGu(Gujikja gu) {
+	public void setGu(Gujikja_imple gu) {
 		
 		if(gu != null) {
 			this.gu = gu;

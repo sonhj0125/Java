@@ -11,21 +11,21 @@ public class Main_gujikja_company {
 		
 		///////////////////////////////////////////////
 		
-		Gujikja gu1 = new Gujikja();
+		Gujikja_imple gu1 = new Gujikja_imple();
 		gu1.setId("eomjh");
 		gu1.setPasswd("qWer1234$");
 		gu1.setName("엄정화");
 		gu1.setJubun("8610202");
 		cmbr_arr[CommonMember.count++] = gu1;
 		
-		Gujikja gu2 = new Gujikja();
+		Gujikja_imple gu2 = new Gujikja_imple();
 		gu2.setId("leess");
 		gu2.setPasswd("abCd12345$");
 	    gu2.setName("이순신");
 	    gu2.setJubun("8601201");
 	    cmbr_arr[CommonMember.count++] = gu2;
 		
-		Gujikja gu3 = new Gujikja();
+		Gujikja_imple gu3 = new Gujikja_imple();
 		gu3.setId("chaew");
 		gu3.setPasswd("aSdf1234$");
 		gu3.setName("차은우");
@@ -34,7 +34,7 @@ public class Main_gujikja_company {
 		
         ///////////////////////////////////////////////
 		
-		Company cp1 = new Company();
+		Company_imple cp1 = new Company_imple();
 		cp1.setId("samsung");
 		cp1.setPasswd("Abcd1234$");
 		cp1.setName("삼성");
@@ -43,7 +43,7 @@ public class Main_gujikja_company {
 		cp1.setSeed_money(8000000000L);
 		cmbr_arr[CommonMember.count++] = cp1;
 		
-		Company cp2 = new Company();
+		Company_imple cp2 = new Company_imple();
 		cp2.setId("lg");
 		cp2.setPasswd("Abcd007$");
 		cp2.setName("엘지");
@@ -54,36 +54,36 @@ public class Main_gujikja_company {
 		
 		///////////////////////////////////////////////
 				
-		Recruit[] rc_arr = new Recruit[10];
+		Recruit[] rc_arr = new Recruit_imple[10];
 		
-		Recruit rc1 = new Recruit();
+		Recruit_imple rc1 = new Recruit_imple();
 		rc1.setCp(cp1);
 		rc1.setSubject("성실한 사무직원을 채용합니다.");
 		rc1.setWork_type("사무직");
 		rc1.setCnt(2);
 		rc1.setYearpay(4000);
 		rc1.setFinish_day("20241228");
-		rc_arr[Recruit.count++] = rc1;
+		rc_arr[Recruit_imple.count++] = rc1;
 		
 		
-		Recruit rc2 = new Recruit();
+		Recruit_imple rc2 = new Recruit_imple();
 		rc2.setCp(cp2);
 		rc2.setSubject("우수한 기술직원을 채용합니다.");
 		rc2.setWork_type("기술직");
 		rc2.setCnt(5);
 		rc2.setYearpay(4500);
 		rc2.setFinish_day("20241208");
-		rc_arr[Recruit.count++] = rc2;
+		rc_arr[Recruit_imple.count++] = rc2;
 		
 		
-		Recruit rc3 = new Recruit();
+		Recruit_imple rc3 = new Recruit_imple();
 		rc3.setCp(cp2);
 		rc3.setSubject("참신한 영업직원을 채용합니다.");
 		rc3.setWork_type("영업직");
 		rc3.setCnt(10);
 		rc3.setYearpay(5000);
 		rc3.setFinish_day("20241130");
-		rc_arr[Recruit.count++] = rc3;
+		rc_arr[Recruit_imple.count++] = rc3;
 		
 		///////////////////////////////////////////////
 		
@@ -152,7 +152,7 @@ public class Main_gujikja_company {
 					if(login_gu != null) {
 						System.out.println(">> 구직자 "+ login_gu.getName() +"님 로그인 성공^^ << \n"); 
 						
-						ctrl_gu.gu_menu(sc, (Gujikja)login_gu, cmbr_arr, rc_arr, rcApply_arr); // 구직자 전용메뉴
+						ctrl_gu.gu_menu(sc, (Gujikja_imple)login_gu, cmbr_arr, rc_arr, rcApply_arr); // 구직자 전용메뉴
 					}
 					else {
 						System.out.println(">> 구직자로 로그인 실패 ㅜㅜ <<\n");
@@ -166,7 +166,7 @@ public class Main_gujikja_company {
 					if(login_cp != null) {
 						System.out.println(">> 구인회사 "+ login_cp.getName() +"기업 로그인 성공^^ << \n"); 
 						
-						ctrl_cp.cp_menu(sc, (Company)login_cp, cmbr_arr, rc_arr, rcApply_arr); // 구인회사 전용메뉴
+						ctrl_cp.cp_menu(sc, (Company_imple)login_cp, cmbr_arr, rc_arr, rcApply_arr); // 구인회사 전용메뉴
 					}
 					else {
 						System.out.println(">> 구인회사 로그인 실패 ㅜㅜ <<\n");
