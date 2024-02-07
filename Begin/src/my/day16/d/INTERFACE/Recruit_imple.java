@@ -10,7 +10,7 @@ public class Recruit_imple implements Recruit {
 	
 	// field
 	private int recruit_no;			// 채용공고순번
-	private Company_imple cp;				// 회사 
+	private Company_imple cp;		// 회사 
 	private String subject;			// 채용제목
 	private String work_type;		// 채용분야(근무형태)
 	private int cnt;				// 채용인원
