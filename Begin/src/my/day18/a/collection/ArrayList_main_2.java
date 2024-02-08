@@ -195,28 +195,23 @@ public class ArrayList_main_2 {
         
         
         
-        System.out.println("\n[퀴즈3] mbrList 에 저장되어진 모든 회원들중에 이름이 순신인 회원만 정보를 출력하세요 \n");
+        System.out.println("\n[퀴즈4] mbrList 에 저장되어진 모든 회원들중에 남자만 모두 삭제한 후 모든 회원의 정보를 출력하세요. \n");
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
+        	for(int i=0; i<mbrList.size(); i++) { 
+        		if("남".equals(mbrList.get(i).gender())) {
+    	        	mbrList.remove(mbrList.get(i));
+    	        	i--;
+        		}
+        	} // end of for--------------------------------------
+        	
+        	for(Member mbr : mbrList) {
+	        	System.out.println(mbr);
+	        } // end of for--------------------------------------
+        	
+        	
+    
+        	
         
         
         
