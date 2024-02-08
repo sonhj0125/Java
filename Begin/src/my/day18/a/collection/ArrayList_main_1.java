@@ -63,11 +63,11 @@ public class ArrayList_main_1 {
 		my_list.add(4345.7);				// double --> Double 로 autoboxing 해준다.
 		
 		
-		my_list.add(new Member());
+//		my_list.add(new Member());
 		// my_list 의 크기 : 9
 		
 		for(int i=0; i<91; i++) {
-			my_list.add(new Member());
+//			my_list.add(new Member());
 		} // end of for----------------------------------------------------
 		
 		System.out.println("my_list 의 크기 : " + my_list.size());		// .length == .size
@@ -167,7 +167,7 @@ public class ArrayList_main_1 {
 //		mbr_list.add("마동석");		// 오류
 //		mbr_list.add(12345);		// 오류
 //		mbr_list.add(1.234235); 	// 오류
-		mbr_list.add(new Member()); 
+//		mbr_list.add(new Member()); 
 		
 								
 		for(int i=0; i<str_list.size(); i++) {
