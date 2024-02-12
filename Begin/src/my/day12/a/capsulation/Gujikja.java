@@ -297,7 +297,7 @@ public class Gujikja {
 				return "여";
 			}
 		
-	} // end of String getinfo()--------------------------------------
+	} // end of String getGender()--------------------------------------
    
 	
 	

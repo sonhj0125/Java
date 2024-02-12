@@ -294,7 +294,7 @@ public class Ctrl_gujikja {
 			// end of do_while-----------------------------------------
 			
 			
-			// == 입력받은 연령대에 해당하는 구직자 찾기 == //
+			// == 입력받은 성별에 해당하는 구직자 찾기 == //
 			StringBuilder sb = new StringBuilder();			
 			boolean isSearch = false;
 			
