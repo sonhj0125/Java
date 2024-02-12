@@ -379,9 +379,9 @@ public class Ctrl_gujikja {
 			}
 			else {
 				System.out.println("[검색결과 성별이 "+ input_gender+ "성인 구직자는 없습니다.]\n");
-			} // end of if~else-----------------------------------
+			} 
 		
-		} 
+		} // end of if~else-----------------------------------
 
 	} // end of void search_gender(Scanner sc, Gujikja[] gu_arr)-----------------------------------------------------------
 	
