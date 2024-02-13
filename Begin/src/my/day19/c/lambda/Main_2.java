@@ -1,6 +1,6 @@
 package my.day19.c.lambda;
 
-public class Main {
+public class Main_2 {
 
 	public static void main(String[] args) {
 		
@@ -107,6 +107,134 @@ public class Main {
 		
 		lambda_area_obj.area(10.5, 5.5, 4);
 		// 세번째 파라미터는 1 또는 2 또는 3만 가능합니다.
+		
+		
+		
+		System.out.println("\n=== 람다(Lambda) 표기방법 알아보기 ===");
+		
+		Functional_Operator_3 annoymous_op = new Functional_Operator_3() {
+
+			@Override
+			public double operator(double a, double b, String type) {
+				
+				double result = 0.0;
+				
+				switch (type) {
+					case "+":
+						result = a+b;
+						
+						break;
+						
+					case "-":
+						result = a-b;
+						
+						break;
+						
+					case "*":
+						result = a*b;
+						
+						break;
+						
+					case "/":
+						result = a/b;
+						
+						break;
+	
+					default:
+						System.out.println("세번째 파라미터는 + - * / 만 가능합니다.");
+						break;
+				} // end of switch (type)
+				
+				return result;
+				
+			} // end of public double operator(double a, double b, String type)
+			
+		};
+			
+		double opr_result = annoymous_op.operator(20, 10, "+");
+		System.out.println(opr_result);	// 30.0
+		
+		
+		
+		// 1. 람다식(Lambda) 표기 기본방법
+		
+		Functional_Operator_3 annoymous_op2 = (double a, double b, String type) -> {
+				
+				double result = 0.0;
+				
+				switch (type) {
+					case "+":
+						result = a+b;
+						
+						break;
+						
+					case "-":
+						result = a-b;
+						
+						break;
+						
+					case "*":
+						result = a*b;
+						
+						break;
+						
+					case "/":
+						result = a/b;
+						
+						break;
+	
+					default:
+						System.out.println("세번째 파라미터는 + - * / 만 가능합니다.");
+						break;
+				} // end of switch (type)
+				
+				return result;
+				
+		};
+			
+		double opr_result2 = annoymous_op2.operator(20, 10, "-");
+		System.out.println(opr_result2);	// 10.0
+		
+		
+		
+		// 2. 파라미터의 타입은 생략할 수 있다.
+		
+		Functional_Operator_3 annoymous_op3 = (a, b, type) -> {
+			
+			double result = 0.0;
+			
+			switch (type) {
+				case "+":
+					result = a+b;
+					
+					break;
+					
+				case "-":
+					result = a-b;
+					
+					break;
+					
+				case "*":
+					result = a*b;
+					
+					break;
+					
+				case "/":
+					result = a/b;
+					
+					break;
+
+				default:
+					System.out.println("세번째 파라미터는 + - * / 만 가능합니다.");
+					break;
+			} // end of switch (type)
+			
+			return result;
+			
+	};
+		
+	opr_result = annoymous_op3.operator(20, 10, "*");
+	System.out.println(opr_result);	// 200.0
 		
 		
 	} // end of main
