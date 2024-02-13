@@ -35,25 +35,17 @@ public class Main {
         익명(무명) 클래스는 추상클래스와 인터페이스로부터 만든다.    
     */
 		
-		Area area = new Area() {
+		Area area = new Area() {			// Area는 interface로 class가 아님. 이름이 없어서 다른 곳에서 사용할 수 없음. 한번만 사용가능
 			@Override
 			public double area(double x, double y) {
 				return x*y;
 			}
 		};
 		
+		double area_size = area.area(10.5, 5.5);
+		System.out.println("가로 10.5, 세로 5.5인 면적은 : " + area_size);
+		// 가로 10.5, 세로 5.5인 면적은 : 57.75
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 	} // end of main
 
 }
