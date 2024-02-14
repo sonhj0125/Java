@@ -5,7 +5,4 @@ public interface Functional_Area_1 {
 	
 	void area(double x, double y, int type);
 	
-	
-	
-
 }
