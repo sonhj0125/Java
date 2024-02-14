@@ -78,7 +78,7 @@ public class FileInputStream_main_07 {
 		System.out.println(fileName + "에 쓰기 완료!!" + totalByte + "byte 사용");
 		System.out.println("반복횟수 : " + totalByte + "번 반복함");
 		
-		
-		
 	} // end of main
+
+	
 }

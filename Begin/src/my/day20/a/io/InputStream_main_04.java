@@ -24,10 +24,10 @@ Data Source ㅇ======>ㅇ 프로그램 ㅇ======>ㅇ Data Destination
       public int read() throws IOException
       ==> 1byte 씩 데이터를 읽어서
           1byte 씩 반환하고
-          입력받은 키보드가 Ctrl+C(윈도우), Ctrl+D(유닉스,리눅스,맥) 이라면 -1 을 반환해주는 메소드이다.
+          입력받은 키보드가 Ctrl+Z(윈도우), Ctrl+D(유닉스,리눅스,맥) 이라면 -1 을 반환해주는 메소드이다.
           read() 메소드의 리턴타입은 byte 가 아니라 int 이다.
           데이터 입력의 끝을 나타내는 것으로 -1 을 사용하는데
-          Ctrl+C(윈도우), Ctrl+D(유닉스,리눅스,맥)을 사용하면 된다.
+          Ctrl+Z(윈도우), Ctrl+D(유닉스,리눅스,맥)을 사용하면 된다.
                       
           또한 IOException 이 발생할수도 있으므로 반드시 예외처리를 꼭 해주어야 한다.              
           그래서 현재 우리는 윈도우를 사용하고 있으므로 InputStream 작업을 
@@ -62,8 +62,10 @@ public class InputStream_main_04 {
 		
 		int totalByte = 0;	// byte 수 누적의 용도
 		
+		int cnt = 0;		// while 문의 반복횟수
+		
 		while( (input_length = System.in.read(date_arr)) != -1 ) {
-		// 키보드로 Ctrl+C(강제종료)를 누르지 않으면 계속 실행
+		// 키보드로 Ctrl+Z를 누르지 않으면 계속 실행
 			
 		/*
 		   System.in.read(data_arr)은 
@@ -85,12 +87,13 @@ public class InputStream_main_04 {
 		// 배열 data_arr 에 저장된 데이터에서 시작점이 0번째 index 부터(처음부터) input_length byte수 만큼 출력해라는 말이다.		
 		System.out.flush();
 		
-		System.out.println("");
-			
 		totalByte += input_length;		// 10 + 10 + 4	totalByte : 24
-		System.out.println("totalByte : " + totalByte);
+		cnt++;
 		
-		} // end of while( (input_length = System.in.read(date_arr)) != -1 )
+		} // end of while( (input_length = System.in.read(date_arr)) != -1 )		
+		
+		System.out.println("총 : " + (totalByte - 2) + "byte 입력함");		// 엔터크기를 빼기 위해 -2를 함.(24 - 2 = 22 byte)
+		System.out.println("반복횟수 : " + cnt + "번 반복함.");
 		
 	} // end of main
 
@@ -98,17 +101,11 @@ public class InputStream_main_04 {
 
 /*
  	>> 명령프롬프트 실행 결과 화면 <<
- 	
-	C:\NCS\workspace_java\git\LectureReview\Begin\bin>
+	
 	C:\NCS\workspace_java\git\LectureReview\Begin\bin>java my.day20.a.io.InputStream_main_04
 	대한민국서울시홍대입구
-	대한민국서
-	totalByte : 10
-	울시홍대입
-	totalByte : 20
-	구
-	
-	totalByte : 24
-	^C
-	C:\NCS\workspace_java\git\LectureReview\Begin\bin>
+	대한민국서울시홍대입구
+	^Z
+	총 : 22byte 입력함
+	반복횟수 : 3번 반복함.
 */

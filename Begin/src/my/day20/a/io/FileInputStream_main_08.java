@@ -28,8 +28,7 @@ public class FileInputStream_main_08 {
 	public static void main(String[] args) {
 		
 		System.out.println(">> 내용을 입력하세요 [입력하신 내용은 C:\\NCS\\iotestdata\\result.txt 파일에 저장됨.]");
-		
-		
+				
 		String fileName = "C:/NCS/iotestdata/result.txt";		// 역슬래쉬는 2개 사용해야 오류가 안남. 또는 / 사용
 
 		byte[] data_arr = new byte[10];
