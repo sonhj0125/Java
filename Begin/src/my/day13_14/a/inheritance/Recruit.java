@@ -68,7 +68,7 @@ public class Recruit {
 			this.subject = subject;
 		}
 		else {
-			System.out.println("[경고] 채용제목을 필수로 입력해야 합니다.!!\\n");
+			System.out.println("[경고] 채용제목을 필수로 입력해야 합니다.!!\n");
 		}
 		
 	}
@@ -85,7 +85,7 @@ public class Recruit {
 			this.work_type = work_type;
 		}
 		else {
-			System.out.println("[경고] 채용분야(근무형태)를 필수로 입력해야 합니다.!!\\n");
+			System.out.println("[경고] 채용분야(근무형태)를 필수로 입력해야 합니다.!!\n");
 		}
 	}
 	
@@ -101,7 +101,7 @@ public class Recruit {
 			this.cnt = cnt;
 		}
 		else {
-			System.out.println("[경고] 채용인원수는 1명 이상이어야 합니다.!!\\n");
+			System.out.println("[경고] 채용인원수는 1명 이상이어야 합니다.!!\n");
 		}
 	}
 	
@@ -117,7 +117,7 @@ public class Recruit {
 			this.yearpay = yearpay;
 		}
 		else {
-			System.out.println("[경고] 연봉은 1 이상이어야 합니다.!!\\n");
+			System.out.println("[경고] 연봉은 1 이상이어야 합니다.!!\n");
 		}
 	}
 

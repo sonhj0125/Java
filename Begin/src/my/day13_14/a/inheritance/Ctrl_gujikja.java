@@ -110,6 +110,7 @@ public class Ctrl_gujikja extends Ctrl_common {
 	public void gu_menu(Scanner sc, Gujikja login_gu, Company[] cp_arr, Recruit[] rc_arr, RecruitApply[] rcApply_arr) {
 		
 		String str_menuno;
+		
 		do {
 			System.out.println("\n === 구직자 전용메뉴("+ login_gu.getName() +"님 로그인중) ===\n"
 			                 + "1. 내정보 보기   2. 내정보 수정   3. 모든구인회사 조회    4. 구인회사검색하기\n"
