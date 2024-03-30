@@ -66,7 +66,7 @@ public class HelloTest {
 		 모니터에 "출력하고자 하는 문자열" 을 출력해라는 말이다.
 		*/
 		
-		System.out.print("Hello, world!");
+		System.out.print("Hello, 세계!");
 		 /*
 		 System.out.print("출력하고자 하는 문자열"); 은
 		 줄바꿈 없이 모니터에 "출력하고자 하는 문자열" 을 출력해라는 말이다.
